@@ -56,11 +56,13 @@
 //   }
 // }
 
-function RenderComponent(Component) {
-  Component.prototype.actionEmit = () => {
-    console.log("actionEmit---")
+const RenderComponent = Component => {
+  return class extends Component {
+    render () {
+      return super.render();
+    }
   }
-  return Component
 }
+
 
 export default RenderComponent;
