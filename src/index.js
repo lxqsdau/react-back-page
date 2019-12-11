@@ -1,10 +1,11 @@
-import React from 'react';
 
+import React from 'react';
+import './styles.css';
 class ConfigComponent extends React.Component {
 
   render () {
     return (
-      <div>哈哈哈</div>
+      <h1 className="text">哈哈</h1>
     )
   }
 }
