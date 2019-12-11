@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Divider } from "antd";
 import { ConsumerState } from "../createContext";
+import "./index.scss";
 
 function TableComponent ({ emit, config: { actionColumns = [], columns, pageSize = 10, ...tableProps } }) {
 

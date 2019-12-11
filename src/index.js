@@ -8,6 +8,7 @@ import TableComponent from "./TableComponent";
 import DetailModal from "./DetailModal";
 import PropTypes from 'prop-types';
 import RenderComponent from "./RenderComponent";
+
 function noop () { }
 const { confirm } = Modal;
 
