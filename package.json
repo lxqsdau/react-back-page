@@ -1,6 +1,6 @@
 {
   "name": "react-back-page",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "react后台配置页面",
   "main": "index.js",
   "scripts": {
@@ -38,6 +38,9 @@
         {
           "loose": true
         }
+      ],
+      [
+        "@babel/plugin-transform-arrow-functions"
       ]
     ],
     "presets": [
@@ -46,6 +49,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-arrow-functions": "^7.7.4",
     "babel-plugin-import": "^1.12.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "node-sass": "^4.12.0"
