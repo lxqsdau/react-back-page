@@ -7,6 +7,7 @@ import Action from "./Action";
 import TableComponent from "./TableComponent";
 import DetailModal from "./DetailModal";
 import PropTypes from 'prop-types';
+import RenderComponent from "./RenderComponent";
 function noop () { }
 const { confirm } = Modal;
 
@@ -78,7 +79,7 @@ class ConfigComponent extends React.Component {
     })
   }
 
-  reset = () => { 
+  reset = () => {
     this.refreshTable();
     this.props.onReset()
   }
@@ -177,7 +178,7 @@ ConfigComponent.defaultProps = {
 
 
 
-export default ConfigComponent
+export { ConfigComponent, RenderComponent }
 
 
 

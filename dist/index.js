@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__8__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -110,6 +110,19 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 /* 2 */
 /***/ (function(module, exports) {
 
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -119,7 +132,7 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -141,10 +154,10 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(13);
+var _typeof = __webpack_require__(14);
 
 var assertThisInitialized = __webpack_require__(10);
 
@@ -159,23 +172,10 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var setPrototypeOf = __webpack_require__(14);
+var setPrototypeOf = __webpack_require__(15);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -198,13 +198,34 @@ module.exports = _inherits;
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__8__;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var objectWithoutPropertiesLoose = __webpack_require__(15);
+var objectWithoutPropertiesLoose = __webpack_require__(16);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -228,27 +249,6 @@ function _objectWithoutProperties(source, excluded) {
 module.exports = _objectWithoutProperties;
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
 /* 10 */
 /***/ (function(module, exports) {
 
@@ -266,11 +266,11 @@ module.exports = _assertThisInitialized;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(16);
+var arrayWithoutHoles = __webpack_require__(17);
 
-var iterableToArray = __webpack_require__(17);
+var iterableToArray = __webpack_require__(18);
 
-var nonIterableSpread = __webpack_require__(18);
+var nonIterableSpread = __webpack_require__(19);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
@@ -304,6 +304,34 @@ module.exports = _extends;
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var superPropBase = __webpack_require__(20);
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    module.exports = _get = Reflect.get;
+  } else {
+    module.exports = _get = function _get(target, property, receiver) {
+      var base = superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return _get(target, property, receiver || target);
+}
+
+module.exports = _get;
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -323,7 +351,7 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -338,7 +366,7 @@ function _setPrototypeOf(o, p) {
 module.exports = _setPrototypeOf;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -359,7 +387,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -375,7 +403,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -385,7 +413,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -395,30 +423,47 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 19 */
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getPrototypeOf = __webpack_require__(2);
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+module.exports = _superPropBase;
+
+/***/ }),
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(9);
+var defineProperty = __webpack_require__(7);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(2);
+var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(3);
+var createClass = __webpack_require__(4);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(4);
+var possibleConstructorReturn = __webpack_require__(5);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(5);
+var getPrototypeOf = __webpack_require__(2);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
@@ -578,11 +623,11 @@ function getComponent(conponentStr) {
 
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(8);
+var objectWithoutProperties = __webpack_require__(9);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ./Search/index.scss
-var Search_0 = __webpack_require__(20);
+var Search_0 = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./Search/index.js
 
@@ -843,10 +888,117 @@ function DetailModal(_ref) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(7);
+var external_prop_types_ = __webpack_require__(8);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/get.js
+var get = __webpack_require__(13);
+var get_default = /*#__PURE__*/__webpack_require__.n(get);
+
+// CONCATENATED MODULE: ./RenderComponent.js
+
+
+
+
+
+
+
+
+function RenderComponent_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function RenderComponent_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { RenderComponent_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { RenderComponent_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * 反向继承
+ * 传递来的组件 = 父类
+ * 
+ * 返回的是此组件，此组件先渲染，方法先从此组件查找
+ * 没有则调用父类方法，父类方法的this指向子类
+ */
+var RenderComponent_RenderComponent = function RenderComponent(Component) {
+  var _temp;
+
+  return _temp =
+  /*#__PURE__*/
+  function (_Component) {
+    inherits_default()(A, _Component);
+
+    function A() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      classCallCheck_default()(this, A);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(A)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      _this.state = RenderComponent_objectSpread({
+        isShowModal: false,
+        // 添加和编辑的弹窗
+        isEdit: false,
+        editData: {}
+      }, _this.state);
+
+      _this.updateTable = function () {
+        _this.hideModal();
+
+        var isEdit = _this.state.isEdit;
+
+        if (isEdit) {
+          // 编辑刷新当前页
+          _this.tableComponent.refreshCurrentPageTable();
+        } else {
+          // 新增刷新第一页
+          _this.tableComponent.refreshTable();
+        }
+      };
+
+      _this.tableEdit = function (record) {
+        _this.setState({
+          isShowModal: true,
+          isEdit: true,
+          editData: record
+        });
+      };
+
+      _this.hideModal = function () {
+        _this.setState({
+          isShowModal: false
+        });
+      };
+
+      _this.actionEmit = function (type, data) {
+        _this[type](data);
+      };
+
+      _this.add = function () {
+        _this.setState({
+          isShowModal: true,
+          isEdit: false
+        });
+      };
+
+      return _this;
+    }
+
+    createClass_default()(A, [{
+      key: "render",
+      value: function render() {
+        return get_default()(getPrototypeOf_default()(A.prototype), "render", this).call(this);
+      }
+    }]);
+
+    return A;
+  }(Component), _temp;
+};
+
+/* harmony default export */ var RenderComponent_0 = (RenderComponent_RenderComponent);
 // CONCATENATED MODULE: ./index.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigComponent", function() { return index_ConfigComponent; });
+/* concated harmony reexport RenderComponent */__webpack_require__.d(__webpack_exports__, "RenderComponent", function() { return RenderComponent_0; });
 
 
 
@@ -858,6 +1010,7 @@ var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_pr
 function index_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function index_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { index_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { index_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -1101,7 +1254,7 @@ index_ConfigComponent.defaultProps = {
   onReset: noop,
   actionEmit: noop
 };
-/* harmony default export */ var index = __webpack_exports__["default"] = (index_ConfigComponent);
+
 /**
  * 向上传递：
  * 编辑
@@ -1109,7 +1262,7 @@ index_ConfigComponent.defaultProps = {
  */
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
