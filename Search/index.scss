@@ -1,0 +1,23 @@
+.search-box {
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  .search-item {
+    margin-right: 10px;
+    p.label {
+      font-size: 12px;
+      margin-bottom: 3px;
+      color: rgba(0, 0, 0, 0.6);
+      letter-spacing: 0;
+      line-height: 20px;
+    }
+    input,
+    .ant-select {
+      height: 32px;
+      width: 250px;
+    }
+  }
+}

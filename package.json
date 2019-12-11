@@ -1,0 +1,20 @@
+{
+  "name": "react-back-page",
+  "version": "1.0.0",
+  "description": "后台配置页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxqsdau/react-back-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lxqsdau/react-back-page/issues"
+  },
+  "homepage": "https://github.com/lxqsdau/react-back-page#readme"
+}
