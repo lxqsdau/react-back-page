@@ -18,18 +18,19 @@ class ConfigComponent extends React.Component {
     this.actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.tableConfig = table;
     this.detail = detail
+    this.state = {
+      tableLoading: true,
+      total: 0,
+      currentPage: 1,
+      tableDataList: [],
+
+      isShowDetailModal: false,
+      detailData: {}
+    }
   }
 
 
-  state = {
-    tableLoading: true,
-    total: 0,
-    currentPage: 1,
-    tableDataList: [],
 
-    isShowDetailModal: false,
-    detailData: {}
-  }
 
   componentDidMount () {
     this.refreshTable();
@@ -77,7 +78,7 @@ class ConfigComponent extends React.Component {
   }
 
   reset = () => this.refreshTable();
-  
+
 
   tablePageChange = ({ current: page }) => {
     const searchValue = this.form.getSearchValue();
