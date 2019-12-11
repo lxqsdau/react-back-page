@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -110,6 +110,36 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 /* 2 */
 /***/ (function(module, exports) {
 
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(13);
+
+var assertThisInitialized = __webpack_require__(10);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
 function _getPrototypeOf(o) {
   module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
@@ -120,19 +150,30 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf;
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
+var setPrototypeOf = __webpack_require__(14);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
 }
 
-module.exports = _classCallCheck;
+module.exports = _inherits;
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -154,47 +195,6 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(14);
-
-var assertThisInitialized = __webpack_require__(10);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(15);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -204,7 +204,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var objectWithoutPropertiesLoose = __webpack_require__(16);
+var objectWithoutPropertiesLoose = __webpack_require__(15);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -266,11 +266,11 @@ module.exports = _assertThisInitialized;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(17);
+var arrayWithoutHoles = __webpack_require__(16);
 
-var iterableToArray = __webpack_require__(18);
+var iterableToArray = __webpack_require__(17);
 
-var nonIterableSpread = __webpack_require__(19);
+var nonIterableSpread = __webpack_require__(18);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
@@ -304,34 +304,6 @@ module.exports = _extends;
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var superPropBase = __webpack_require__(20);
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    module.exports = _get = Reflect.get;
-  } else {
-    module.exports = _get = function _get(target, property, receiver) {
-      var base = superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-
-      return desc.value;
-    };
-  }
-
-  return _get(target, property, receiver || target);
-}
-
-module.exports = _get;
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -351,7 +323,7 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -366,7 +338,7 @@ function _setPrototypeOf(o, p) {
 module.exports = _setPrototypeOf;
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -387,7 +359,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -403,7 +375,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -413,7 +385,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -423,24 +395,7 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getPrototypeOf = __webpack_require__(2);
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = getPrototypeOf(object);
-    if (object === null) break;
-  }
-
-  return object;
-}
-
-module.exports = _superPropBase;
-
-/***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -451,19 +406,19 @@ var defineProperty = __webpack_require__(9);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(3);
+var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(4);
+var createClass = __webpack_require__(6);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(5);
+var possibleConstructorReturn = __webpack_require__(3);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(2);
+var getPrototypeOf = __webpack_require__(4);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
@@ -471,7 +426,7 @@ var assertThisInitialized = __webpack_require__(10);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(6);
+var inherits = __webpack_require__(5);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
 // EXTERNAL MODULE: external "react"
@@ -627,7 +582,7 @@ var objectWithoutProperties = __webpack_require__(8);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ./Search/index.scss
-var Search_0 = __webpack_require__(22);
+var Search_0 = __webpack_require__(20);
 
 // CONCATENATED MODULE: ./Search/index.js
 
@@ -761,7 +716,7 @@ var toConsumableArray = __webpack_require__(11);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./TableComponent/index.scss
-var TableComponent = __webpack_require__(24);
+var TableComponent = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./TableComponent/index.js
 
@@ -895,96 +850,7 @@ function DetailModal(_ref) {
 var external_prop_types_ = __webpack_require__(7);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/get.js
-var get = __webpack_require__(13);
-var get_default = /*#__PURE__*/__webpack_require__.n(get);
-
-// CONCATENATED MODULE: ./RenderComponent.js
-
-
-
-
-
-
-
-/**
- * 反向继承
- * 传递来的组件 = 父类
- * 
- * 返回的是此组件，此组件先渲染，方法先从此组件查找
- * 没有则调用父类方法，父类方法的this指向子类
- */
-// const RenderComponent = Component => {
-//   return class A extends Component {
-//     state = {
-//       isShowModal: false, // 添加和编辑的弹窗
-//       isEdit: false,
-//       editData: {},
-//       ...this.state
-//     }
-//     updateTable = () => {
-//       this.hideModal();
-//       const { isEdit } = this.state;
-//       if (isEdit) { // 编辑刷新当前页
-//         this.tableComponent.refreshCurrentPageTable();
-//       } else { // 新增刷新第一页
-//         this.tableComponent.refreshTable()
-//       }
-//     }
-//     tableEdit = record => {
-//       this.setState({
-//         isShowModal: true,
-//         isEdit: true,
-//         editData: record
-//       })
-//     }
-//     hideModal = () => {
-//       this.setState({
-//         isShowModal: false,
-//       })
-//     }
-//     actionEmit = (type, data) => {
-//       this[type](data);
-//     }
-//     add = () => {
-//       this.setState({
-//         isShowModal: true,
-//         isEdit: false
-//       })
-//     }
-//     render () {
-//       return super.render()
-//     }
-//   }
-// }
-var RenderComponent_RenderComponent = function RenderComponent(Component) {
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      inherits_default()(_class, _Component);
-
-      function _class() {
-        classCallCheck_default()(this, _class);
-
-        return possibleConstructorReturn_default()(this, getPrototypeOf_default()(_class).apply(this, arguments));
-      }
-
-      createClass_default()(_class, [{
-        key: "render",
-        value: function render() {
-          return get_default()(getPrototypeOf_default()(_class.prototype), "render", this).call(this);
-        }
-      }]);
-
-      return _class;
-    }(Component)
-  );
-};
-
-/* harmony default export */ var RenderComponent_0 = (RenderComponent_RenderComponent);
-// CONCATENATED MODULE: ./index.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigComponent", function() { return index_ConfigComponent; });
-/* concated harmony reexport RenderComponent */__webpack_require__.d(__webpack_exports__, "RenderComponent", function() { return RenderComponent_0; });
+// CONCATENATED MODULE: ./ConfigComponent.js
 
 
 
@@ -993,10 +859,9 @@ var RenderComponent_RenderComponent = function RenderComponent(Component) {
 
 
 
-function index_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ConfigComponent_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function index_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { index_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { index_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
+function ConfigComponent_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ConfigComponent_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ConfigComponent_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
@@ -1010,9 +875,9 @@ function index_objectSpread(target) { for (var i = 1; i < arguments.length; i++)
 
 function noop() {}
 
-var index_confirm = external_antd_["Modal"].confirm;
+var ConfigComponent_confirm = external_antd_["Modal"].confirm;
 
-var index_ConfigComponent =
+var ConfigComponent_ConfigComponent =
 /*#__PURE__*/
 function (_React$Component) {
   inherits_default()(ConfigComponent, _React$Component);
@@ -1050,7 +915,7 @@ function (_React$Component) {
         });
       }
 
-      fetchFn(index_objectSpread({
+      fetchFn(ConfigComponent_objectSpread({
         page: page
       }, searchValue)).then(function (_ref2) {
         var data = _ref2.data,
@@ -1113,7 +978,7 @@ function (_React$Component) {
 
       var me = assertThisInitialized_default()(_this);
 
-      index_confirm({
+      ConfigComponent_confirm({
         title: "\u786E\u8BA4\u5220\u9664 ".concat(confirmTitleField ? data[confirmTitleField] : ""),
         content: "",
         onOk: function onOk() {
@@ -1171,14 +1036,14 @@ function (_React$Component) {
     _this.searchConfig = search.map(function (_ref4) {
       var type = _ref4.type,
           props = _ref4.props;
-      return index_objectSpread({
+      return ConfigComponent_objectSpread({
         Component: getComponent(type)
       }, props);
     });
     _this.actionConfig = action.map(function (_ref5) {
       var type = _ref5.type,
           props = _ref5.props;
-      return index_objectSpread({
+      return ConfigComponent_objectSpread({
         Component: getComponent(type)
       }, props);
     });
@@ -1226,36 +1091,119 @@ function (_React$Component) {
   return ConfigComponent;
 }(external_react_default.a.Component);
 
-index_ConfigComponent.propTypes = {
+ConfigComponent_ConfigComponent.propTypes = {
   config: external_prop_types_default.a.object,
   tableConfig: external_prop_types_default.a.object,
   onSearch: external_prop_types_default.a.func,
   onReset: external_prop_types_default.a.func,
   actionEmit: external_prop_types_default.a.func
 };
-index_ConfigComponent.defaultProps = {
+ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
   onSearch: noop,
   onReset: noop,
   actionEmit: noop
 };
-
+/* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);
 /**
  * 向上传递：
  * 编辑
  * 新增
  */
+// CONCATENATED MODULE: ./RenderComponent.js
+
+
+
+
+
+
+var RenderComponent_RenderComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  inherits_default()(RenderComponent, _React$Component);
+
+  function RenderComponent() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    classCallCheck_default()(this, RenderComponent);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(RenderComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      isShowModal: false,
+      // 添加和编辑的弹窗
+      isEdit: false,
+      editData: {}
+    };
+
+    _this.actionEmit = function (type, data) {
+      _this[type](data);
+    };
+
+    _this.add = function () {
+      _this.setState({
+        isShowModal: true,
+        isEdit: false
+      });
+    };
+
+    _this.hideModal = function () {
+      _this.setState({
+        isShowModal: false
+      });
+    };
+
+    _this.tableEdit = function (record) {
+      _this.setState({
+        isShowModal: true,
+        isEdit: true,
+        editData: record
+      });
+    };
+
+    _this.updateTable = function () {
+      _this.hideModal();
+
+      var isEdit = _this.state.isEdit;
+
+      if (isEdit) {
+        // 编辑刷新当前页
+        _this.tableComponent.refreshCurrentPageTable();
+      } else {
+        // 新增刷新第一页
+        _this.tableComponent.refreshTable();
+      }
+    };
+
+    return _this;
+  }
+
+  return RenderComponent;
+}(external_react_default.a.Component);
+
+/* harmony default export */ var RenderComponent_0 = (RenderComponent_RenderComponent);
+// CONCATENATED MODULE: ./index.js
+/* concated harmony reexport ConfigComponent */__webpack_require__.d(__webpack_exports__, "ConfigComponent", function() { return ConfigComponent_0; });
+/* concated harmony reexport RenderComponent */__webpack_require__.d(__webpack_exports__, "RenderComponent", function() { return RenderComponent_0; });
+
+
+
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 23 */,
-/* 24 */
+/* 21 */,
+/* 22 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
