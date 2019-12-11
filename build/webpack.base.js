@@ -55,9 +55,9 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+    modules: [path.resolve(__dirname, '../src'), 'node_modules'], // 模块搜索的目录 import模块路径，就可以从一个子目录开始写，这样就可以缩短模块引入路径。
     alias: {
-      'react': path.join(__dirname, '../node_modules', 'react'),
+      'react': path.join(__dirname, '../node_modules', 'react'), // 路径设置别名
     },
     extensions: ['.js', '.jsx']
   }
