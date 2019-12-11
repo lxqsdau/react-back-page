@@ -1,12 +1,13 @@
 {
   "name": "react-back-page",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "后台配置页面",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config ./build/webpack.development.js -d --history-api-fallback --no-inline --progress --colors --host 0.0.0.0",
-    "build": "rm -rf dist/ && NODE_ENV=production webpack --config ./build/webpack.production.js --progress --colors"
+    "build": "rm -rf dist/ && NODE_ENV=production webpack --config ./build/webpack.production.js --progress --colors",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
@@ -31,7 +33,11 @@
     "webpack-merge": "^4.2.2"
   },
   "peerDependencies": {
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "antd": "^3.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
   }
 }

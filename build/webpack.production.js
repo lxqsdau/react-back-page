@@ -19,7 +19,9 @@ module.exports = merge(baseConfigs, {
   },
   externals: {
     'react': 'react',
-    'react-dom': 'react-dom'
+    'react-dom': 'react-dom',
+    'antd': 'antd',
+    'prop-types': 'prop-types'
   },
   optimization: {
     minimize: false,
