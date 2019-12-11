@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/lxqsdau/react-back-page/issues"
   },
-  "homepage": "https://github.com/lxqsdau/react-back-page#readme"
+  "homepage": "https://github.com/lxqsdau/react-back-page#readme",
+  "dependencies": {
+    "react": "^16.12.0",
+    "antd": "^3.25.3"
+  }
 }
