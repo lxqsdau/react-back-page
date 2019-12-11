@@ -6,6 +6,7 @@ import Search from "./Search";
 import Action from "./Action";
 import TableComponent from "./TableComponent";
 import DetailModal from "./DetailModal";
+import RenderComponent from "./RenderComponent";
 
 
 const { confirm } = Modal;
@@ -157,7 +158,7 @@ class ConfigComponent extends React.Component {
 }
 
 
-export default ConfigComponent
+export { ConfigComponent, RenderComponent }
 
 /**
  * 向上传递：
