@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -110,6 +110,19 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 /* 2 */
 /***/ (function(module, exports) {
 
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -119,7 +132,7 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -141,10 +154,10 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(13);
+var _typeof = __webpack_require__(14);
 
 var assertThisInitialized = __webpack_require__(10);
 
@@ -159,23 +172,10 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var setPrototypeOf = __webpack_require__(14);
+var setPrototypeOf = __webpack_require__(15);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -204,7 +204,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var objectWithoutPropertiesLoose = __webpack_require__(15);
+var objectWithoutPropertiesLoose = __webpack_require__(16);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -266,11 +266,11 @@ module.exports = _assertThisInitialized;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(16);
+var arrayWithoutHoles = __webpack_require__(17);
 
-var iterableToArray = __webpack_require__(17);
+var iterableToArray = __webpack_require__(18);
 
-var nonIterableSpread = __webpack_require__(18);
+var nonIterableSpread = __webpack_require__(19);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
@@ -304,6 +304,34 @@ module.exports = _extends;
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var superPropBase = __webpack_require__(20);
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    module.exports = _get = Reflect.get;
+  } else {
+    module.exports = _get = function _get(target, property, receiver) {
+      var base = superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return _get(target, property, receiver || target);
+}
+
+module.exports = _get;
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -323,7 +351,7 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -338,7 +366,7 @@ function _setPrototypeOf(o, p) {
 module.exports = _setPrototypeOf;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -359,7 +387,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -375,7 +403,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -385,7 +413,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -395,7 +423,24 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 19 */
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getPrototypeOf = __webpack_require__(2);
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+module.exports = _superPropBase;
+
+/***/ }),
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -406,19 +451,19 @@ var defineProperty = __webpack_require__(9);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(2);
+var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(3);
+var createClass = __webpack_require__(4);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(4);
+var possibleConstructorReturn = __webpack_require__(5);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(5);
+var getPrototypeOf = __webpack_require__(2);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
@@ -582,7 +627,7 @@ var objectWithoutProperties = __webpack_require__(8);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ./Search/index.scss
-var Search_0 = __webpack_require__(20);
+var Search_0 = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./Search/index.js
 
@@ -716,7 +761,7 @@ var toConsumableArray = __webpack_require__(11);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./TableComponent/index.scss
-var TableComponent = __webpack_require__(22);
+var TableComponent = __webpack_require__(24);
 
 // CONCATENATED MODULE: ./TableComponent/index.js
 
@@ -850,7 +895,18 @@ function DetailModal(_ref) {
 var external_prop_types_ = __webpack_require__(7);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/get.js
+var get = __webpack_require__(13);
+var get_default = /*#__PURE__*/__webpack_require__.n(get);
+
 // CONCATENATED MODULE: ./RenderComponent.js
+
+
+
+
+
+
+
 /**
  * 反向继承
  * 传递来的组件 = 父类
@@ -901,15 +957,31 @@ var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_pr
 //     }
 //   }
 // }
-function RenderComponent(Component) {
-  Component.prototype.actionEmit = function () {
-    console.log("actionEmit---");
-  };
+var RenderComponent_RenderComponent = function RenderComponent(Component) {
+  return (
+    /*#__PURE__*/
+    function (_Component) {
+      inherits_default()(_class, _Component);
 
-  return Component;
-}
+      function _class() {
+        classCallCheck_default()(this, _class);
 
-/* harmony default export */ var RenderComponent_0 = (RenderComponent);
+        return possibleConstructorReturn_default()(this, getPrototypeOf_default()(_class).apply(this, arguments));
+      }
+
+      createClass_default()(_class, [{
+        key: "render",
+        value: function render() {
+          return get_default()(getPrototypeOf_default()(_class.prototype), "render", this).call(this);
+        }
+      }]);
+
+      return _class;
+    }(Component)
+  );
+};
+
+/* harmony default export */ var RenderComponent_0 = (RenderComponent_RenderComponent);
 // CONCATENATED MODULE: ./index.js
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigComponent", function() { return index_ConfigComponent; });
 /* concated harmony reexport RenderComponent */__webpack_require__.d(__webpack_exports__, "RenderComponent", function() { return RenderComponent_0; });
@@ -1176,14 +1248,14 @@ index_ConfigComponent.defaultProps = {
  */
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 21 */,
-/* 22 */
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

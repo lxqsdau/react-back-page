@@ -1,6 +1,6 @@
 {
   "name": "react-back-page",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "后台配置页面",
   "main": "dist/index.js",
   "scripts": {
