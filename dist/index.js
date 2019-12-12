@@ -936,7 +936,7 @@ function (_React$Component) {
     };
 
     _this.refreshCurrentPageTable = function () {
-      var searchValue = _this.form.getSearchValue();
+      var searchValue = _this.getSearchValue();
 
       var page = _this.state.currentPage;
 
@@ -944,6 +944,16 @@ function (_React$Component) {
         page: page,
         searchValue: searchValue
       });
+    };
+
+    _this.getSearchValue = function () {
+      var searchValue = {};
+
+      if (_this.form) {
+        searchValue = _this.form.getSearchValue();
+      }
+
+      return searchValue;
     };
 
     _this.search = function (searchValue) {
@@ -964,7 +974,7 @@ function (_React$Component) {
     _this.tablePageChange = function (_ref3) {
       var page = _ref3.current;
 
-      var searchValue = _this.form.getSearchValue();
+      var searchValue = _this.getSearchValue();
 
       _this.getTableData({
         searchValue: searchValue,
@@ -984,7 +994,7 @@ function (_React$Component) {
         onOk: function onOk() {
           deleteRecordFn(data.id).then(function () {
             external_antd_["message"].success("删除成功");
-            var searchValue = me.form.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
+            var searchValue = me.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
 
             var _me$state = me.state,
                 currentPage = _me$state.currentPage,

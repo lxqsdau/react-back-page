@@ -64,9 +64,17 @@ class ConfigComponent extends React.Component {
 
   // 刷新当前页 对外 编辑和删除用
   refreshCurrentPageTable = () => {
-    const searchValue = this.form.getSearchValue();
+    const searchValue = this.getSearchValue()
     const { currentPage: page } = this.state;
     this.getTableData({ page, searchValue })
+  }
+
+  getSearchValue = () => {
+    let searchValue = {}
+    if (this.form) {
+      searchValue = this.form.getSearchValue();
+    }
+    return searchValue
   }
 
 
@@ -86,7 +94,7 @@ class ConfigComponent extends React.Component {
 
 
   tablePageChange = ({ current: page }) => {
-    const searchValue = this.form.getSearchValue();
+    const searchValue = this.getSearchValue()
     this.getTableData({
       searchValue,
       page
@@ -103,7 +111,7 @@ class ConfigComponent extends React.Component {
       onOk () {
         deleteRecordFn(data.id).then(() => {
           message.success("删除成功");
-          const searchValue = me.form.getSearchValue();
+          const searchValue = me.getSearchValue()
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
           const { currentPage, tableDataList } = me.state;
           const isUpdatePrePageData = currentPage !== 1 && tableDataList.length === 1;
