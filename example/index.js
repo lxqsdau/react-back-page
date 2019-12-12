@@ -1,12 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MyComponent from '../src';
+import { ConfigComponent, RenderComponent }from '../src';
 import { config } from "./config";
 import "antd/dist/antd.css";
-import RenderComponent from "../src/RenderComponent"
 
-@RenderComponent
-class App extends React.Component {
+class App extends RenderComponent {
   onSearch = v => {
     console.log(v)
   }
@@ -15,7 +13,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      <MyComponent config={config} onSearch={this.onSearch} onReset={this.onReset} actionEmit={this.actionEmit} />
+      <ConfigComponent config={config} ref={r => this.tableComponent = r} actionEmit={this.actionEmit} />
     )
   }
 }
