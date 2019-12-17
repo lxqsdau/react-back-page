@@ -1011,7 +1011,9 @@ function (_React$Component) {
             }
           }).catch(external_antd_["message"].error);
         },
-        onCancel: function onCancel() {}
+        onCancel: function onCancel() {},
+        okText: "确认",
+        cancelText: "取消"
       });
     };
 

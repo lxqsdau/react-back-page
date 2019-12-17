@@ -45,7 +45,7 @@ class ConfigComponent extends React.Component {
         tableLoading: true
       });
     }
-    fetchFn({ page, ...searchValue }).then(({ data, total }) => {
+    fetchFn({ page, ...searchValue, ...this.props.extraFetchProps }).then(({ data, total }) => {
       this.setState({
         tableDataList: data,
         total,
@@ -123,6 +123,8 @@ class ConfigComponent extends React.Component {
         }).catch(message.error)
       },
       onCancel () { },
+      okText: "确认",
+      cancelText: "取消"
     })
   }
 
@@ -175,13 +177,15 @@ ConfigComponent.propTypes = {
   onSearch: PropTypes.func,
   onReset: PropTypes.func,
   actionEmit: PropTypes.func,
+  extraFetchProps: PropTypes.object,
 }
 ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
   onSearch: noop,
   onReset: noop,
-  actionEmit: noop
+  actionEmit: noop,
+  extraFetchProps: {}
 }
 
 
