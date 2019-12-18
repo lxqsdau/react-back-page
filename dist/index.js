@@ -124,7 +124,7 @@ module.exports = _classCallCheck;
 
 var _typeof = __webpack_require__(13);
 
-var assertThisInitialized = __webpack_require__(10);
+var assertThisInitialized = __webpack_require__(11);
 
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
@@ -252,36 +252,6 @@ module.exports = _defineProperty;
 /* 10 */
 /***/ (function(module, exports) {
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-module.exports = _assertThisInitialized;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(16);
-
-var iterableToArray = __webpack_require__(17);
-
-var nonIterableSpread = __webpack_require__(18);
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -301,6 +271,36 @@ function _extends() {
 }
 
 module.exports = _extends;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(16);
+
+var iterableToArray = __webpack_require__(17);
+
+var nonIterableSpread = __webpack_require__(18);
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
 
 /***/ }),
 /* 13 */
@@ -422,7 +422,7 @@ var getPrototypeOf = __webpack_require__(4);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(10);
+var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/inherits.js
@@ -498,19 +498,26 @@ function (_React$Component) {
       var _this$props = this.props,
           onChange = _this$props.onChange,
           value = _this$props.value,
-          placeholder = _this$props.placeholder; // 有默认传来的 chang事件，和 value值
+          placeholder = _this$props.placeholder,
+          optionField = _this$props.optionField,
+          optionConfig = _this$props.optionConfig; // 有默认传来的 chang事件，和 value值
 
       var optionList = this.state.optionList;
+
+      if (optionField) {
+        optionList = optionConfig[optionField];
+      }
+
       return external_react_default.a.createElement(external_antd_["Select"], {
         value: value,
         placeholder: placeholder,
         onChange: onChange
       }, optionList.map(function (_ref) {
-        var value = _ref.value,
-            title = _ref.title;
+        var key = _ref.key,
+            label = _ref.label;
         return external_react_default.a.createElement(Option, {
-          key: value
-        }, title);
+          key: key
+        }, label);
       }));
     }
   }]);
@@ -577,6 +584,10 @@ function getComponent(conponentStr) {
 }
 
 
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/extends.js
+var helpers_extends = __webpack_require__(10);
+var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
+
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(8);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
@@ -585,6 +596,7 @@ var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectW
 var Search_0 = __webpack_require__(20);
 
 // CONCATENATED MODULE: ./Search/index.js
+
 
 
 
@@ -642,7 +654,8 @@ function (_React$Component) {
     value: function render() {
       var _this$props3 = this.props,
           form = _this$props3.form,
-          config = _this$props3.config;
+          config = _this$props3.config,
+          optionConfig = _this$props3.optionConfig;
       var getFieldDecorator = form.getFieldDecorator;
       return external_react_default.a.createElement("div", {
         className: "search-box"
@@ -659,7 +672,9 @@ function (_React$Component) {
           key: i
         }, external_react_default.a.createElement("p", {
           className: "label"
-        }, label), getFieldDecorator(name)(external_react_default.a.createElement(Component, orther)));
+        }, label), getFieldDecorator(name)(external_react_default.a.createElement(Component, extends_default()({
+          optionConfig: optionConfig
+        }, orther))));
       })), external_react_default.a.createElement("div", {
         className: "search-item"
       }, external_react_default.a.createElement("p", {
@@ -707,12 +722,8 @@ function Action(_ref) {
 }
 
 /* harmony default export */ var Action_0 = (Action);
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(12);
-var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
-
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/toConsumableArray.js
-var toConsumableArray = __webpack_require__(11);
+var toConsumableArray = __webpack_require__(12);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./TableComponent/index.scss
@@ -815,10 +826,13 @@ function getValueComponent(detailData, type, field) {
       }, detailData[field]);
 
     case "img":
-      return external_react_default.a.createElement("img", {
+      return external_react_default.a.createElement("span", null, external_react_default.a.createElement("img", {
+        style: {
+          maxWidth: "100%"
+        },
         src: detailData[field],
         alt: ""
-      });
+      }));
   }
 }
 
@@ -917,7 +931,7 @@ function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread({
         page: page
-      }, searchValue)).then(function (_ref2) {
+      }, searchValue, {}, _this.props.extraFetchProps)).then(function (_ref2) {
         var data = _ref2.data,
             total = _ref2.total;
 
@@ -992,7 +1006,7 @@ function (_React$Component) {
         title: "\u786E\u8BA4\u5220\u9664 ".concat(confirmTitleField ? data[confirmTitleField] : ""),
         content: "",
         onOk: function onOk() {
-          deleteRecordFn(data.id).then(function () {
+          deleteRecordFn(data.id, data).then(function () {
             external_antd_["message"].success("删除成功");
             var searchValue = me.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
 
@@ -1077,7 +1091,9 @@ function (_React$Component) {
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
           detailData = _this$state.detailData;
+      var optionConfig = this.props.optionConfig;
       return external_react_default.a.createElement(external_react_default.a.Fragment, null, this.searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
+        optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
           return _this2.form = form;
         },
@@ -1108,14 +1124,18 @@ ConfigComponent_ConfigComponent.propTypes = {
   tableConfig: external_prop_types_default.a.object,
   onSearch: external_prop_types_default.a.func,
   onReset: external_prop_types_default.a.func,
-  actionEmit: external_prop_types_default.a.func
+  actionEmit: external_prop_types_default.a.func,
+  extraFetchProps: external_prop_types_default.a.object,
+  optionConfig: external_prop_types_default.a.object
 };
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
   onSearch: noop,
   onReset: noop,
-  actionEmit: noop
+  actionEmit: noop,
+  extraFetchProps: {},
+  optionConfig: {}
 };
 /* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);
 /**

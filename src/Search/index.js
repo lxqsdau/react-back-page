@@ -22,7 +22,7 @@ class Search extends React.Component {
   }
 
   render () {
-    const { form, config } = this.props;
+    const { form, config, optionConfig } = this.props;
     const { getFieldDecorator } = form;
     return (
       <div className="search-box">
@@ -31,7 +31,7 @@ class Search extends React.Component {
             config.map(({ Component, label, name, ...orther }, i) => <Form.Item className="search-item" key={i}>
               <p className="label">{label}</p>
               {
-                getFieldDecorator(name)(<Component {...orther} />)
+                getFieldDecorator(name)(<Component optionConfig={optionConfig} {...orther} />)
               }
             </Form.Item>)
           }

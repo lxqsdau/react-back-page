@@ -109,7 +109,7 @@ class ConfigComponent extends React.Component {
       title: `确认删除 ${confirmTitleField ? data[confirmTitleField] : ""}`,
       content: "",
       onOk () {
-        deleteRecordFn(data.id).then(() => {
+        deleteRecordFn(data.id, data).then(() => {
           message.success("删除成功");
           const searchValue = me.getSearchValue()
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
@@ -149,10 +149,11 @@ class ConfigComponent extends React.Component {
 
   render () {
     const { isShowDetailModal, detailData } = this.state;
+    const { optionConfig } = this.props;
     return (
       <>
         {
-          this.searchConfig.length > 0 && <Search wrappedComponentRef={form => this.form = form} emit={this.handleEmit} config={this.searchConfig} />
+          this.searchConfig.length > 0 && <Search optionConfig={optionConfig} wrappedComponentRef={form => this.form = form} emit={this.handleEmit} config={this.searchConfig} />
         }
         {
           this.actionConfig.length > 0 && <Action emit={this.handleEmit} config={this.actionConfig} />
@@ -178,6 +179,7 @@ ConfigComponent.propTypes = {
   onReset: PropTypes.func,
   actionEmit: PropTypes.func,
   extraFetchProps: PropTypes.object,
+  optionConfig: PropTypes.object,
 }
 ConfigComponent.defaultProps = {
   config: {},
@@ -185,7 +187,8 @@ ConfigComponent.defaultProps = {
   onSearch: noop,
   onReset: noop,
   actionEmit: noop,
-  extraFetchProps: {}
+  extraFetchProps: {},
+  optionConfig: {}
 }
 
 

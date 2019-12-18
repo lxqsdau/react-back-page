@@ -13,12 +13,15 @@ class SelectComponent extends React.Component {
     }
   }
   render () {
-    const { onChange, value, placeholder } = this.props; // 有默认传来的 chang事件，和 value值
-    const { optionList } = this.state;
+    const { onChange, value, placeholder, optionField, optionConfig } = this.props; // 有默认传来的 chang事件，和 value值
+    let { optionList } = this.state;
+    if (optionField) {
+      optionList = optionConfig[optionField]
+    }
     return (
       <Select value={value} placeholder={placeholder} onChange={onChange}>
         {
-          optionList.map(({ value, title }) => <Option key={value}>{title}</Option>)
+          optionList.map(({ key, label }) => <Option key={key}>{label}</Option>)
         }
       </Select>
     )

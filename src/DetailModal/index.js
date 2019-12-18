@@ -6,7 +6,7 @@ function getValueComponent (detailData, type, field) {
     case "text":
       return <span className="detail-value">{detailData[field]}</span>
     case "img":
-      return <img src={detailData[field]} alt="" />
+      return <span><img style={{ maxWidth: "100%" }} src={detailData[field]} alt="" /></span>
   }
 }
 
