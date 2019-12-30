@@ -102,14 +102,14 @@ class ConfigComponent extends React.Component {
   }
 
   delete = (data) => {
-    const { tableConfig: { deleteRecordFn } } = this.props;
+    const { tableConfig: { deleteRecordFn }, extraDeleteProps } = this.props;
     const { confirmTitleField } = data;
     const me = this;
     confirm({
       title: `确认删除 ${confirmTitleField ? data[confirmTitleField] : ""}`,
       content: "",
       onOk () {
-        deleteRecordFn(data.id, data).then(() => {
+        deleteRecordFn(data.id, data, extraDeleteProps).then(() => {
           message.success("删除成功");
           const searchValue = me.getSearchValue()
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
@@ -180,6 +180,7 @@ ConfigComponent.propTypes = {
   actionEmit: PropTypes.func,
   extraFetchProps: PropTypes.object,
   optionConfig: PropTypes.object,
+  extraDeleteProps: PropTypes.object,
 }
 ConfigComponent.defaultProps = {
   config: {},
@@ -187,7 +188,7 @@ ConfigComponent.defaultProps = {
   onSearch: noop,
   onReset: noop,
   actionEmit: noop,
-  extraFetchProps: {},
+  extraFetchProps: {}, // 需要额外给表格请求的字段
   optionConfig: {}
 }
 

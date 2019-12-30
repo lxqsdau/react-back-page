@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -176,6 +176,12 @@ module.exports = _inherits;
 /* 6 */
 /***/ (function(module, exports) {
 
+module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -193,12 +199,6 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 
 /***/ }),
 /* 8 */
@@ -410,7 +410,7 @@ var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(6);
+var createClass = __webpack_require__(7);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
@@ -505,6 +505,7 @@ function (_React$Component) {
       var optionList = this.state.optionList;
 
       if (optionField) {
+        // 从组建传进来 optionList 字段
         optionList = optionConfig[optionField];
       }
 
@@ -786,7 +787,7 @@ function TableComponent_TableComponent(_ref) {
             return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
           },
           className: "table-action"
-        }, render ? render : title), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
+        }, render ? render() : title), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
           type: "vertical"
         }));
       }));
@@ -861,7 +862,7 @@ function DetailModal(_ref) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(7);
+var external_prop_types_ = __webpack_require__(6);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
@@ -997,7 +998,9 @@ function (_React$Component) {
     };
 
     _this.delete = function (data) {
-      var deleteRecordFn = _this.props.tableConfig.deleteRecordFn;
+      var _this$props = _this.props,
+          deleteRecordFn = _this$props.tableConfig.deleteRecordFn,
+          extraDeleteProps = _this$props.extraDeleteProps;
       var confirmTitleField = data.confirmTitleField;
 
       var me = assertThisInitialized_default()(_this);
@@ -1006,7 +1009,7 @@ function (_React$Component) {
         title: "\u786E\u8BA4\u5220\u9664 ".concat(confirmTitleField ? data[confirmTitleField] : ""),
         content: "",
         onOk: function onOk() {
-          deleteRecordFn(data.id, data).then(function () {
+          deleteRecordFn(data.id, data, extraDeleteProps).then(function () {
             external_antd_["message"].success("删除成功");
             var searchValue = me.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
 
@@ -1126,7 +1129,8 @@ ConfigComponent_ConfigComponent.propTypes = {
   onReset: external_prop_types_default.a.func,
   actionEmit: external_prop_types_default.a.func,
   extraFetchProps: external_prop_types_default.a.object,
-  optionConfig: external_prop_types_default.a.object
+  optionConfig: external_prop_types_default.a.object,
+  extraDeleteProps: external_prop_types_default.a.object
 };
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
@@ -1135,6 +1139,7 @@ ConfigComponent_ConfigComponent.defaultProps = {
   onReset: noop,
   actionEmit: noop,
   extraFetchProps: {},
+  // 需要额外给表格请求的字段
   optionConfig: {}
 };
 /* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);

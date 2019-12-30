@@ -21,7 +21,7 @@ function TableComponent ({ emit, config: { actionColumns = [], columns, pageSize
           {
             actionColumnsFilter(record).map(({ title, key, render, actionFn, ...extraConfigField }, i, arr) =>
               <span key={key}>
-                <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render : title}</span>
+                <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render() : title}</span>
                 {arr.length - 1 !== i && <Divider type="vertical" />}
               </span>
             )

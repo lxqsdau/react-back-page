@@ -15,7 +15,7 @@ class SelectComponent extends React.Component {
   render () {
     const { onChange, value, placeholder, optionField, optionConfig } = this.props; // 有默认传来的 chang事件，和 value值
     let { optionList } = this.state;
-    if (optionField) {
+    if (optionField) { // 从组建传进来 optionList 字段
       optionList = optionConfig[optionField]
     }
     return (
