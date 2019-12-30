@@ -746,7 +746,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 function TableComponent_TableComponent(_ref) {
-  var emit = _ref.emit,
+  var tableColumnsProps = _ref.tableColumnsProps,
+      emit = _ref.emit,
       _ref$config = _ref.config,
       _ref$config$actionCol = _ref$config.actionColumns,
       actionColumns = _ref$config$actionCol === void 0 ? [] : _ref$config$actionCol,
@@ -757,16 +758,28 @@ function TableComponent_TableComponent(_ref) {
 
   var actionColumnsFilter = function actionColumnsFilter(record) {
     return actionColumns.filter(function (_ref2) {
-      var showField = _ref2.showField,
-          showValue = _ref2.showValue;
-      return showField ? record[showField] === showValue : true;
+      var _ref2$isShow = _ref2.isShow,
+          isShow = _ref2$isShow === void 0 ? function () {
+        return true;
+      } : _ref2$isShow,
+          title = _ref2.title;
+      return isShow({
+        text: title,
+        record: record,
+        tableColumnsProps: tableColumnsProps
+      });
     });
   };
 
   columns = [].concat(toConsumableArray_default()(columns.map(function (item) {
     return item.slot ? _objectSpread({}, item, {
       render: function render(text, record) {
-        return item.render(text, record, emit);
+        return item.render({
+          text: text,
+          record: record,
+          emit: emit,
+          tableColumnsProps: tableColumnsProps
+        });
       }
     }) : item;
   })), toConsumableArray_default()(actionColumns.length > 0 ? [{
@@ -787,7 +800,11 @@ function TableComponent_TableComponent(_ref) {
             return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
           },
           className: "table-action"
-        }, render ? render() : title), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
+        }, render ? render({
+          text: text,
+          record: record,
+          tableColumnsProps: tableColumnsProps
+        }) : title), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
           type: "vertical"
         }));
       }));
@@ -1094,7 +1111,9 @@ function (_React$Component) {
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
           detailData = _this$state.detailData;
-      var optionConfig = this.props.optionConfig;
+      var _this$props2 = this.props,
+          optionConfig = _this$props2.optionConfig,
+          tableColumnsProps = _this$props2.tableColumnsProps;
       return external_react_default.a.createElement(external_react_default.a.Fragment, null, this.searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
         optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
@@ -1109,7 +1128,8 @@ function (_React$Component) {
         value: this.state
       }, external_react_default.a.createElement(TableComponent_0, {
         emit: this.handleEmit,
-        config: this.tableConfig
+        config: this.tableConfig,
+        tableColumnsProps: tableColumnsProps
       })), this.detail && external_react_default.a.createElement(DetailModal_0, {
         visible: isShowDetailModal,
         onClose: this.closeDetailModal,
@@ -1130,7 +1150,8 @@ ConfigComponent_ConfigComponent.propTypes = {
   actionEmit: external_prop_types_default.a.func,
   extraFetchProps: external_prop_types_default.a.object,
   optionConfig: external_prop_types_default.a.object,
-  extraDeleteProps: external_prop_types_default.a.object
+  extraDeleteProps: external_prop_types_default.a.object,
+  tableColumnsProps: external_prop_types_default.a.object
 };
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},

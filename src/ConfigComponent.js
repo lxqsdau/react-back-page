@@ -149,7 +149,7 @@ class ConfigComponent extends React.Component {
 
   render () {
     const { isShowDetailModal, detailData } = this.state;
-    const { optionConfig } = this.props;
+    const { optionConfig, tableColumnsProps } = this.props;
     return (
       <>
         {
@@ -161,7 +161,7 @@ class ConfigComponent extends React.Component {
 
         {
           this.tableConfig && <ProviderState value={this.state}>
-            <TableComponent emit={this.handleEmit} config={this.tableConfig} />
+            <TableComponent emit={this.handleEmit} config={this.tableConfig} tableColumnsProps={tableColumnsProps} />
           </ProviderState>
         }
         {
@@ -181,6 +181,7 @@ ConfigComponent.propTypes = {
   extraFetchProps: PropTypes.object,
   optionConfig: PropTypes.object,
   extraDeleteProps: PropTypes.object,
+  tableColumnsProps: PropTypes.object,
 }
 ConfigComponent.defaultProps = {
   config: {},

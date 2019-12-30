@@ -3,15 +3,15 @@ import { Table, Divider } from "antd";
 import { ConsumerState } from "../createContext";
 import "./index.scss";
 
-function TableComponent ({ emit, config: { actionColumns = [], columns, pageSize = 10, ...tableProps } }) {
+function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = [], columns, pageSize = 10, ...tableProps } }) {
 
-  let actionColumnsFilter = record => actionColumns.filter(({ showField, showValue }) => showField ? record[showField] === showValue : true)
+  let actionColumnsFilter = record => actionColumns.filter(({ isShow = () => true, title }) => isShow({ text: title, record, tableColumnsProps }))
 
 
   columns = [
     ...columns.map(item => item.slot ? {
       ...item,
-      render: (text, record) => item.render(text, record, emit)
+      render: (text, record) => item.render({ text, record, emit, tableColumnsProps })
     } : item),
     ...(actionColumns.length > 0 ?
       [{
@@ -21,7 +21,7 @@ function TableComponent ({ emit, config: { actionColumns = [], columns, pageSize
           {
             actionColumnsFilter(record).map(({ title, key, render, actionFn, ...extraConfigField }, i, arr) =>
               <span key={key}>
-                <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render() : title}</span>
+                <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render({ text, record, tableColumnsProps }) : title}</span>
                 {arr.length - 1 !== i && <Divider type="vertical" />}
               </span>
             )

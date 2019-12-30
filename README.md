@@ -18,6 +18,11 @@ deleteRecordFn 删除
     额外数据 this.props.extraDeleteProps {}
 fetchFn 请求列表数据
   参数 { page, ...searchValue, ...this.props.extraFetchProps }
-```
 
-```
+
+
+表格的config
+columns render参数 {text, record, emit, tableColumnsProps}
+actionColumns 
+  render参数 {text, record, tableColumnsProps}
+  isShow参数 {text, record, tableColumnsProps}

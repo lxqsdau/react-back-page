@@ -1,29 +1,52 @@
-import moment from "moment";
 
 const config = {
   table: {
     rowKey: "id",
     columns: [
       {
-        title: "文件名",
-        key: "file_name",
-        dataIndex: "file_name",
+        title: "姓名",
+        key: "name",
+        dataIndex: "name",
       },
       {
-        title: "添加时间",
-        key: "gmt_create",
-        dataIndex: "gmt_create",
-        render: text => moment(text).format("YYYY-MM-DD HH:mm:ss")
+        title: "性别",
+        key: "sex",
+        dataIndex: "sex",
       }
     ],
     actionColumns: [
       {
-        title: "复制url",
-        key: "tableCopy",
-        actionFn: "emit-tableCopy"
+        title: "编辑",
+        key: "tableEdit",
+        actionFn: "emit-tableEdit",
+        isShow: ({ text, record, tableColumnsProps  }) => record.id === tableColumnsProps.id
+      },
+      {
+        title: "删除",
+        key: "delete",
+        actionFn: "delete",
       }
     ]
   }
 }
-
-export { config, }
+function getListApi () {
+  return new Promise((resolve) => {
+    resolve({
+      data: [{
+        name: "小王",
+        sex: "男",
+        id: "1"
+      },
+    {
+      name: "小张",
+      sex: "女",
+      id: "2"
+    }],
+      total: 3
+    })
+  })
+}
+const tableConfig = {
+  fetchFn: getListApi,
+}
+export { config, tableConfig }
