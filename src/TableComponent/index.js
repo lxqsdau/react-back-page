@@ -9,10 +9,11 @@ function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = []
 
 
   columns = [
-    ...columns.map(item => item.slot ? {
-      ...item,
-      render: (text, record) => item.render({ text, record, emit, tableColumnsProps })
-    } : item),
+    ...columns.map(item => {
+      if (item.render) return { ...item, render: (text, record) => item.render({ text, record, emit, tableColumnsProps }) }
+      return item
+    }),
+
     ...(actionColumns.length > 0 ?
       [{
         title: '操作',

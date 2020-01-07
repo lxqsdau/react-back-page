@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__6__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -110,6 +110,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 /* 2 */
 /***/ (function(module, exports) {
 
+module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -119,7 +125,7 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(13);
@@ -137,7 +143,7 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 function _getPrototypeOf(o) {
@@ -150,7 +156,7 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var setPrototypeOf = __webpack_require__(14);
@@ -171,12 +177,6 @@ function _inherits(subClass, superClass) {
 }
 
 module.exports = _inherits;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
 
 /***/ }),
 /* 7 */
@@ -406,7 +406,7 @@ var defineProperty = __webpack_require__(9);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(2);
+var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
@@ -414,11 +414,11 @@ var createClass = __webpack_require__(7);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(3);
+var possibleConstructorReturn = __webpack_require__(4);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(4);
+var getPrototypeOf = __webpack_require__(5);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
@@ -426,7 +426,7 @@ var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(5);
+var inherits = __webpack_require__(6);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
 // EXTERNAL MODULE: external "react"
@@ -625,6 +625,11 @@ function (_React$Component) {
     }
 
     _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(Search)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      fold: true,
+      // 折叠
+      config: _this.props.config.slice(0, 5)
+    };
 
     _this.search = function () {
       var _this$props = _this.props,
@@ -647,20 +652,47 @@ function (_React$Component) {
       emit("reset");
     };
 
+    _this.foldChange = function () {
+      var _this$state = _this.state,
+          fold = _this$state.fold,
+          config = _this$state.config;
+      var _this$props3 = _this.props,
+          foldtThreshold = _this$props3.searchFormConfig.foldtThreshold,
+          propsConfig = _this$props3.config;
+
+      if (fold) {
+        // 展开
+        _this.setState({
+          fold: false,
+          config: propsConfig
+        });
+      } else {
+        _this.setState({
+          fold: true,
+          config: config.slice(0, foldtThreshold)
+        });
+      }
+    };
+
     return _this;
   }
 
   createClass_default()(Search, [{
     key: "render",
     value: function render() {
-      var _this$props3 = this.props,
-          form = _this$props3.form,
-          config = _this$props3.config,
-          optionConfig = _this$props3.optionConfig;
+      var _this$props4 = this.props,
+          form = _this$props4.form,
+          optionConfig = _this$props4.optionConfig,
+          foldtThreshold = _this$props4.searchFormConfig.foldtThreshold,
+          propsConfig = _this$props4.config;
       var getFieldDecorator = form.getFieldDecorator;
+      var _this$state2 = this.state,
+          fold = _this$state2.fold,
+          config = _this$state2.config;
       return external_react_default.a.createElement("div", {
         className: "search-box"
       }, external_react_default.a.createElement(external_antd_["Form"], {
+        className: "search-form",
         layout: "inline"
       }, config.map(function (_ref, i) {
         var Component = _ref.Component,
@@ -676,20 +708,29 @@ function (_React$Component) {
         }, label), getFieldDecorator(name)(external_react_default.a.createElement(Component, extends_default()({
           optionConfig: optionConfig
         }, orther))));
-      })), external_react_default.a.createElement("div", {
-        className: "search-item"
-      }, external_react_default.a.createElement("p", {
-        className: "label"
+      }), propsConfig.length > foldtThreshold && external_react_default.a.createElement(external_antd_["Form"].Item, {
+        className: "search-item ase"
+      }, external_react_default.a.createElement("div", {
+        onClick: this.foldChange,
+        className: "fold-box"
+      }, fold ? external_react_default.a.createElement(external_react_default.a.Fragment, null, external_react_default.a.createElement("span", null, "\u5C55\u5F00"), "  ", external_react_default.a.createElement(external_antd_["Icon"], {
+        type: "down"
+      })) : external_react_default.a.createElement(external_react_default.a.Fragment, null, external_react_default.a.createElement("span", null, "\u6536\u8D77"), "  ", external_react_default.a.createElement(external_antd_["Icon"], {
+        type: "up"
+      })))), external_react_default.a.createElement(external_antd_["Form"].Item, {
+        className: "search-item ase"
+      }, external_react_default.a.createElement("div", {
+        className: "btn-item"
+      }, external_react_default.a.createElement("div", {
+        className: "label-btn"
       }, "\xA0"), external_react_default.a.createElement(external_antd_["Button"], {
         onClick: this.search,
         type: "primary"
       }, "\u67E5\u8BE2")), external_react_default.a.createElement("div", {
-        className: "search-item"
-      }, external_react_default.a.createElement("p", {
-        className: "label"
-      }, "\xA0"), external_react_default.a.createElement(external_antd_["Button"], {
+        className: "btn-item"
+      }, external_react_default.a.createElement(external_antd_["Button"], {
         onClick: this.reset
-      }, "\u91CD\u7F6E")));
+      }, "\u91CD\u7F6E")))));
     }
   }]);
 
@@ -699,15 +740,19 @@ function (_React$Component) {
 /* harmony default export */ var Search_1 = (external_antd_["Form"].create({
   name: 'Search'
 })(Search_Search));
+// EXTERNAL MODULE: ./Action/index.scss
+var Action = __webpack_require__(22);
+
 // CONCATENATED MODULE: ./Action/index.js
 
 
 
-function Action(_ref) {
+
+function Action_Action(_ref) {
   var config = _ref.config,
       emit = _ref.emit;
   return external_react_default.a.createElement("div", {
-    className: "action-box mb20"
+    className: "action-box"
   }, config.map(function (_ref2, i) {
     var actionFn = _ref2.actionFn,
         title = _ref2.title,
@@ -722,13 +767,13 @@ function Action(_ref) {
   }));
 }
 
-/* harmony default export */ var Action_0 = (Action);
+/* harmony default export */ var Action_0 = (Action_Action);
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/toConsumableArray.js
 var toConsumableArray = __webpack_require__(12);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./TableComponent/index.scss
-var TableComponent = __webpack_require__(22);
+var TableComponent = __webpack_require__(23);
 
 // CONCATENATED MODULE: ./TableComponent/index.js
 
@@ -772,7 +817,7 @@ function TableComponent_TableComponent(_ref) {
   };
 
   columns = [].concat(toConsumableArray_default()(columns.map(function (item) {
-    return item.slot ? _objectSpread({}, item, {
+    if (item.render) return _objectSpread({}, item, {
       render: function render(text, record) {
         return item.render({
           text: text,
@@ -781,7 +826,8 @@ function TableComponent_TableComponent(_ref) {
           tableColumnsProps: tableColumnsProps
         });
       }
-    }) : item;
+    });
+    return item;
   })), toConsumableArray_default()(actionColumns.length > 0 ? [{
     title: '操作',
     key: 'action',
@@ -832,7 +878,11 @@ function TableComponent_TableComponent(_ref) {
 }
 
 /* harmony default export */ var TableComponent_0 = (TableComponent_TableComponent);
+// EXTERNAL MODULE: ./DetailModal/index.scss
+var DetailModal = __webpack_require__(24);
+
 // CONCATENATED MODULE: ./DetailModal/index.js
+
 
 
 
@@ -854,7 +904,7 @@ function getValueComponent(detailData, type, field) {
   }
 }
 
-function DetailModal(_ref) {
+function DetailModal_DetailModal(_ref) {
   var visible = _ref.visible,
       onClose = _ref.onClose,
       detailData = _ref.detailData,
@@ -877,9 +927,9 @@ function DetailModal(_ref) {
   }));
 }
 
-/* harmony default export */ var DetailModal_0 = (DetailModal);
+/* harmony default export */ var DetailModal_0 = (DetailModal_DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(6);
+var external_prop_types_ = __webpack_require__(2);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
@@ -1113,8 +1163,10 @@ function (_React$Component) {
           detailData = _this$state.detailData;
       var _this$props2 = this.props,
           optionConfig = _this$props2.optionConfig,
-          tableColumnsProps = _this$props2.tableColumnsProps;
+          tableColumnsProps = _this$props2.tableColumnsProps,
+          searchFormConfig = _this$props2.searchFormConfig;
       return external_react_default.a.createElement(external_react_default.a.Fragment, null, this.searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
+        searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
           return _this2.form = form;
@@ -1151,7 +1203,8 @@ ConfigComponent_ConfigComponent.propTypes = {
   extraFetchProps: external_prop_types_default.a.object,
   optionConfig: external_prop_types_default.a.object,
   extraDeleteProps: external_prop_types_default.a.object,
-  tableColumnsProps: external_prop_types_default.a.object
+  tableColumnsProps: external_prop_types_default.a.object,
+  searchFormConfig: external_prop_types_default.a.object
 };
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
@@ -1161,7 +1214,12 @@ ConfigComponent_ConfigComponent.defaultProps = {
   actionEmit: noop,
   extraFetchProps: {},
   // 需要额外给表格请求的字段
-  optionConfig: {}
+  optionConfig: {},
+  searchFormConfig: {
+    // 搜索表单设置 展开
+    foldtThreshold: 5 // 展开阈值
+
+  }
 };
 /* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);
 /**
@@ -1262,6 +1320,18 @@ function (_React$Component) {
 /***/ }),
 /* 21 */,
 /* 22 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 24 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Drawer } from 'antd';
+import "./index.scss";
 
 function getValueComponent (detailData, type, field) {
   switch (type) {

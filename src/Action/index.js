@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from 'antd';
+import "./index.scss";
 
 function Action ({ config, emit }) {
   return (
-    <div className="action-box mb20">
+    <div className="action-box">
       {
         config.map(({ actionFn, title, type }, i) => <Button key={i} onClick={() => emit(actionFn)} type={type}>{title}</Button>)
       }

@@ -149,11 +149,11 @@ class ConfigComponent extends React.Component {
 
   render () {
     const { isShowDetailModal, detailData } = this.state;
-    const { optionConfig, tableColumnsProps } = this.props;
+    const { optionConfig, tableColumnsProps, searchFormConfig } = this.props;
     return (
       <>
         {
-          this.searchConfig.length > 0 && <Search optionConfig={optionConfig} wrappedComponentRef={form => this.form = form} emit={this.handleEmit} config={this.searchConfig} />
+          this.searchConfig.length > 0 && <Search searchFormConfig={searchFormConfig} optionConfig={optionConfig} wrappedComponentRef={form => this.form = form} emit={this.handleEmit} config={this.searchConfig} />
         }
         {
           this.actionConfig.length > 0 && <Action emit={this.handleEmit} config={this.actionConfig} />
@@ -182,6 +182,7 @@ ConfigComponent.propTypes = {
   optionConfig: PropTypes.object,
   extraDeleteProps: PropTypes.object,
   tableColumnsProps: PropTypes.object,
+  searchFormConfig: PropTypes.object,
 }
 ConfigComponent.defaultProps = {
   config: {},
@@ -190,7 +191,10 @@ ConfigComponent.defaultProps = {
   onReset: noop,
   actionEmit: noop,
   extraFetchProps: {}, // 需要额外给表格请求的字段
-  optionConfig: {}
+  optionConfig: {},
+  searchFormConfig: { // 搜索表单设置 展开
+    foldtThreshold: 5, // 展开阈值
+  }, 
 }
 
 
