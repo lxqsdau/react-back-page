@@ -9,13 +9,12 @@ tableConfig
 extraFetchProps 列表数据请求需要需要传的额外字段
 extraDeleteProps 给删除接口需要传的额外数据
 optionConfig 搜索区域option配置 {[optionField]: []}
+tableColumnsProps 需要传给column 自定义render时额外的信息
 
 方法
 deleteRecordFn 删除
-  参数:
-    行数据id 
-    行数据({...record, ...操作配置(除去actionFn title key)}) 
-    额外数据 this.props.extraDeleteProps {}
+  参数: { record, extraDeleteProps }
+
 fetchFn 请求列表数据
   参数 { page, ...searchValue, ...this.props.extraFetchProps }
 
@@ -26,3 +25,20 @@ columns render参数 {text, record, emit, tableColumnsProps}
 actionColumns 
   render参数 {text, record, tableColumnsProps}
   isShow参数 {text, record, tableColumnsProps}
+
+
+# config
+search
+```javascript
+[
+  {
+    type: "input",
+    props: {
+      name: "name", // 返回值属性
+      label: "搜索", // 显示名字
+      // 剩下的值都会传给组件自身
+      placeholder: "请输入分类名",
+    }
+  }
+],
+```

@@ -109,7 +109,7 @@ class ConfigComponent extends React.Component {
       title: `确认删除 ${confirmTitleField ? data[confirmTitleField] : ""}`,
       content: "",
       onOk () {
-        deleteRecordFn(data.id, data, extraDeleteProps).then(() => {
+        deleteRecordFn({ record: data, extraDeleteProps }).then(() => {
           message.success("删除成功");
           const searchValue = me.getSearchValue()
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
@@ -153,7 +153,13 @@ class ConfigComponent extends React.Component {
     return (
       <>
         {
-          this.searchConfig.length > 0 && <Search searchFormConfig={searchFormConfig} optionConfig={optionConfig} wrappedComponentRef={form => this.form = form} emit={this.handleEmit} config={this.searchConfig} />
+          this.searchConfig.length > 0 && <Search
+            searchFormConfig={searchFormConfig}
+            optionConfig={optionConfig}
+            wrappedComponentRef={form => this.form = form}
+            emit={this.handleEmit}
+            config={this.searchConfig}
+          />
         }
         {
           this.actionConfig.length > 0 && <Action emit={this.handleEmit} config={this.actionConfig} />
@@ -194,7 +200,7 @@ ConfigComponent.defaultProps = {
   optionConfig: {},
   searchFormConfig: { // 搜索表单设置 展开
     foldtThreshold: 5, // 展开阈值
-  }, 
+  },
 }
 
 

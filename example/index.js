@@ -5,7 +5,9 @@ import { config, tableConfig } from "./config";
 import "antd/dist/antd.css";
 
 class App extends RenderComponent {
- 
+  onSearch = data => {
+    console.log(data)
+  }
   render () {
     return (
       <ConfigComponent
@@ -14,6 +16,7 @@ class App extends RenderComponent {
         actionEmit={this.actionEmit}
         tableConfig={tableConfig}
         tableColumnsProps={{ id: "2" }}
+        onSearch={this.onSearch}
       />
     )
   }

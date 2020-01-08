@@ -10,59 +10,20 @@ const config = {
       }
     },
     {
-      type: "input",
-      props: {
-        name: "name2",
-        label: "搜索",
-        placeholder: "请输入分类名",
-      }
-    },
-    {
-      type: "input",
-      props: {
-        name: "name3",
-        label: "搜索",
-        placeholder: "请输入分类名",
-      }
-    },
-    {
-      type: "input",
-      props: {
-        name: "name4",
-        label: "搜索",
-        placeholder: "请输入分类名",
-      }
-    },
-    // {
-    //   type: "input",
-    //   props: {
-    //     name: "name5",
-    //     label: "搜索",
-    //     placeholder: "请输入分类名",
-    //   }
-    // },
-    // {
-    //   type: "input",
-    //   props: {
-    //     name: "name6",
-    //     label: "搜索",
-    //     placeholder: "请输入分类名",
-    //   }
-    // },
-    {
-      type: "input",
+      type: "datePicker",
       props: {
         name: "name6",
-        label: "搜索",
-        placeholder: "请输入分类名",
+        label: "日期",
+        placeholder: "请选择日期",
+        showTime: true
       }
     },
     {
-      type: "input",
+      type: "rangePicker",
       props: {
         name: "name7",
-        label: "搜索",
-        placeholder: "请输入分类名",
+        label: "日期",
+        placeholder: ["开始时间", "结束时间"],
       }
     },
   ],

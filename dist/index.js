@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -110,12 +110,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -125,7 +119,7 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(13);
@@ -143,7 +137,7 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn;
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports) {
 
 function _getPrototypeOf(o) {
@@ -156,7 +150,7 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var setPrototypeOf = __webpack_require__(14);
@@ -179,7 +173,7 @@ function _inherits(subClass, superClass) {
 module.exports = _inherits;
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -199,6 +193,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 
 /***/ }),
 /* 8 */
@@ -406,19 +406,19 @@ var defineProperty = __webpack_require__(9);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(3);
+var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(7);
+var createClass = __webpack_require__(6);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(4);
+var possibleConstructorReturn = __webpack_require__(3);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(5);
+var getPrototypeOf = __webpack_require__(4);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/assertThisInitialized.js
@@ -426,7 +426,7 @@ var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(6);
+var inherits = __webpack_require__(5);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
 // EXTERNAL MODULE: external "react"
@@ -527,7 +527,12 @@ function (_React$Component) {
 }(external_react_default.a.Component);
 
 /* harmony default export */ var SelectComponent_0 = (SelectComponent_SelectComponent);
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(8);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+
 // CONCATENATED MODULE: ./InputComponent/index.js
+
 
 
 
@@ -551,14 +556,10 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          onChange = _this$props.onChange,
-          value = _this$props.value,
-          placeholder = _this$props.placeholder;
-      return external_react_default.a.createElement(external_antd_["Input"], {
-        value: value,
-        onChange: onChange,
-        placeholder: placeholder
-      });
+          optionConfig = _this$props.optionConfig,
+          other = objectWithoutProperties_default()(_this$props, ["optionConfig"]);
+
+      return external_react_default.a.createElement(external_antd_["Input"], other);
     }
   }]);
 
@@ -566,7 +567,72 @@ function (_React$Component) {
 }(external_react_default.a.Component);
 
 /* harmony default export */ var InputComponent_0 = (InputComponent_InputComponent);
+// CONCATENATED MODULE: ./DatePickerComponent/index.js
+
+
+
+
+
+
+
+
+var DatePickerComponent_DatePickerComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  inherits_default()(DatePickerComponent, _React$Component);
+
+  function DatePickerComponent() {
+    classCallCheck_default()(this, DatePickerComponent);
+
+    return possibleConstructorReturn_default()(this, getPrototypeOf_default()(DatePickerComponent).apply(this, arguments));
+  }
+
+  createClass_default()(DatePickerComponent, [{
+    key: "render",
+    value: function render() {
+      return external_react_default.a.createElement(external_antd_["DatePicker"], this.props);
+    }
+  }]);
+
+  return DatePickerComponent;
+}(external_react_default.a.Component);
+
+/* harmony default export */ var DatePickerComponent_0 = (DatePickerComponent_DatePickerComponent);
+// CONCATENATED MODULE: ./RangePickerComponent/index.js
+
+
+
+
+
+
+
+var RangePicker = external_antd_["DatePicker"].RangePicker;
+
+var RangePickerComponent_RangePickerComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  inherits_default()(RangePickerComponent, _React$Component);
+
+  function RangePickerComponent() {
+    classCallCheck_default()(this, RangePickerComponent);
+
+    return possibleConstructorReturn_default()(this, getPrototypeOf_default()(RangePickerComponent).apply(this, arguments));
+  }
+
+  createClass_default()(RangePickerComponent, [{
+    key: "render",
+    value: function render() {
+      return external_react_default.a.createElement(RangePicker, this.props);
+    }
+  }]);
+
+  return RangePickerComponent;
+}(external_react_default.a.Component);
+
+/* harmony default export */ var RangePickerComponent_0 = (RangePickerComponent_RangePickerComponent);
 // CONCATENATED MODULE: ./getComponent.js
+
+
 
 
 
@@ -581,6 +647,12 @@ function getComponent(conponentStr) {
 
     case "button":
       return external_antd_["Button"];
+
+    case "datePicker":
+      return DatePickerComponent_0;
+
+    case "rangePicker":
+      return RangePickerComponent_0;
   }
 }
 
@@ -588,10 +660,6 @@ function getComponent(conponentStr) {
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/extends.js
 var helpers_extends = __webpack_require__(10);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
-
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(8);
-var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ./Search/index.scss
 var Search_0 = __webpack_require__(20);
@@ -929,7 +997,7 @@ function DetailModal_DetailModal(_ref) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal_DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(2);
+var external_prop_types_ = __webpack_require__(7);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
@@ -1076,7 +1144,10 @@ function (_React$Component) {
         title: "\u786E\u8BA4\u5220\u9664 ".concat(confirmTitleField ? data[confirmTitleField] : ""),
         content: "",
         onOk: function onOk() {
-          deleteRecordFn(data.id, data, extraDeleteProps).then(function () {
+          deleteRecordFn({
+            record: data,
+            extraDeleteProps: extraDeleteProps
+          }).then(function () {
             external_antd_["message"].success("删除成功");
             var searchValue = me.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
 
