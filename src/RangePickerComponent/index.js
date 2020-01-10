@@ -6,7 +6,7 @@ const { RangePicker } = DatePicker;
 class RangePickerComponent extends React.Component {
   render () {
     return (
-      <RangePicker {...this.props}  />
+      <RangePicker style={{ width: "386px" }} {...this.props}  />
     )
   }
 }

@@ -9,6 +9,15 @@ const config = {
         placeholder: "请输入分类名",
       }
     },
+    // {
+    //   type: "select",
+    //   props: {
+    //     name: "select",
+    //     label: "搜索",
+    //     placeholder: "请输入分类名",
+    //     option: []
+    //   }
+    // },
     {
       type: "datePicker",
       props: {
@@ -24,6 +33,15 @@ const config = {
         name: "name7",
         label: "日期",
         placeholder: ["开始时间", "结束时间"],
+        showTime: true,
+      }
+    },
+    {
+      type: "input",
+      props: {
+        name: "name",
+        label: "搜索",
+        placeholder: "请输入分类名",
       }
     },
   ],
@@ -43,25 +61,82 @@ const config = {
         title: "姓名",
         key: "name",
         dataIndex: "name",
+        width: 100,
       },
+      {
+        title: "姓名",
+        key: "name2",
+        dataIndex: "name2",
+        width: 100,
+      },
+      {
+        title: "姓名",
+        key: "name3",
+        dataIndex: "name3",
+        width: 100,
+      },
+      {
+        title: "姓名",
+        key: "nam4e",
+        dataIndex: "nam4e",
+        width: 100,
+      },
+      {
+        title: "姓名",
+        key: "name5",
+        dataIndex: "name5",
+        width: 100,
+      },
+      {
+        title: "姓名",
+        key: "nam6e",
+        dataIndex: "na6me",
+        width: 100,
+      },
+      {
+        title: "姓名6",
+        key: "na7me",
+        dataIndex: "na7me",
+        width: 100,
+      },
+     
+      
+     
       {
         title: "性别",
         key: "sex",
         dataIndex: "sex",
-        render: ({ text, record, tableColumnsProps }) => text + record.id + tableColumnsProps.id
+        render: ({ text, record, tableColumnsProps }) => text + record.id + tableColumnsProps.id,
+        width: 100,
       }
     ],
+    actionProps: { // 操作配置
+    },
     actionColumns: [
       {
         title: "编辑",
         key: "tableEdit",
         actionFn: "emit-tableEdit",
-        isShow: ({ text, record, tableColumnsProps }) => record.id === tableColumnsProps.id
       },
       {
         title: "删除",
         key: "delete",
         actionFn: "delete",
+      },
+      {
+        title: "删除2",
+        key: "delete2",
+        actionFn: "delete2",
+      },
+      {
+        title: "删除3",
+        key: "delete3",
+        actionFn: "delete3",
+      },
+      {
+        title: "删除4",
+        key: "delete4",
+        actionFn: "delete4",
       }
     ]
   }

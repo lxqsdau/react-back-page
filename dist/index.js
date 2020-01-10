@@ -202,6 +202,30 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var objectWithoutPropertiesLoose = __webpack_require__(15);
@@ -228,7 +252,7 @@ function _objectWithoutProperties(source, excluded) {
 module.exports = _objectWithoutProperties;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 function _defineProperty(obj, key, value) {
@@ -247,30 +271,6 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
 
 /***/ }),
 /* 11 */
@@ -402,7 +402,7 @@ module.exports = _nonIterableSpread;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(9);
+var defineProperty = __webpack_require__(10);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/classCallCheck.js
@@ -527,11 +527,16 @@ function (_React$Component) {
 }(external_react_default.a.Component);
 
 /* harmony default export */ var SelectComponent_0 = (SelectComponent_SelectComponent);
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/extends.js
+var helpers_extends = __webpack_require__(8);
+var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
+
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(8);
+var objectWithoutProperties = __webpack_require__(9);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // CONCATENATED MODULE: ./InputComponent/index.js
+
 
 
 
@@ -559,7 +564,9 @@ function (_React$Component) {
           optionConfig = _this$props.optionConfig,
           other = objectWithoutProperties_default()(_this$props, ["optionConfig"]);
 
-      return external_react_default.a.createElement(external_antd_["Input"], other);
+      return external_react_default.a.createElement(external_antd_["Input"], extends_default()({
+        className: "back-page-search-input"
+      }, other));
     }
   }]);
 
@@ -568,6 +575,7 @@ function (_React$Component) {
 
 /* harmony default export */ var InputComponent_0 = (InputComponent_InputComponent);
 // CONCATENATED MODULE: ./DatePickerComponent/index.js
+
 
 
 
@@ -590,7 +598,9 @@ function (_React$Component) {
   createClass_default()(DatePickerComponent, [{
     key: "render",
     value: function render() {
-      return external_react_default.a.createElement(external_antd_["DatePicker"], this.props);
+      return external_react_default.a.createElement(external_antd_["DatePicker"], extends_default()({
+        className: "back-page-search-date-picker"
+      }, this.props));
     }
   }]);
 
@@ -599,6 +609,7 @@ function (_React$Component) {
 
 /* harmony default export */ var DatePickerComponent_0 = (DatePickerComponent_DatePickerComponent);
 // CONCATENATED MODULE: ./RangePickerComponent/index.js
+
 
 
 
@@ -622,7 +633,11 @@ function (_React$Component) {
   createClass_default()(RangePickerComponent, [{
     key: "render",
     value: function render() {
-      return external_react_default.a.createElement(RangePicker, this.props);
+      return external_react_default.a.createElement(RangePicker, extends_default()({
+        style: {
+          width: "386px"
+        }
+      }, this.props));
     }
   }]);
 
@@ -656,10 +671,6 @@ function getComponent(conponentStr) {
   }
 }
 
-
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(10);
-var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ./Search/index.scss
 var Search_0 = __webpack_require__(20);
@@ -858,24 +869,81 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-function TableComponent_TableComponent(_ref) {
-  var tableColumnsProps = _ref.tableColumnsProps,
-      emit = _ref.emit,
-      _ref$config = _ref.config,
-      _ref$config$actionCol = _ref$config.actionColumns,
-      actionColumns = _ref$config$actionCol === void 0 ? [] : _ref$config$actionCol,
-      columns = _ref$config.columns,
-      _ref$config$pageSize = _ref$config.pageSize,
-      pageSize = _ref$config$pageSize === void 0 ? 10 : _ref$config$pageSize,
-      tableProps = objectWithoutProperties_default()(_ref$config, ["actionColumns", "columns", "pageSize"]);
+function getActionEle(_ref) {
+  var emit = _ref.emit,
+      record = _ref.record,
+      title = _ref.title,
+      text = _ref.text,
+      render = _ref.render,
+      actionFn = _ref.actionFn,
+      tableColumnsProps = _ref.tableColumnsProps,
+      extraConfigField = _ref.extraConfigField;
+  return external_react_default.a.createElement("span", {
+    onClick: function onClick() {
+      return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
+    },
+    className: "table-action"
+  }, render ? render({
+    text: text,
+    record: record,
+    tableColumnsProps: tableColumnsProps
+  }) : title);
+}
+
+function actionMenu(_ref2) {
+  var arr = _ref2.arr,
+      record = _ref2.record,
+      text = _ref2.text,
+      tableColumnsProps = _ref2.tableColumnsProps,
+      emit = _ref2.emit;
+  return external_react_default.a.createElement(external_antd_["Menu"], null, arr.map(function (_ref3) {
+    var title = _ref3.title,
+        key = _ref3.key,
+        render = _ref3.render,
+        actionFn = _ref3.actionFn,
+        extraConfigField = objectWithoutProperties_default()(_ref3, ["title", "key", "render", "actionFn"]);
+
+    return external_react_default.a.createElement(external_antd_["Menu"].Item, {
+      key: key
+    }, getActionEle({
+      emit: emit,
+      record: record,
+      title: title,
+      text: text,
+      render: render,
+      actionFn: actionFn,
+      tableColumnsProps: tableColumnsProps,
+      extraConfigField: extraConfigField
+    }));
+  }));
+}
+
+function TableComponent_TableComponent(_ref4) {
+  var tableColumnsProps = _ref4.tableColumnsProps,
+      emit = _ref4.emit,
+      _ref4$config = _ref4.config,
+      _ref4$config$actionCo = _ref4$config.actionColumns,
+      actionColumns = _ref4$config$actionCo === void 0 ? [] : _ref4$config$actionCo,
+      _ref4$config$actionPr = _ref4$config.actionProps;
+  _ref4$config$actionPr = _ref4$config$actionPr === void 0 ? {} : _ref4$config$actionPr;
+
+  var _ref4$config$actionPr2 = _ref4$config$actionPr.max,
+      actionMax = _ref4$config$actionPr2 === void 0 ? 4 : _ref4$config$actionPr2,
+      _ref4$config$actionPr3 = _ref4$config$actionPr.moreText,
+      moreText = _ref4$config$actionPr3 === void 0 ? "更多" : _ref4$config$actionPr3,
+      tableActionProps = objectWithoutProperties_default()(_ref4$config$actionPr, ["max", "moreText"]),
+      columns = _ref4$config.columns,
+      _ref4$config$pageSize = _ref4$config.pageSize,
+      pageSize = _ref4$config$pageSize === void 0 ? 10 : _ref4$config$pageSize,
+      tableProps = objectWithoutProperties_default()(_ref4$config, ["actionColumns", "actionProps", "columns", "pageSize"]);
 
   var actionColumnsFilter = function actionColumnsFilter(record) {
-    return actionColumns.filter(function (_ref2) {
-      var _ref2$isShow = _ref2.isShow,
-          isShow = _ref2$isShow === void 0 ? function () {
+    return actionColumns.filter(function (_ref5) {
+      var _ref5$isShow = _ref5.isShow,
+          isShow = _ref5$isShow === void 0 ? function () {
         return true;
-      } : _ref2$isShow,
-          title = _ref2.title;
+      } : _ref5$isShow,
+          title = _ref5.title;
       return isShow({
         text: title,
         record: record,
@@ -896,34 +964,73 @@ function TableComponent_TableComponent(_ref) {
       }
     });
     return item;
-  })), toConsumableArray_default()(actionColumns.length > 0 ? [{
+  })), toConsumableArray_default()(actionColumns.length > 0 ? [_objectSpread({
     title: '操作',
     key: 'action',
     render: function render(text, record) {
-      return external_react_default.a.createElement(external_react_default.a.Fragment, null, actionColumnsFilter(record).map(function (_ref3, i, arr) {
-        var title = _ref3.title,
-            key = _ref3.key,
-            render = _ref3.render,
-            actionFn = _ref3.actionFn,
-            extraConfigField = objectWithoutProperties_default()(_ref3, ["title", "key", "render", "actionFn"]);
+      var calactionColumns = actionColumnsFilter(record);
+      var len = calactionColumns.length;
+      var normalColumns = calactionColumns.slice(0, actionMax - 1);
+      var downColumns = calactionColumns.slice(actionMax - 1);
+      return external_react_default.a.createElement(external_react_default.a.Fragment, null, normalColumns.map(function (_ref6, i, arr) {
+        var title = _ref6.title,
+            key = _ref6.key,
+            render = _ref6.render,
+            actionFn = _ref6.actionFn,
+            extraConfigField = objectWithoutProperties_default()(_ref6, ["title", "key", "render", "actionFn"]);
 
         return external_react_default.a.createElement("span", {
           key: key
-        }, external_react_default.a.createElement("span", {
-          onClick: function onClick() {
-            return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
-          },
-          className: "table-action"
-        }, render ? render({
-          text: text,
+        }, getActionEle({
+          emit: emit,
           record: record,
-          tableColumnsProps: tableColumnsProps
-        }) : title), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
+          title: title,
+          text: text,
+          render: render,
+          actionFn: actionFn,
+          tableColumnsProps: tableColumnsProps,
+          extraConfigField: extraConfigField
+        }), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
           type: "vertical"
         }));
-      }));
+      }), len === actionMax ? external_react_default.a.createElement(external_react_default.a.Fragment, null, external_react_default.a.createElement(external_antd_["Divider"], {
+        type: "vertical"
+      }), calactionColumns.slice(-1).map(function (_ref7) {
+        var title = _ref7.title,
+            key = _ref7.key,
+            render = _ref7.render,
+            actionFn = _ref7.actionFn,
+            extraConfigField = objectWithoutProperties_default()(_ref7, ["title", "key", "render", "actionFn"]);
+
+        return external_react_default.a.createElement("span", {
+          key: key
+        }, getActionEle({
+          emit: emit,
+          record: record,
+          title: title,
+          text: text,
+          render: render,
+          actionFn: actionFn,
+          tableColumnsProps: tableColumnsProps,
+          extraConfigField: extraConfigField
+        }));
+      })) : external_react_default.a.createElement(external_antd_["Dropdown"], {
+        overlay: actionMenu({
+          arr: downColumns,
+          record: record,
+          text: text,
+          tableColumnsProps: tableColumnsProps,
+          emit: emit
+        })
+      }, external_react_default.a.createElement("span", {
+        className: "table-action"
+      }, external_react_default.a.createElement(external_antd_["Divider"], {
+        type: "vertical"
+      }), external_react_default.a.createElement("span", null, moreText), external_react_default.a.createElement(external_antd_["Icon"], {
+        type: "down"
+      }))));
     }
-  }] : []));
+  }, tableActionProps)] : []));
   return external_react_default.a.createElement(ConsumerState, null, function (value) {
     return external_react_default.a.createElement(external_antd_["Table"], extends_default()({
       onChange: function onChange(info) {

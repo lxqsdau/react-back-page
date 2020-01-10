@@ -4,7 +4,7 @@ import { DatePicker } from 'antd';
 class DatePickerComponent extends React.Component {
   render () {
     return (
-      <DatePicker {...this.props}  />
+      <DatePicker className="back-page-search-date-picker" {...this.props}  />
     )
   }
 }
