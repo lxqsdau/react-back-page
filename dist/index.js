@@ -993,7 +993,7 @@ function TableComponent_TableComponent(_ref4) {
         }), arr.length - 1 !== i && external_react_default.a.createElement(external_antd_["Divider"], {
           type: "vertical"
         }));
-      }), len === actionMax ? external_react_default.a.createElement(external_react_default.a.Fragment, null, external_react_default.a.createElement(external_antd_["Divider"], {
+      }), len >= actionMax ? len === actionMax ? external_react_default.a.createElement(external_react_default.a.Fragment, null, external_react_default.a.createElement(external_antd_["Divider"], {
         type: "vertical"
       }), calactionColumns.slice(-1).map(function (_ref7) {
         var title = _ref7.title,
@@ -1028,7 +1028,7 @@ function TableComponent_TableComponent(_ref4) {
         type: "vertical"
       }), external_react_default.a.createElement("span", null, moreText), external_react_default.a.createElement(external_antd_["Icon"], {
         type: "down"
-      }))));
+      }))) : "");
     }
   }, tableActionProps)] : []));
   return external_react_default.a.createElement(ConsumerState, null, function (value) {
