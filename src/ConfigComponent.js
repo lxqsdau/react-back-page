@@ -36,6 +36,11 @@ class ConfigComponent extends React.Component {
     this.refreshTable();
   }
 
+  componentWillReceiveProps(newProps, newState) {
+    console.log(newProps, "newProps")
+    console.log(newState, "newState")
+  }
+
   getTableData = ({ searchValue = {}, page = 1 } = {}) => {
     const { tableConfig: { fetchFn } } = this.props;
     if (!fetchFn) return;
