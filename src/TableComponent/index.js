@@ -3,8 +3,9 @@ import { Table, Divider, Dropdown, Menu, Icon } from "antd";
 import { ConsumerState } from "../createContext";
 import "./index.scss";
 
+// 渲染操作菜单
 function getActionEle ({ emit, record, title, text, render, actionFn, tableColumnsProps, extraConfigField }) {
-  return <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render({ text, record, tableColumnsProps }) : title}</span>
+  return <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render({ text, record, tableColumnsProps, emit }) : title}</span>
 }
 
 function actionMenu ({ arr, record, text, tableColumnsProps, emit }) {
@@ -18,6 +19,7 @@ function actionMenu ({ arr, record, text, tableColumnsProps, emit }) {
 function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = [], actionProps: { max: actionMax = 4, moreText = "更多", ...tableActionProps } = {}, columns, pageSize = 10, ...tableProps } }) {
 
   let actionColumnsFilter = record => actionColumns.filter(({ isShow = () => true, title }) => isShow({ text: title, record, tableColumnsProps }))
+
   columns = [
     ...columns.map(item => {
       if (item.render) return { ...item, render: (text, record) => item.render({ text, record, emit, tableColumnsProps }) }
