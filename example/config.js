@@ -129,16 +129,16 @@ const config = {
         key: "delete2",
         actionFn: "delete2",
       },
-      // {
-      //   title: "删除3",
-      //   key: "delete3",
-      //   actionFn: "delete3",
-      // },
-      // {
-      //   title: "删除4",
-      //   key: "delete4",
-      //   actionFn: "delete4",
-      // }
+      {
+        title: "删除3",
+        key: "delete3",
+        actionFn: "delete3",
+      },
+      {
+        title: "删除4",
+        key: "delete4",
+        actionFn: "delete4",
+      }
     ]
   }
 }
