@@ -867,7 +867,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
+ // 渲染操作菜单
 
 function getActionEle(_ref) {
   var emit = _ref.emit,
@@ -886,7 +886,8 @@ function getActionEle(_ref) {
   }, render ? render({
     text: text,
     record: record,
-    tableColumnsProps: tableColumnsProps
+    tableColumnsProps: tableColumnsProps,
+    emit: emit
   }) : title);
 }
 
@@ -1330,6 +1331,12 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.refreshTable();
+    }
+  }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(newProps, newState) {
+      console.log(newProps, "newProps");
+      console.log(newState, "newState");
     }
   }, {
     key: "render",
