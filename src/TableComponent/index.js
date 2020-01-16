@@ -41,10 +41,10 @@ function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = []
                   {arr.length - 1 !== i && <Divider type="vertical" />}
                 </span>
               )
-
             }
+            
             {
-              len === actionMax ? <>
+              len >= actionMax ? len === actionMax ? <>
                 <Divider type="vertical" />
                 {
                   calactionColumns.slice(-1).map(({ title, key, render, actionFn, ...extraConfigField }) => <span key={key}>{getActionEle({ emit, record, title, text, render, actionFn, tableColumnsProps, extraConfigField })}</span>)
@@ -55,13 +55,15 @@ function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = []
                     <span>{moreText}</span>
                     <Icon type="down" />
                   </span>
-                </Dropdown>
+                </Dropdown> : ""
             }
           </>
         },
         ...tableActionProps,
       }] : [])
   ]
+
+
 
   return (
     <ConsumerState>

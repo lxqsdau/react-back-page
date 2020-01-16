@@ -56,13 +56,13 @@ const config = {
   ],
   table: {
     rowKey: "id",
-    scroll: { x: 1500, y: 300 },
+    scroll: { x: 1500 },
     columns: [
       {
         title: "姓名1",
         key: "name",
         dataIndex: "name",
-        // width: 100,
+        width: 100,
         fixed: 'left',
       },
       {
@@ -106,40 +106,40 @@ const config = {
         key: "sex",
         dataIndex: "sex",
         // render: ({ text, record, tableColumnsProps }) => text + record.id + tableColumnsProps.id,
-        // width: 100,
-        // fixed: "right"
+        width: 100,
+        fixed: "right"
       }
     ],
     actionProps: { // 操作配置
       fixed: "right"
     },
-    // actionColumns: [
-    //   {
-    //     title: "编辑",
-    //     key: "tableEdit",
-    //     actionFn: "emit-tableEdit",
-    //   },
-    //   {
-    //     title: "删除",
-    //     key: "delete",
-    //     actionFn: "delete",
-    //   },
-    //   {
-    //     title: "删除2",
-    //     key: "delete2",
-    //     actionFn: "delete2",
-    //   },
-    //   {
-    //     title: "删除3",
-    //     key: "delete3",
-    //     actionFn: "delete3",
-    //   },
-    //   {
-    //     title: "删除4",
-    //     key: "delete4",
-    //     actionFn: "delete4",
-    //   }
-    // ]
+    actionColumns: [
+      {
+        title: "编辑",
+        key: "tableEdit",
+        actionFn: "emit-tableEdit",
+      },
+      {
+        title: "删除",
+        key: "delete",
+        actionFn: "delete",
+      },
+      {
+        title: "删除2",
+        key: "delete2",
+        actionFn: "delete2",
+      },
+      // {
+      //   title: "删除3",
+      //   key: "delete3",
+      //   actionFn: "delete3",
+      // },
+      // {
+      //   title: "删除4",
+      //   key: "delete4",
+      //   actionFn: "delete4",
+      // }
+    ]
   }
 }
 function getListApi () {
