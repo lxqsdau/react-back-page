@@ -31,7 +31,6 @@ class ConfigComponent extends React.Component {
     this.actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.tableConfig = table;
     this.detail = detail
-    console.log(this.searchConfig)
   }
 
   state = {
@@ -216,7 +215,7 @@ ConfigComponent.defaultProps = {
   extraFetchProps: {}, // 需要额外给表格请求的字段
   optionConfig: {},
   searchFormConfig: { // 搜索表单设置 展开
-    foldtThreshold: 5, // 展开阈值
+    foldtThreshold: 3, // 展开阈值
   },
 }
 
