@@ -5,7 +5,7 @@ import "./index.scss";
 
 // 渲染操作菜单
 function getActionEle ({ emit, record, title, text, render, actionFn, tableColumnsProps, extraConfigField }) {
-  return <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{render ? render({ text, record, tableColumnsProps, emit }) : title}</span>
+  return render ? <span className="table-action">{render({ text, record, tableColumnsProps, emit })}</span> : <span onClick={() => emit(actionFn, { ...record, ...extraConfigField })} className="table-action">{title}</span>
 }
 
 function actionMenu ({ arr, record, text, tableColumnsProps, emit }) {
@@ -44,7 +44,7 @@ function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = []
                 </span>
               )
             }
-            
+
             {
               len >= actionMax ? len === actionMax ? <>
                 <Divider type="vertical" />
