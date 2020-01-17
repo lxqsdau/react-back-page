@@ -689,8 +689,8 @@ var Search_0 = __webpack_require__(20);
 
 var Search_Search =
 /*#__PURE__*/
-function (_React$Component) {
-  inherits_default()(Search, _React$Component);
+function (_PureComponent) {
+  inherits_default()(Search, _PureComponent);
 
   function Search() {
     var _getPrototypeOf2;
@@ -705,9 +705,8 @@ function (_React$Component) {
 
     _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(Search)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
-      fold: true,
-      // 折叠
-      config: _this.props.config.slice(0, 5)
+      fold: true // 折叠
+
     };
 
     _this.search = function () {
@@ -732,25 +731,11 @@ function (_React$Component) {
     };
 
     _this.foldChange = function () {
-      var _this$state = _this.state,
-          fold = _this$state.fold,
-          config = _this$state.config;
-      var _this$props3 = _this.props,
-          foldtThreshold = _this$props3.searchFormConfig.foldtThreshold,
-          propsConfig = _this$props3.config;
+      var fold = _this.state.fold;
 
-      if (fold) {
-        // 展开
-        _this.setState({
-          fold: false,
-          config: propsConfig
-        });
-      } else {
-        _this.setState({
-          fold: true,
-          config: config.slice(0, foldtThreshold)
-        });
-      }
+      _this.setState({
+        fold: !fold
+      });
     };
 
     return _this;
@@ -759,21 +744,27 @@ function (_React$Component) {
   createClass_default()(Search, [{
     key: "render",
     value: function render() {
-      var _this$props4 = this.props,
-          form = _this$props4.form,
-          optionConfig = _this$props4.optionConfig,
-          foldtThreshold = _this$props4.searchFormConfig.foldtThreshold,
-          propsConfig = _this$props4.config;
+      var _this$props3 = this.props,
+          form = _this$props3.form,
+          optionConfig = _this$props3.optionConfig,
+          foldtThreshold = _this$props3.searchFormConfig.foldtThreshold,
+          config = _this$props3.config;
       var getFieldDecorator = form.getFieldDecorator;
-      var _this$state2 = this.state,
-          fold = _this$state2.fold,
-          config = _this$state2.config;
+      var fold = this.state.fold;
+      var showFormItem;
+
+      if (fold && config.length > foldtThreshold) {
+        showFormItem = config.slice(0, foldtThreshold);
+      } else {
+        showFormItem = config;
+      }
+
       return external_react_default.a.createElement("div", {
         className: "search-box"
       }, external_react_default.a.createElement(external_antd_["Form"], {
         className: "search-form",
         layout: "inline"
-      }, config.map(function (_ref, i) {
+      }, showFormItem.map(function (_ref, i) {
         var Component = _ref.Component,
             label = _ref.label,
             name = _ref.name,
@@ -787,7 +778,7 @@ function (_React$Component) {
         }, label), getFieldDecorator(name)(external_react_default.a.createElement(Component, extends_default()({
           optionConfig: optionConfig
         }, orther))));
-      }), propsConfig.length > foldtThreshold && external_react_default.a.createElement(external_antd_["Form"].Item, {
+      }), config.length > foldtThreshold && external_react_default.a.createElement(external_antd_["Form"].Item, {
         className: "search-item ase"
       }, external_react_default.a.createElement("div", {
         onClick: this.foldChange,
@@ -814,7 +805,7 @@ function (_React$Component) {
   }]);
 
   return Search;
-}(external_react_default.a.Component);
+}(external_react_["PureComponent"]);
 
 /* harmony default export */ var Search_1 = (external_antd_["Form"].create({
   name: 'Search'
@@ -1172,7 +1163,6 @@ function (_React$Component) {
       });
       _this.tableConfig = table;
       _this.detail = detail;
-      console.log(_this.searchConfig);
     };
 
     _this.state = {
@@ -1418,7 +1408,7 @@ ConfigComponent_ConfigComponent.defaultProps = {
   optionConfig: {},
   searchFormConfig: {
     // 搜索表单设置 展开
-    foldtThreshold: 5 // 展开阈值
+    foldtThreshold: 3 // 展开阈值
 
   }
 };
