@@ -1211,6 +1211,11 @@ function (_React$Component) {
           currentPage: page // 放在此处更新 page ，减少页面渲染次数
 
         });
+
+        _this.props.tableReturn({
+          data: data,
+          total: total
+        });
       }); // .finally(() => this.setState({ tableLoading: false })); 减少页面更新
     };
 
@@ -1395,7 +1400,8 @@ ConfigComponent_ConfigComponent.propTypes = {
   optionConfig: external_prop_types_default.a.object,
   extraDeleteProps: external_prop_types_default.a.object,
   tableColumnsProps: external_prop_types_default.a.object,
-  searchFormConfig: external_prop_types_default.a.object
+  searchFormConfig: external_prop_types_default.a.object,
+  tableReturn: external_prop_types_default.a.func
 };
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
@@ -1410,7 +1416,9 @@ ConfigComponent_ConfigComponent.defaultProps = {
     // 搜索表单设置 展开
     foldtThreshold: 3 // 展开阈值
 
-  }
+  },
+  tableReturn: noop // 每次table请求完数据，调用此函数返回数据
+
 };
 /* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);
 /**

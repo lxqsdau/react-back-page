@@ -10,6 +10,9 @@ class App extends RenderComponent {
   test = () => {
     this.updateConfig(1)
   }
+  tableReturn = (data) => {
+    console.log(data)
+  }
   render () {
     return (
       <>
@@ -23,6 +26,7 @@ class App extends RenderComponent {
           searchFormConfig={{
             foldtThreshold: 20
           }}
+          tableReturn={this.tableReturn}
         />
       </>
     )

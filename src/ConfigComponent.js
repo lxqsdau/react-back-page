@@ -68,6 +68,10 @@ class ConfigComponent extends React.Component {
         tableLoading: false,
         currentPage: page, // 放在此处更新 page ，减少页面渲染次数
       })
+      this.props.tableReturn({
+        data, 
+        total
+      })
     });
     // .finally(() => this.setState({ tableLoading: false })); 减少页面更新
   }
@@ -205,6 +209,7 @@ ConfigComponent.propTypes = {
   extraDeleteProps: PropTypes.object,
   tableColumnsProps: PropTypes.object,
   searchFormConfig: PropTypes.object,
+  tableReturn: PropTypes.func
 }
 ConfigComponent.defaultProps = {
   config: {},
@@ -217,6 +222,7 @@ ConfigComponent.defaultProps = {
   searchFormConfig: { // 搜索表单设置 展开
     foldtThreshold: 3, // 展开阈值
   },
+  tableReturn: noop, // 每次table请求完数据，调用此函数返回数据
 }
 
 
