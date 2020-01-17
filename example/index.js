@@ -8,11 +8,14 @@ import "antd/dist/antd.css";
 
 class App extends RenderComponent {
   test = () => {
-    this.updateConfig(1)
+    
   }
+
   tableReturn = (data) => {
     console.log(data)
+    this.updateConfig(1)
   }
+
   render () {
     return (
       <>
