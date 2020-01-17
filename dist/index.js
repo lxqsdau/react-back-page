@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -176,6 +176,12 @@ module.exports = _inherits;
 /* 6 */
 /***/ (function(module, exports) {
 
+module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -193,12 +199,6 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 
 /***/ }),
 /* 8 */
@@ -410,7 +410,7 @@ var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(6);
+var createClass = __webpack_require__(7);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.7.6@@babel/runtime/helpers/possibleConstructorReturn.js
@@ -878,17 +878,19 @@ function getActionEle(_ref) {
       actionFn = _ref.actionFn,
       tableColumnsProps = _ref.tableColumnsProps,
       extraConfigField = _ref.extraConfigField;
-  return external_react_default.a.createElement("span", {
-    onClick: function onClick() {
-      return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
-    },
+  return render ? external_react_default.a.createElement("span", {
     className: "table-action"
-  }, render ? render({
+  }, render({
     text: text,
     record: record,
     tableColumnsProps: tableColumnsProps,
     emit: emit
-  }) : title);
+  })) : external_react_default.a.createElement("span", {
+    onClick: function onClick() {
+      return emit(actionFn, _objectSpread({}, record, {}, extraConfigField));
+    },
+    className: "table-action"
+  }, title);
 }
 
 function actionMenu(_ref2) {
@@ -1105,7 +1107,7 @@ function DetailModal_DetailModal(_ref) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal_DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(7);
+var external_prop_types_ = __webpack_require__(6);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
@@ -1140,12 +1142,39 @@ var ConfigComponent_ConfigComponent =
 function (_React$Component) {
   inherits_default()(ConfigComponent, _React$Component);
 
-  function ConfigComponent(props) {
+  function ConfigComponent(_props) {
     var _this;
 
     classCallCheck_default()(this, ConfigComponent);
 
-    _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(ConfigComponent).call(this, props));
+    _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(ConfigComponent).call(this, _props));
+
+    _this.renderConfig = function (resultConfig) {
+      var _resultConfig$search = resultConfig.search,
+          search = _resultConfig$search === void 0 ? [] : _resultConfig$search,
+          _resultConfig$action = resultConfig.action,
+          action = _resultConfig$action === void 0 ? [] : _resultConfig$action,
+          table = resultConfig.table,
+          detail = resultConfig.detail;
+      _this.searchConfig = search.map(function (_ref) {
+        var type = _ref.type,
+            props = _ref.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      });
+      _this.actionConfig = action.map(function (_ref2) {
+        var type = _ref2.type,
+            props = _ref2.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      });
+      _this.tableConfig = table;
+      _this.detail = detail;
+      console.log(_this.searchConfig);
+    };
+
     _this.state = {
       tableLoading: true,
       total: 0,
@@ -1155,12 +1184,18 @@ function (_React$Component) {
       detailData: {}
     };
 
+    _this.updateConfig = function (data) {
+      _this.renderConfig(_this.props.config(data));
+
+      _this.forceUpdate();
+    };
+
     _this.getTableData = function () {
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref$searchValue = _ref.searchValue,
-          searchValue = _ref$searchValue === void 0 ? {} : _ref$searchValue,
-          _ref$page = _ref.page,
-          page = _ref$page === void 0 ? 1 : _ref$page;
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref3$searchValue = _ref3.searchValue,
+          searchValue = _ref3$searchValue === void 0 ? {} : _ref3$searchValue,
+          _ref3$page = _ref3.page,
+          page = _ref3$page === void 0 ? 1 : _ref3$page;
 
       var fetchFn = _this.props.tableConfig.fetchFn;
       if (!fetchFn) return;
@@ -1175,9 +1210,9 @@ function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread({
         page: page
-      }, searchValue, {}, _this.props.extraFetchProps)).then(function (_ref2) {
-        var data = _ref2.data,
-            total = _ref2.total;
+      }, searchValue, {}, _this.props.extraFetchProps)).then(function (_ref4) {
+        var data = _ref4.data,
+            total = _ref4.total;
 
         _this.setState({
           tableDataList: data,
@@ -1229,8 +1264,8 @@ function (_React$Component) {
       _this.props.onReset();
     };
 
-    _this.tablePageChange = function (_ref3) {
-      var page = _ref3.current;
+    _this.tablePageChange = function (_ref5) {
+      var page = _ref5.current;
 
       var searchValue = _this.getSearchValue();
 
@@ -1301,29 +1336,16 @@ function (_React$Component) {
       }
     };
 
-    var _this$props$config = _this.props.config,
-        _this$props$config$se = _this$props$config.search,
-        search = _this$props$config$se === void 0 ? [] : _this$props$config$se,
-        _this$props$config$ac = _this$props$config.action,
-        action = _this$props$config$ac === void 0 ? [] : _this$props$config$ac,
-        table = _this$props$config.table,
-        detail = _this$props$config.detail;
-    _this.searchConfig = search.map(function (_ref4) {
-      var type = _ref4.type,
-          props = _ref4.props;
-      return ConfigComponent_objectSpread({
-        Component: getComponent(type)
-      }, props);
-    });
-    _this.actionConfig = action.map(function (_ref5) {
-      var type = _ref5.type,
-          props = _ref5.props;
-      return ConfigComponent_objectSpread({
-        Component: getComponent(type)
-      }, props);
-    });
-    _this.tableConfig = table;
-    _this.detail = detail;
+    var _resultConfig;
+
+    if (Object.prototype.toString.call(_this.props.config) === "[object Function]") {
+      _resultConfig = _this.props.config();
+    } else {
+      _resultConfig = _this.props.config;
+    }
+
+    _this.renderConfig(_resultConfig);
+
     return _this;
   }
 
@@ -1331,12 +1353,6 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.refreshTable();
-    }
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(newProps, newState) {
-      console.log(newProps, "newProps");
-      console.log(newState, "newState");
     }
   }, {
     key: "render",
@@ -1380,7 +1396,7 @@ function (_React$Component) {
 }(external_react_default.a.Component);
 
 ConfigComponent_ConfigComponent.propTypes = {
-  config: external_prop_types_default.a.object,
+  config: external_prop_types_default.a.oneOfType([external_prop_types_default.a.object, external_prop_types_default.a.func]),
   tableConfig: external_prop_types_default.a.object,
   onSearch: external_prop_types_default.a.func,
   onReset: external_prop_types_default.a.func,
@@ -1441,6 +1457,10 @@ function (_React$Component) {
       // 添加和编辑的弹窗
       isEdit: false,
       editData: {}
+    };
+
+    _this.updateConfig = function (data) {
+      _this.tableComponent.updateConfig(data);
     };
 
     _this.actionEmit = function (type, data) {
