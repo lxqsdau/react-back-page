@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Form, Button, Icon } from 'antd';
 import "./index.scss";
 
-class Search extends React.Component {
+class Search extends PureComponent {
   state = {
     fold: true, // 折叠
-    config: this.props.config.slice(0, 5)
   }
+  
   search = () => {
     const { form, emit } = this.props;
     const searchValue = form.getFieldsValue();
@@ -25,30 +25,28 @@ class Search extends React.Component {
   }
 
   foldChange = () => {
-    const { fold, config } = this.state;
-    const { searchFormConfig: { foldtThreshold }, config: propsConfig } = this.props;
-    if (fold) { // 展开
-      this.setState({
-        fold: false,
-        config: propsConfig
-      })
-    } else {
-      this.setState({
-        fold: true,
-        config: config.slice(0, foldtThreshold)
-      })
-    }
+    const { fold } = this.state;
+    this.setState({
+      fold: !fold,
+    })
   }
 
   render () {
-    const { form, optionConfig, searchFormConfig: { foldtThreshold }, config: propsConfig } = this.props;
+    const { form, optionConfig, searchFormConfig: { foldtThreshold }, config } = this.props;
     const { getFieldDecorator } = form;
-    const { fold, config } = this.state;
+    const { fold } = this.state;
+    let showFormItem
+    
+    if (fold && config.length > foldtThreshold) {
+      showFormItem = config.slice(0, foldtThreshold)
+    } else {
+      showFormItem = config
+    }
     return (
       <div className="search-box">
         <Form className="search-form" layout="inline">
           {
-            config.map(({ Component, label, name, ...orther }, i) => <Form.Item className="search-item" key={i}>
+            showFormItem.map(({ Component, label, name, ...orther }, i) => <Form.Item className="search-item" key={i}>
               <p className="label">{label}</p>
               {
                 getFieldDecorator(name)(<Component optionConfig={optionConfig} {...orther} />)
@@ -56,7 +54,7 @@ class Search extends React.Component {
             </Form.Item>)
           }
           {
-           propsConfig.length > foldtThreshold && <Form.Item className="search-item ase">
+           config.length > foldtThreshold && <Form.Item className="search-item ase">
               <div onClick={this.foldChange} className="fold-box">{fold ? <>
                 <span>展开</span>  <Icon type="down" />
               </> : <>

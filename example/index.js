@@ -20,6 +20,9 @@ class App extends RenderComponent {
           actionEmit={this.actionEmit}
           tableConfig={tableConfig}
           tableColumnsProps={{ id: "2" }}
+          searchFormConfig={{
+            foldtThreshold: 20
+          }}
         />
       </>
     )
