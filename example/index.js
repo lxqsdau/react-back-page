@@ -2,15 +2,18 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ConfigComponent, RenderComponent } from '../src';
 import { config, tableConfig } from "./config";
-import { Table } from 'antd';
+import { Table, Button } from 'antd';
 import "antd/dist/antd.css";
 
 
 class App extends RenderComponent {
- 
+  test = () => {
+    this.updateConfig(1)
+  }
   render () {
     return (
       <>
+        <Button onClick={this.test}>按钮</Button>
         <ConfigComponent
           config={config}
           ref={r => this.tableComponent = r}

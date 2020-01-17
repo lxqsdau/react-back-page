@@ -8,6 +8,10 @@ class RenderComponent extends React.Component {
     editData: {},
   }
 
+  updateConfig = (data) => {
+    this.tableComponent.updateConfig(data)
+  }
+
   actionEmit = (type, data) => {
     this[type](data);
   }

@@ -14,13 +14,25 @@ const { confirm } = Modal;
 class ConfigComponent extends React.Component {
   constructor(props) {
     super(props);
-    const { search = [], action = [], table, detail } = this.props.config;
+
+    let resultConfig;
+    if (Object.prototype.toString.call(this.props.config) === "[object Function]") {
+      resultConfig = this.props.config()
+    } else {
+      resultConfig = this.props.config;
+    }
+    this.renderConfig(resultConfig)
+  }
+
+  renderConfig = (resultConfig) => {
+    const { search = [], action = [], table, detail } = resultConfig;
+
     this.searchConfig = search.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.tableConfig = table;
     this.detail = detail
+    console.log(this.searchConfig)
   }
-
 
   state = {
     tableLoading: true,
@@ -36,9 +48,9 @@ class ConfigComponent extends React.Component {
     this.refreshTable();
   }
 
-  componentWillReceiveProps(newProps, newState) {
-    console.log(newProps, "newProps")
-    console.log(newState, "newState")
+  updateConfig = (data) => {
+    this.renderConfig(this.props.config(data));
+    this.forceUpdate();
   }
 
   getTableData = ({ searchValue = {}, page = 1 } = {}) => {
@@ -184,7 +196,7 @@ class ConfigComponent extends React.Component {
 }
 
 ConfigComponent.propTypes = {
-  config: PropTypes.object,
+  config: PropTypes.oneOfType([PropTypes.object, PropTypes.func]) ,
   tableConfig: PropTypes.object,
   onSearch: PropTypes.func,
   onReset: PropTypes.func,
