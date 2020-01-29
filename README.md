@@ -26,6 +26,8 @@ actionColumns
   render参数 {text, record, tableColumnsProps}
   isShow参数 {text, record, tableColumnsProps}
 
+  事件触发参数 { ...record, ...{除title, key, render, actionFn之外的属性} }
+
 
 # config
 search
