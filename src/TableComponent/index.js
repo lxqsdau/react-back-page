@@ -5,8 +5,8 @@ import "./index.scss";
 
 // 渲染操作菜单
 function getActionEle ({ emit, record, title, text, render, actionFn, tableColumnsProps, extraConfigField, isDisabled }) {
-  let disabled = isDisabled && isDisabled();
-  return render ? <span className="table-action">{render({ text, record, tableColumnsProps, emit })}</span> : <span onClick={() => !disabled && emit(actionFn, { ...record, ...extraConfigField })} className={`table-action ${disabled ? "disabled": ""}`}>{title}</span>
+  let disabled = isDisabled && isDisabled({ text, record, tableColumnsProps });
+  return render ? <span className="table-action">{render({ text, record, tableColumnsProps, emit })}</span> : <span onClick={() => !disabled && emit(actionFn, { ...record, ...extraConfigField })} className={`table-action ${disabled ? "disabled" : ""}`}>{title}</span>
 }
 
 function actionMenu ({ arr, record, text, tableColumnsProps, emit }) {

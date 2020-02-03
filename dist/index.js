@@ -876,7 +876,11 @@ function getActionEle(_ref) {
       tableColumnsProps = _ref.tableColumnsProps,
       extraConfigField = _ref.extraConfigField,
       isDisabled = _ref.isDisabled;
-  var disabled = isDisabled && isDisabled();
+  var disabled = isDisabled && isDisabled({
+    text: text,
+    record: record,
+    tableColumnsProps: tableColumnsProps
+  });
   return render ? external_react_default.a.createElement("span", {
     className: "table-action"
   }, render({
