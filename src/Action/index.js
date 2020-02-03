@@ -6,7 +6,7 @@ function Action ({ config, emit }) {
   return (
     <div className="action-box">
       {
-        config.map(({ actionFn, title, type }, i) => <Button key={i} onClick={() => emit(actionFn)} type={type}>{title}</Button>)
+        config.map(({ actionFn, title, type }, i) => <Button className="action-btn" key={i} onClick={() => emit(actionFn)} type={type}>{title}</Button>)
       }
     </div>
   )

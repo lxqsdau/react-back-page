@@ -7,15 +7,39 @@ const config = function (data) {
     return {
       search: [
         {
+          type: "select",
+          props: {
+            name: "env",
+            label: "环境",
+            defaultValue: "1",
+            placeholder: "请选择环境",
+            option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
+          }
+        },
+        {
           type: "input",
           props: {
             name: "name",
             label: "搜索",
-            placeholder: "请输入分类名",
+            placeholder: "应用名称",
           }
-        },
+        }
       ],
       action: [
+        {
+          type: "button",
+          props: {
+            title: "添加分类2",
+            actionFn: "emit-add"
+          }
+        },
+        {
+          type: "button",
+          props: {
+            title: "添加分类2",
+            actionFn: "emit-add"
+          }
+        },
         {
           type: "button",
           props: {
@@ -66,6 +90,7 @@ const config = function (data) {
             title: "删除2",
             key: "delete2",
             actionFn: "delete2",
+            isDisabled: () => true
           }
         ]
       }

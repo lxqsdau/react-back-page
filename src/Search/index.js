@@ -46,10 +46,12 @@ class Search extends PureComponent {
       <div className="search-box">
         <Form className="search-form" layout="inline">
           {
-            showFormItem.map(({ Component, label, name, ...orther }, i) => <Form.Item className="search-item" key={i}>
+            showFormItem.map(({ Component, label, name, defaultValue, ...orther }, i) => <Form.Item className="search-item" key={i}>
               <p className="label">{label}</p>
               {
-                getFieldDecorator(name)(<Component optionConfig={optionConfig} {...orther} />)
+                getFieldDecorator(name, {
+                  initialValue: defaultValue || undefined
+                })(<Component optionConfig={optionConfig} {...orther} />)
               }
             </Form.Item>)
           }
