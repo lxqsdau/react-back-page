@@ -90,7 +90,7 @@ const config = function (data) {
             title: "删除2",
             key: "delete2",
             actionFn: "delete2",
-            isDisabled: () => true
+            isDisabled: ({ text, record, tableColumnsProps }) => false
           }
         ]
       }
@@ -212,6 +212,11 @@ const config = function (data) {
       },
       actionColumns: [
         {
+          title: "详情",
+          key: "tableDetail",
+          actionFn: "tableDetail",
+        },
+        {
           title: "编辑",
           key: "tableEdit",
           actionFn: "emit-tableEdit",
@@ -247,6 +252,45 @@ const config = function (data) {
               </Dropdown>
             </div>
           }
+        }
+      ]
+    },
+    detail: {
+      // type: "detail",
+      // width: 1000,
+      list: [
+        {
+          label: "备注",
+          field: "comment",
+          type: "text"
+        },
+        {
+          label: "描述",
+          field: "intro",
+          type: "text"
+        },
+        {
+          label: "调用方式",
+          field: "method",
+          type: "text"
+        },
+        {
+          label: "常量",
+          type: "table",
+          field: "a",
+          columns: [
+            {
+              title: 'Name',
+              dataIndex: 'name',
+              key: 'name',
+            },
+            {
+              title: 'Age',
+              dataIndex: 'age',
+              key: 'age',
+            },
+          ],
+          pagination: false
         }
       ]
     }

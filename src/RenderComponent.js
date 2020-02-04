@@ -7,9 +7,9 @@ class RenderComponent extends React.Component {
     isEdit: false,
     editData: {},
   }
-
-  updateConfig = (data) => {
-    this.tableComponent.updateConfig(data)
+  updateConfig = (...args) => {
+    // args 数组形式
+    this.tableComponent.updateConfig(...args)
   }
 
   actionEmit = (type, data) => {

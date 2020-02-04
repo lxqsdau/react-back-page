@@ -12,7 +12,6 @@ class App extends RenderComponent {
   }
 
   tableReturn = (data) => {
-    this.updateConfig(1)
   }
 
   render () {

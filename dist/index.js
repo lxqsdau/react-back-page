@@ -180,52 +180,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports) {
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var objectWithoutPropertiesLoose = __webpack_require__(15);
@@ -250,6 +204,52 @@ function _objectWithoutProperties(source, excluded) {
 }
 
 module.exports = _objectWithoutProperties;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
 
 /***/ }),
 /* 10 */
@@ -412,7 +412,7 @@ var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(7);
+var createClass = __webpack_require__(8);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/possibleConstructorReturn.js
@@ -530,11 +530,11 @@ function (_React$Component) {
 
 /* harmony default export */ var SelectComponent_0 = (SelectComponent_SelectComponent);
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(8);
+var helpers_extends = __webpack_require__(9);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(9);
+var objectWithoutProperties = __webpack_require__(7);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // CONCATENATED MODULE: ./InputComponent/index.js
@@ -1074,12 +1074,48 @@ var DetailModal = __webpack_require__(24);
 
 
 
-function getValueComponent(detailData, type, field) {
+function DetailModal_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function DetailModal_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { DetailModal_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { DetailModal_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+var DetailModal_data = [{
+  key: '1',
+  name: 'John Brown',
+  age: 32,
+  address: 'New York No. 1 Lake Park',
+  tags: ['nice', 'developer']
+}, {
+  key: '2',
+  name: 'Jim Green',
+  age: 42,
+  address: 'London No. 1 Lake Park',
+  tags: ['loser']
+}, {
+  key: '3',
+  name: 'Joe Black',
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+  tags: ['cool', 'teacher']
+}]; // detailData record
+
+function getValueComponent(_ref) {
+  var detailData = _ref.detailData,
+      type = _ref.type,
+      field = _ref.field,
+      render = _ref.render,
+      other = objectWithoutProperties_default()(_ref, ["detailData", "type", "field", "render"]);
+
   switch (type) {
     case "text":
       return external_react_default.a.createElement("span", {
         className: "detail-value"
-      }, detailData[field]);
+      }, render ? render({
+        text: detailData[field],
+        record: detailData
+      }) : detailData[field]);
 
     case "img":
       return external_react_default.a.createElement("span", null, external_react_default.a.createElement("img", {
@@ -1089,29 +1125,51 @@ function getValueComponent(detailData, type, field) {
         src: detailData[field],
         alt: ""
       }));
+
+    case "table":
+      return render ? render({
+        text: detailData[field],
+        record: detailData
+      }) : external_react_default.a.createElement(external_antd_["Table"], extends_default()({
+        dataSource: DetailModal_data
+      }, other));
   }
 }
 
-function DetailModal_DetailModal(_ref) {
-  var visible = _ref.visible,
-      onClose = _ref.onClose,
-      detailData = _ref.detailData,
-      list = _ref.config.list;
+function DetailModal_DetailModal(_ref2) {
+  var visible = _ref2.visible,
+      onClose = _ref2.onClose,
+      detailData = _ref2.detailData,
+      _ref2$config = _ref2.config,
+      _ref2$config$list = _ref2$config.list,
+      list = _ref2$config$list === void 0 ? [] : _ref2$config$list,
+      _ref2$config$width = _ref2$config.width,
+      width = _ref2$config$width === void 0 ? 600 : _ref2$config$width,
+      _ref2$title = _ref2.title,
+      title = _ref2$title === void 0 ? "详情" : _ref2$title;
   return external_react_default.a.createElement(external_antd_["Drawer"], {
-    title: "\u8BE6\u60C5",
+    title: title,
     visible: visible,
     onClose: onClose,
-    width: 600
-  }, list.map(function (_ref2) {
-    var label = _ref2.label,
-        field = _ref2.field,
-        type = _ref2.type;
+    width: width
+  }, list.map(function (_ref3) {
+    var label = _ref3.label,
+        field = _ref3.field,
+        type = _ref3.type,
+        render = _ref3.render,
+        other = objectWithoutProperties_default()(_ref3, ["label", "field", "type", "render"]);
+
     return external_react_default.a.createElement("div", {
       key: label + field,
       className: "detail-item"
     }, external_react_default.a.createElement("span", {
       className: "detail-lable"
-    }, label), getValueComponent(detailData, type, field));
+    }, label), getValueComponent(DetailModal_objectSpread({
+      detailData: detailData,
+      type: type,
+      field: field,
+      render: render
+    }, other)));
   }));
 }
 
@@ -1193,8 +1251,10 @@ function (_React$Component) {
       detailData: {}
     };
 
-    _this.updateConfig = function (data) {
-      _this.renderConfig(_this.props.config(data));
+    _this.updateConfig = function () {
+      var _this$props;
+
+      _this.renderConfig((_this$props = _this.props).config.apply(_this$props, arguments));
 
       _this.forceUpdate();
     };
@@ -1229,7 +1289,8 @@ function (_React$Component) {
           tableLoading: false,
           currentPage: page // 放在此处更新 page ，减少页面渲染次数
 
-        });
+        }); // 每次table数据返回，调用用户声明的此函数
+
 
         _this.props.tableReturn({
           data: data,
@@ -1290,9 +1351,9 @@ function (_React$Component) {
     };
 
     _this.delete = function (data) {
-      var _this$props = _this.props,
-          deleteRecordFn = _this$props.tableConfig.deleteRecordFn,
-          extraDeleteProps = _this$props.extraDeleteProps;
+      var _this$props2 = _this.props,
+          deleteRecordFn = _this$props2.tableConfig.deleteRecordFn,
+          extraDeleteProps = _this$props2.extraDeleteProps;
       var confirmTitleField = data.confirmTitleField;
 
       var me = assertThisInitialized_default()(_this);
@@ -1350,24 +1411,28 @@ function (_React$Component) {
       }
     };
 
-    var _resultConfig;
+    var _resultConfig; // config 是函数类型，就调用函数，获取返回值
+
 
     if (Object.prototype.toString.call(_this.props.config) === "[object Function]") {
       _resultConfig = _this.props.config();
     } else {
+      // 不是函数，直接取值
       _resultConfig = _this.props.config;
     }
 
     _this.renderConfig(_resultConfig);
 
     return _this;
-  }
+  } // 从 config提取各模块所需配置数据
+
 
   createClass_default()(ConfigComponent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.refreshTable();
-    }
+    } // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
+
   }, {
     key: "render",
     value: function render() {
@@ -1376,10 +1441,10 @@ function (_React$Component) {
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
           detailData = _this$state.detailData;
-      var _this$props2 = this.props,
-          optionConfig = _this$props2.optionConfig,
-          tableColumnsProps = _this$props2.tableColumnsProps,
-          searchFormConfig = _this$props2.searchFormConfig;
+      var _this$props3 = this.props,
+          optionConfig = _this$props3.optionConfig,
+          tableColumnsProps = _this$props3.tableColumnsProps,
+          searchFormConfig = _this$props3.searchFormConfig;
       return external_react_default.a.createElement(external_react_default.a.Fragment, null, this.searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
         searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
@@ -1464,11 +1529,11 @@ function (_React$Component) {
 
     classCallCheck_default()(this, RenderComponent);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
     }
 
-    _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(RenderComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = possibleConstructorReturn_default()(this, (_getPrototypeOf2 = getPrototypeOf_default()(RenderComponent)).call.apply(_getPrototypeOf2, [this].concat(_args)));
     _this.state = {
       isShowModal: false,
       // 添加和编辑的弹窗
@@ -1476,8 +1541,11 @@ function (_React$Component) {
       editData: {}
     };
 
-    _this.updateConfig = function (data) {
-      _this.tableComponent.updateConfig(data);
+    _this.updateConfig = function () {
+      var _this$tableComponent;
+
+      // args 数组形式
+      (_this$tableComponent = _this.tableComponent).updateConfig.apply(_this$tableComponent, arguments);
     };
 
     _this.actionEmit = function (type, data) {

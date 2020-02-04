@@ -16,17 +16,18 @@ class ConfigComponent extends React.Component {
     super(props);
 
     let resultConfig;
+    // config 是函数类型，就调用函数，获取返回值
     if (Object.prototype.toString.call(this.props.config) === "[object Function]") {
       resultConfig = this.props.config()
     } else {
+      // 不是函数，直接取值
       resultConfig = this.props.config;
     }
     this.renderConfig(resultConfig)
   }
-
+  // 从 config提取各模块所需配置数据
   renderConfig = (resultConfig) => {
     const { search = [], action = [], table, detail } = resultConfig;
-
     this.searchConfig = search.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
     this.tableConfig = table;
@@ -46,9 +47,9 @@ class ConfigComponent extends React.Component {
   componentDidMount () {
     this.refreshTable();
   }
-
-  updateConfig = (data) => {
-    this.renderConfig(this.props.config(data));
+  // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
+  updateConfig = (...args) => {
+    this.renderConfig(this.props.config(...args));
     this.forceUpdate();
   }
 
@@ -67,7 +68,8 @@ class ConfigComponent extends React.Component {
         total,
         tableLoading: false,
         currentPage: page, // 放在此处更新 page ，减少页面渲染次数
-      })
+      });
+      // 每次table数据返回，调用用户声明的此函数
       this.props.tableReturn({
         data, 
         total
