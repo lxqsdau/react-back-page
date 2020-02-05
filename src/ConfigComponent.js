@@ -220,7 +220,7 @@ ConfigComponent.defaultProps = {
   onReset: noop,
   actionEmit: noop,
   extraFetchProps: {}, // 需要额外给表格请求的字段
-  optionConfig: {},
+  optionConfig: {}, // 获取option list数据 拿配置的optionField作为属性 optionConfig:{[optionField]: []}
   searchFormConfig: { // 搜索表单设置 展开
     foldtThreshold: 3, // 展开阈值
   },

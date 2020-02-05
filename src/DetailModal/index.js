@@ -1,29 +1,7 @@
 import React from 'react';
 import { Drawer, Table } from 'antd';
 import "./index.scss";
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+
 // detailData record
 function getValueComponent ({ detailData, type, field, render, ...other }) {
   switch (type) {
@@ -32,7 +10,7 @@ function getValueComponent ({ detailData, type, field, render, ...other }) {
     case "img":
       return <span><img style={{ maxWidth: "100%" }} src={detailData[field]} alt="" /></span>
     case "table":
-      return render ? render({ text: detailData[field], record: detailData }) : <Table dataSource={data} {...other} />
+      return render ? render({ text: detailData[field], record: detailData }) : <Table dataSource={detailData[field]} {...other} />
   }
 }
 

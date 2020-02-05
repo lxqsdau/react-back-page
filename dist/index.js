@@ -1080,26 +1080,7 @@ function DetailModal_objectSpread(target) { for (var i = 1; i < arguments.length
 
 
 
-
-var DetailModal_data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-  tags: ['nice', 'developer']
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-  tags: ['loser']
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-  tags: ['cool', 'teacher']
-}]; // detailData record
+ // detailData record
 
 function getValueComponent(_ref) {
   var detailData = _ref.detailData,
@@ -1131,7 +1112,7 @@ function getValueComponent(_ref) {
         text: detailData[field],
         record: detailData
       }) : external_react_default.a.createElement(external_antd_["Table"], extends_default()({
-        dataSource: DetailModal_data
+        dataSource: detailData[field]
       }, other));
   }
 }
@@ -1496,6 +1477,7 @@ ConfigComponent_ConfigComponent.defaultProps = {
   extraFetchProps: {},
   // 需要额外给表格请求的字段
   optionConfig: {},
+  // 获取option list数据 拿配置的optionField作为属性 optionConfig:{[optionField]: []}
   searchFormConfig: {
     // 搜索表单设置 展开
     foldtThreshold: 3 // 展开阈值
