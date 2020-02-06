@@ -45,7 +45,10 @@ class ConfigComponent extends React.Component {
   }
 
   componentDidMount () {
-    this.refreshTable();
+    const searchValue = this.getSearchValue();
+    this.getTableData({
+      searchValue
+    });
   }
   // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
   updateConfig = (...args) => {

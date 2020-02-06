@@ -11,7 +11,7 @@ const config = function (data) {
           props: {
             name: "env",
             label: "环境",
-            defaultValue: "1",
+            defaultValue: "3",
             placeholder: "请选择环境",
             option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
           }
@@ -99,22 +99,24 @@ const config = function (data) {
   return {
     search: [
       {
-        type: "input",
+        type: "select",
         props: {
-          name: "name",
-          label: "搜索",
-          placeholder: "请输入分类名",
+          name: "env",
+          label: "环境",
+          placeholder: "请选择环境",
+          defaultValue: "1",
+          option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
         }
       },
-      // {
-      //   type: "select",
-      //   props: {
-      //     name: "select",
-      //     label: "搜索",
-      //     placeholder: "请输入分类名",
-      //     option: []
-      //   }
-      // },
+      {
+        type: "select",
+        props: {
+          name: "select",
+          label: "搜索",
+          placeholder: "请输入分类名",
+          option: []
+        }
+      },
       {
         type: "datePicker",
         props: {

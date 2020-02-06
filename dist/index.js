@@ -1421,7 +1421,10 @@ function (_React$Component) {
   createClass_default()(ConfigComponent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.refreshTable();
+      var searchValue = this.getSearchValue();
+      this.getTableData({
+        searchValue: searchValue
+      });
     } // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
 
   }, {
