@@ -1133,12 +1133,22 @@ function DetailModal_DetailModal(_ref2) {
     visible: visible,
     onClose: onClose,
     width: width
-  }, list.map(function (_ref3) {
-    var label = _ref3.label,
-        field = _ref3.field,
-        type = _ref3.type,
-        render = _ref3.render,
-        other = objectWithoutProperties_default()(_ref3, ["label", "field", "type", "render"]);
+  }, list.filter(function (_ref3) {
+    var _ref3$isShow = _ref3.isShow,
+        isShow = _ref3$isShow === void 0 ? function () {
+      return true;
+    } : _ref3$isShow,
+        field = _ref3.field;
+    return isShow({
+      text: detailData[field],
+      record: detailData
+    });
+  }).map(function (_ref4) {
+    var label = _ref4.label,
+        field = _ref4.field,
+        type = _ref4.type,
+        render = _ref4.render,
+        other = objectWithoutProperties_default()(_ref4, ["label", "field", "type", "render"]);
 
     return external_react_default.a.createElement("div", {
       key: label + field,

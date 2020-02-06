@@ -17,7 +17,15 @@ function actionMenu ({ arr, record, text, tableColumnsProps, emit }) {
   </Menu>
 }
 
-function TableComponent ({ tableColumnsProps, emit, config: { actionColumns = [], actionProps: { max: actionMax = 4, moreText = "更多", ...tableActionProps } = {}, columns, pageSize = 10, ...tableProps } }) {
+function TableComponent ({ tableColumnsProps, emit,
+  config: {
+    actionColumns = [],
+    actionProps: { max: actionMax = 4, moreText = "更多", ...tableActionProps } = {},
+    columns,
+    pageSize = 10,
+    ...tableProps
+  }
+}) {
   // isShow 函数 过滤掉不显示action
   let actionColumnsFilter = record => actionColumns.filter(({ isShow = () => true, title }) => isShow({ text: title, record, tableColumnsProps }))
 

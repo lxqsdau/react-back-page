@@ -23,7 +23,8 @@ function DetailModal ({ visible, onClose, detailData, config: { list = [], width
       width={width}
     >
       {
-        list.map(({ label, field, type, render, ...other }) => <div key={label + field} className="detail-item">
+        list.filter(({ isShow = () => true, field }) => isShow({ text: detailData[field], record: detailData }))
+        .map(({ label, field, type, render, ...other }) => <div key={label + field} className="detail-item">
           <span className="detail-lable">{label}</span>
           {getValueComponent({ detailData, type, field, render, ...other })}
         </div>)
