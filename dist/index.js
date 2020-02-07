@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__6__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -108,81 +108,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(13);
-
-var assertThisInitialized = __webpack_require__(11);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(14);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var objectWithoutPropertiesLoose = __webpack_require__(15);
+var objectWithoutPropertiesLoose = __webpack_require__(13);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -204,6 +132,78 @@ function _objectWithoutProperties(source, excluded) {
 }
 
 module.exports = _objectWithoutProperties;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(14);
+
+var assertThisInitialized = __webpack_require__(11);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(15);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
 
 /***/ }),
 /* 8 */
@@ -306,6 +306,27 @@ module.exports = _toConsumableArray;
 /* 13 */
 /***/ (function(module, exports) {
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -325,7 +346,7 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -338,27 +359,6 @@ function _setPrototypeOf(o, p) {
 }
 
 module.exports = _setPrototypeOf;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
 /* 16 */
@@ -403,12 +403,16 @@ module.exports = _nonIterableSpread;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
+// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(2);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/defineProperty.js
 var defineProperty = __webpack_require__(10);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(2);
+var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/createClass.js
@@ -416,11 +420,11 @@ var createClass = __webpack_require__(8);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(3);
+var possibleConstructorReturn = __webpack_require__(4);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(4);
+var getPrototypeOf = __webpack_require__(5);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/assertThisInitialized.js
@@ -428,7 +432,7 @@ var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(5);
+var inherits = __webpack_require__(6);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
 // EXTERNAL MODULE: external "react"
@@ -532,10 +536,6 @@ function (_React$Component) {
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/extends.js
 var helpers_extends = __webpack_require__(9);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
-
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(7);
-var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // CONCATENATED MODULE: ./InputComponent/index.js
 
@@ -1166,10 +1166,11 @@ function DetailModal_DetailModal(_ref2) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal_DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(6);
+var external_prop_types_ = __webpack_require__(7);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
+
 
 
 
@@ -1251,11 +1252,13 @@ function (_React$Component) {
     };
 
     _this.getTableData = function () {
-      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref3$searchValue = _ref3.searchValue,
-          searchValue = _ref3$searchValue === void 0 ? {} : _ref3$searchValue,
-          _ref3$page = _ref3.page,
-          page = _ref3$page === void 0 ? 1 : _ref3$page;
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var _ref3$page = _ref3.page,
+          page = _ref3$page === void 0 ? 1 : _ref3$page,
+          other = objectWithoutProperties_default()(_ref3, ["page"]);
+
+      var searchValue = _this.getSearchValue();
 
       var fetchFn = _this.props.tableConfig.fetchFn;
       if (!fetchFn) return;
@@ -1270,7 +1273,7 @@ function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread({
         page: page
-      }, searchValue, {}, _this.props.extraFetchProps)).then(function (_ref4) {
+      }, searchValue, {}, _this.props.extraFetchProps, {}, other)).then(function (_ref4) {
         var data = _ref4.data,
             total = _ref4.total;
 
@@ -1291,17 +1294,16 @@ function (_React$Component) {
     };
 
     _this.refreshTable = function () {
-      _this.getTableData();
+      var _this2;
+
+      (_this2 = _this).getTableData.apply(_this2, arguments);
     };
 
     _this.refreshCurrentPageTable = function () {
-      var searchValue = _this.getSearchValue();
-
       var page = _this.state.currentPage;
 
       _this.getTableData({
-        page: page,
-        searchValue: searchValue
+        page: page
       });
     };
 
@@ -1316,27 +1318,28 @@ function (_React$Component) {
     };
 
     _this.search = function (searchValue) {
-      _this.props.onSearch(searchValue);
+      _this.props.onSearch(searchValue); // 执行用户调用的 onSearch 事件
+
 
       _this.getTableData({
-        searchValue: searchValue,
         page: 1
       });
     };
 
     _this.reset = function () {
-      _this.refreshTable();
+      var onReset = _this.props.onReset;
 
-      _this.props.onReset();
+      if (onReset) {
+        onReset();
+      } else {
+        _this.refreshTable();
+      }
     };
 
     _this.tablePageChange = function (_ref5) {
       var page = _ref5.current;
 
-      var searchValue = _this.getSearchValue();
-
       _this.getTableData({
-        searchValue: searchValue,
         page: page
       });
     };
@@ -1357,8 +1360,7 @@ function (_React$Component) {
             record: data,
             extraDeleteProps: extraDeleteProps
           }).then(function () {
-            external_antd_["message"].success("删除成功");
-            var searchValue = me.getSearchValue(); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
+            external_antd_["message"].success("删除成功"); // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
 
             var _me$state = me.state,
                 currentPage = _me$state.currentPage,
@@ -1367,8 +1369,7 @@ function (_React$Component) {
 
             if (isUpdatePrePageData) {
               me.getTableData({
-                page: currentPage - 1,
-                searchValue: searchValue
+                page: currentPage - 1
               });
             } else {
               me.refreshCurrentPageTable();
@@ -1421,16 +1422,13 @@ function (_React$Component) {
   createClass_default()(ConfigComponent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var searchValue = this.getSearchValue();
-      this.getTableData({
-        searchValue: searchValue
-      });
+      this.refreshTable();
     } // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
 
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
@@ -1443,7 +1441,7 @@ function (_React$Component) {
         searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
-          return _this2.form = form;
+          return _this3.form = form;
         },
         emit: this.handleEmit,
         config: this.searchConfig
@@ -1485,7 +1483,7 @@ ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
   onSearch: noop,
-  onReset: noop,
+  // onReset: noop,
   actionEmit: noop,
   extraFetchProps: {},
   // 需要额外给表格请求的字段
@@ -1580,6 +1578,12 @@ function (_React$Component) {
         // 新增刷新第一页
         _this.tableComponent.refreshTable();
       }
+    };
+
+    _this.refreshTable = function () {
+      var _this$tableComponent2;
+
+      (_this$tableComponent2 = _this.tableComponent).refreshTable.apply(_this$tableComponent2, arguments);
     };
 
     return _this;

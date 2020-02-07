@@ -11,7 +11,6 @@ const config = function (data) {
           props: {
             name: "env",
             label: "环境",
-            defaultValue: "3",
             placeholder: "请选择环境",
             option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
           }
@@ -257,50 +256,12 @@ const config = function (data) {
         }
       ]
     },
-    detail: {
-      // type: "detail",
-      // width: 1000,
-      list: [
-        {
-          label: "备注",
-          field: "comment",
-          type: "text"
-        },
-        {
-          label: "描述",
-          field: "intro",
-          type: "text"
-        },
-        {
-          label: "调用方式",
-          field: "method",
-          type: "text"
-        },
-        {
-          label: "常量",
-          type: "table",
-          field: "a",
-          columns: [
-            {
-              title: 'Name',
-              dataIndex: 'name',
-              key: 'name',
-            },
-            {
-              title: 'Age',
-              dataIndex: 'age',
-              key: 'age',
-            },
-          ],
-          pagination: false
-        }
-      ]
-    }
   }
 }
 
 
-function getListApi () {
+function getListApi (data) {
+  console.log(data, "data")
   return new Promise((resolve) => {
     resolve({
       data: [{

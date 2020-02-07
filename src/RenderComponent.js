@@ -47,6 +47,9 @@ class RenderComponent extends React.Component {
     }
   }
 
+  refreshTable = (...args) => {
+    this.tableComponent.refreshTable(...args);
+  }
 }
 
 export default RenderComponent;

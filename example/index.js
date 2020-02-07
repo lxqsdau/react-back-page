@@ -9,9 +9,17 @@ import "antd/dist/antd.css";
 class App extends RenderComponent {
   test = () => {
     this.updateConfig(1)
+    this.refreshTable({
+      env: 3
+    })
   }
 
   tableReturn = (data) => {
+  }
+
+  onReset = () => {
+    console.log("23")
+    this.updateConfig(1)
   }
 
   render () {
@@ -28,6 +36,7 @@ class App extends RenderComponent {
             foldtThreshold: 20
           }}
           tableReturn={this.tableReturn}
+          onReset={this.onReset}
         />
       </>
     )

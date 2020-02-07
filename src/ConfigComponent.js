@@ -45,10 +45,7 @@ class ConfigComponent extends React.Component {
   }
 
   componentDidMount () {
-    const searchValue = this.getSearchValue();
-    this.getTableData({
-      searchValue
-    });
+    this.refreshTable()
   }
   // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
   updateConfig = (...args) => {
@@ -56,7 +53,8 @@ class ConfigComponent extends React.Component {
     this.forceUpdate();
   }
 
-  getTableData = ({ searchValue = {}, page = 1 } = {}) => {
+  getTableData = ({ page = 1, ...other } = {}) => {
+    const searchValue = this.getSearchValue();
     const { tableConfig: { fetchFn } } = this.props;
     if (!fetchFn) return;
     const { tableLoading } = this.state;
@@ -65,7 +63,7 @@ class ConfigComponent extends React.Component {
         tableLoading: true
       });
     }
-    fetchFn({ page, ...searchValue, ...this.props.extraFetchProps }).then(({ data, total }) => {
+    fetchFn({ page, ...searchValue, ...this.props.extraFetchProps, ...other }).then(({ data, total }) => {
       this.setState({
         tableDataList: data,
         total,
@@ -74,7 +72,7 @@ class ConfigComponent extends React.Component {
       });
       // 每次table数据返回，调用用户声明的此函数
       this.props.tableReturn({
-        data, 
+        data,
         total
       })
     });
@@ -83,15 +81,14 @@ class ConfigComponent extends React.Component {
 
   // 重新刷新表格数据。 重置和对外新增用
   // 新增刷新第一页
-  refreshTable = () => {
-    this.getTableData();
+  refreshTable = (...args) => {
+    this.getTableData(...args);
   }
 
   // 刷新当前页 对外 编辑和删除用
   refreshCurrentPageTable = () => {
-    const searchValue = this.getSearchValue()
     const { currentPage: page } = this.state;
-    this.getTableData({ page, searchValue })
+    this.getTableData({ page })
   }
 
   getSearchValue = () => {
@@ -102,26 +99,25 @@ class ConfigComponent extends React.Component {
     return searchValue
   }
 
-
-
   search = searchValue => {
-    this.props.onSearch(searchValue);
+    this.props.onSearch(searchValue); // 执行用户调用的 onSearch 事件
     this.getTableData({
-      searchValue,
       page: 1
     })
   }
 
   reset = () => {
-    this.refreshTable();
-    this.props.onReset()
+    const { onReset } = this.props;
+    if (onReset) {
+      onReset();
+    } else {
+      this.refreshTable();
+    }
   }
 
 
   tablePageChange = ({ current: page }) => {
-    const searchValue = this.getSearchValue()
     this.getTableData({
-      searchValue,
       page
     })
   }
@@ -136,12 +132,11 @@ class ConfigComponent extends React.Component {
       onOk () {
         deleteRecordFn({ record: data, extraDeleteProps }).then(() => {
           message.success("删除成功");
-          const searchValue = me.getSearchValue()
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
           const { currentPage, tableDataList } = me.state;
           const isUpdatePrePageData = currentPage !== 1 && tableDataList.length === 1;
           if (isUpdatePrePageData) {
-            me.getTableData({ page: currentPage - 1, searchValue });
+            me.getTableData({ page: currentPage - 1 });
           } else {
             me.refreshCurrentPageTable();
           }
@@ -204,7 +199,7 @@ class ConfigComponent extends React.Component {
 }
 
 ConfigComponent.propTypes = {
-  config: PropTypes.oneOfType([PropTypes.object, PropTypes.func]) ,
+  config: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   tableConfig: PropTypes.object,
   onSearch: PropTypes.func,
   onReset: PropTypes.func,
@@ -220,7 +215,7 @@ ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
   onSearch: noop,
-  onReset: noop,
+  // onReset: noop,
   actionEmit: noop,
   extraFetchProps: {}, // 需要额外给表格请求的字段
   optionConfig: {}, // 获取option list数据 拿配置的optionField作为属性 optionConfig:{[optionField]: []}
