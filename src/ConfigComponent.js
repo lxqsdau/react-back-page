@@ -14,7 +14,6 @@ const { confirm } = Modal;
 class ConfigComponent extends React.Component {
   constructor(props) {
     super(props);
-
     let resultConfig;
     // config 是函数类型，就调用函数，获取返回值
     if (Object.prototype.toString.call(this.props.config) === "[object Function]") {
@@ -23,34 +22,63 @@ class ConfigComponent extends React.Component {
       // 不是函数，直接取值
       resultConfig = this.props.config;
     }
-    this.renderConfig(resultConfig)
-  }
-  // 从 config提取各模块所需配置数据
-  renderConfig = (resultConfig) => {
     const { search = [], action = [], table, detail } = resultConfig;
-    this.searchConfig = search.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
-    this.actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
-    this.tableConfig = table;
-    this.detail = detail
-  }
+    this.state = {
+      searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+      actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+      tableConfig: table,
+      detailConfig: detail,
 
-  state = {
-    tableLoading: true,
-    total: 0,
-    currentPage: 1,
-    tableDataList: [],
+      tableLoading: true,
+      total: 0,
+      currentPage: 1,
+      tableDataList: [],
 
-    isShowDetailModal: false,
-    detailData: {}
+      isShowDetailModal: false,
+      detailData: {}
+    }
   }
 
   componentDidMount () {
     this.refreshTable()
   }
+
   // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
   updateConfig = (...args) => {
-    this.renderConfig(this.props.config(...args));
-    this.forceUpdate();
+    return new Promise((resolve) => {
+      const { search = [], action = [], table, detail } = this.props.config(...args)
+      this.setState({
+        searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+        actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+        tableConfig: table,
+        detailConfig: detail,
+      }, () => resolve())
+    })
+  }
+
+  // 更新searchConfig
+  updateSearchConfig = (search = []) => {
+    return new Promise((resolve) => {
+      this.setState({
+        searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+      }, () => resolve())
+    });
+  }
+  // 更新actionConfig
+  updateActionConfig = (action = []) => {
+    return new Promise((resolve) => {
+      this.setState({
+        actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+      }, () => resolve())
+    });
+  }
+  // 更新tableConfig
+  updateTableConfig = (table) => {
+    return new Promise((resolve) => {
+      this.setState({
+        tableConfig: table
+      }, () => resolve())
+    });
   }
 
   getTableData = ({ page = 1, ...other } = {}) => {
@@ -168,30 +196,31 @@ class ConfigComponent extends React.Component {
   }
 
   render () {
-    const { isShowDetailModal, detailData } = this.state;
+    const { isShowDetailModal, detailData, 
+      searchConfig, actionConfig,  tableConfig, detailConfig } = this.state;
     const { optionConfig, tableColumnsProps, searchFormConfig } = this.props;
     return (
       <>
         {
-          this.searchConfig.length > 0 && <Search
+          searchConfig.length > 0 && <Search
             searchFormConfig={searchFormConfig}
             optionConfig={optionConfig}
             wrappedComponentRef={form => this.form = form}
             emit={this.handleEmit}
-            config={this.searchConfig}
+            config={searchConfig}
           />
         }
         {
-          this.actionConfig.length > 0 && <Action emit={this.handleEmit} config={this.actionConfig} />
+          actionConfig.length > 0 && <Action emit={this.handleEmit} config={actionConfig} />
         }
 
         {
-          this.tableConfig && <ProviderState value={this.state}>
-            <TableComponent emit={this.handleEmit} config={this.tableConfig} tableColumnsProps={tableColumnsProps} />
+          tableConfig && <ProviderState value={this.state}>
+            <TableComponent emit={this.handleEmit} config={tableConfig} tableColumnsProps={tableColumnsProps} />
           </ProviderState>
         }
         {
-          this.detail && <DetailModal visible={isShowDetailModal} onClose={this.closeDetailModal} config={this.detail} detailData={detailData} />
+          detailConfig && <DetailModal visible={isShowDetailModal} onClose={this.closeDetailModal} config={detailConfig} detailData={detailData} />
         }
       </>
     )

@@ -4,7 +4,7 @@ import "./index.scss";
 
 function Action ({ config, emit }) {
   return (
-    <div className="action-box">
+    <div className="react-back-page-action-box">
       {
         config.map(({ actionFn, title, type }, i) => <Button className="action-btn" key={i} onClick={() => emit(actionFn)} type={type}>{title}</Button>)
       }

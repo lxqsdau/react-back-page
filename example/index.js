@@ -8,9 +8,27 @@ import "antd/dist/antd.css";
 
 class App extends RenderComponent {
   test = () => {
-    this.updateConfig(1)
-    this.refreshTable({
-      env: 3
+    this.updateSearchConfig([
+      {
+        type: "select",
+        props: {
+          name: "env",
+          label: "环境",
+          placeholder: "请选择环境",
+          defaultValue: "3",
+          option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
+        }
+      },
+      {
+        type: "input",
+        props: {
+          name: "name",
+          label: "搜索",
+          placeholder: "应用名称",
+        }
+      }
+    ]).then(() => {
+      this.refreshTable()
     })
   }
 

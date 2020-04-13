@@ -9,7 +9,16 @@ class RenderComponent extends React.Component {
   }
   updateConfig = (...args) => {
     // args 数组形式
-    this.tableComponent.updateConfig(...args)
+    return this.tableComponent.updateConfig(...args)
+  }
+  updateSearchConfig = (search) => {
+    return this.tableComponent.updateSearchConfig(search)
+  }
+  updateActionConfig = (action) => {
+    return this.tableComponent.updateActionConfig(action)
+  }
+  updateTableConfig = (table) => {
+    return this.tableComponent.updateTableConfig(table)
   }
 
   actionEmit = (type, data) => {

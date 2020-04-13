@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("antd"), require("prop-types")) : factory(root["react"], root["antd"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__7__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -108,6 +108,72 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(14);
+
+var assertThisInitialized = __webpack_require__(11);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(15);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var objectWithoutPropertiesLoose = __webpack_require__(13);
@@ -134,79 +200,7 @@ function _objectWithoutProperties(source, excluded) {
 module.exports = _objectWithoutProperties;
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(14);
-
-var assertThisInitialized = __webpack_require__(11);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(15);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
 /* 7 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__7__;
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -228,7 +222,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 function _extends() {
@@ -250,6 +244,12 @@ function _extends() {
 }
 
 module.exports = _extends;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__9__;
 
 /***/ }),
 /* 10 */
@@ -404,7 +404,7 @@ module.exports = _nonIterableSpread;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(2);
+var objectWithoutProperties = __webpack_require__(6);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/defineProperty.js
@@ -412,19 +412,19 @@ var defineProperty = __webpack_require__(10);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(3);
+var classCallCheck = __webpack_require__(2);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(8);
+var createClass = __webpack_require__(7);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(4);
+var possibleConstructorReturn = __webpack_require__(3);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(5);
+var getPrototypeOf = __webpack_require__(4);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/assertThisInitialized.js
@@ -432,7 +432,7 @@ var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(6);
+var inherits = __webpack_require__(5);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
 // EXTERNAL MODULE: external "react"
@@ -534,7 +534,7 @@ function (_React$Component) {
 
 /* harmony default export */ var SelectComponent_0 = (SelectComponent_SelectComponent);
 // EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.8.4@@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(9);
+var helpers_extends = __webpack_require__(8);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // CONCATENATED MODULE: ./InputComponent/index.js
@@ -647,7 +647,43 @@ function (_React$Component) {
 }(external_react_default.a.Component);
 
 /* harmony default export */ var RangePickerComponent_0 = (RangePickerComponent_RangePickerComponent);
+// CONCATENATED MODULE: ./MonthPickerComponent/index.js
+
+
+
+
+
+
+
+
+var MonthPicker = external_antd_["DatePicker"].MonthPicker;
+
+var MonthPickerComponent_MonthPickerComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  inherits_default()(MonthPickerComponent, _React$Component);
+
+  function MonthPickerComponent() {
+    classCallCheck_default()(this, MonthPickerComponent);
+
+    return possibleConstructorReturn_default()(this, getPrototypeOf_default()(MonthPickerComponent).apply(this, arguments));
+  }
+
+  createClass_default()(MonthPickerComponent, [{
+    key: "render",
+    value: function render() {
+      return external_react_default.a.createElement(MonthPicker, extends_default()({
+        className: "back-page-search-date-picker"
+      }, this.props));
+    }
+  }]);
+
+  return MonthPickerComponent;
+}(external_react_default.a.Component);
+
+/* harmony default export */ var MonthPickerComponent_0 = (MonthPickerComponent_MonthPickerComponent);
 // CONCATENATED MODULE: ./getComponent.js
+
 
 
 
@@ -670,6 +706,9 @@ function getComponent(conponentStr) {
 
     case "rangePicker":
       return RangePickerComponent_0;
+
+    case "monthPicker":
+      return MonthPickerComponent_0;
   }
 }
 
@@ -762,7 +801,7 @@ function (_PureComponent) {
       }
 
       return external_react_default.a.createElement("div", {
-        className: "search-box"
+        className: "react-back-page-search-box"
       }, external_react_default.a.createElement(external_antd_["Form"], {
         className: "search-form",
         layout: "inline"
@@ -827,7 +866,7 @@ function Action_Action(_ref) {
   var config = _ref.config,
       emit = _ref.emit;
   return external_react_default.a.createElement("div", {
-    className: "action-box"
+    className: "react-back-page-action-box"
   }, config.map(function (_ref2, i) {
     var actionFn = _ref2.actionFn,
         title = _ref2.title,
@@ -872,6 +911,7 @@ function getActionEle(_ref) {
       title = _ref.title,
       text = _ref.text,
       render = _ref.render,
+      index = _ref.index,
       actionFn = _ref.actionFn,
       tableColumnsProps = _ref.tableColumnsProps,
       extraConfigField = _ref.extraConfigField,
@@ -886,6 +926,7 @@ function getActionEle(_ref) {
   }, render({
     text: text,
     record: record,
+    index: index,
     tableColumnsProps: tableColumnsProps,
     emit: emit
   })) : external_react_default.a.createElement("span", {
@@ -900,9 +941,12 @@ function actionMenu(_ref2) {
   var arr = _ref2.arr,
       record = _ref2.record,
       text = _ref2.text,
+      index = _ref2.index,
       tableColumnsProps = _ref2.tableColumnsProps,
       emit = _ref2.emit;
-  return external_react_default.a.createElement(external_antd_["Menu"], null, arr.map(function (_ref3) {
+  return external_react_default.a.createElement(external_antd_["Menu"], {
+    className: "react-table-page-table-more-action"
+  }, arr.map(function (_ref3) {
     var title = _ref3.title,
         key = _ref3.key,
         render = _ref3.render,
@@ -916,6 +960,7 @@ function actionMenu(_ref2) {
       emit: emit,
       record: record,
       title: title,
+      index: index,
       text: text,
       render: render,
       actionFn: actionFn,
@@ -963,10 +1008,11 @@ function TableComponent_TableComponent(_ref4) {
 
   columns = [].concat(toConsumableArray_default()(columns.map(function (item) {
     if (item.render) return _objectSpread({}, item, {
-      render: function render(text, record) {
+      render: function render(text, record, index) {
         return item.render({
           text: text,
           record: record,
+          index: index,
           emit: emit,
           tableColumnsProps: tableColumnsProps
         });
@@ -976,7 +1022,7 @@ function TableComponent_TableComponent(_ref4) {
   })), toConsumableArray_default()(actionColumns.length > 0 ? [_objectSpread({
     title: '操作',
     key: 'action',
-    render: function render(text, record) {
+    render: function render(text, record, index) {
       var calactionColumns = actionColumnsFilter(record);
       var len = calactionColumns.length;
       var normalColumns = calactionColumns.slice(0, actionMax - 1);
@@ -996,6 +1042,7 @@ function TableComponent_TableComponent(_ref4) {
           record: record,
           title: title,
           text: text,
+          index: index,
           render: render,
           actionFn: actionFn,
           tableColumnsProps: tableColumnsProps,
@@ -1020,6 +1067,7 @@ function TableComponent_TableComponent(_ref4) {
           emit: emit,
           record: record,
           title: title,
+          index: index,
           text: text,
           render: render,
           actionFn: actionFn,
@@ -1033,7 +1081,8 @@ function TableComponent_TableComponent(_ref4) {
           record: record,
           text: text,
           tableColumnsProps: tableColumnsProps,
-          emit: emit
+          emit: emit,
+          index: index
         })
       }, external_react_default.a.createElement("span", {
         className: "table-action"
@@ -1046,6 +1095,7 @@ function TableComponent_TableComponent(_ref4) {
   }, tableActionProps)] : []));
   return external_react_default.a.createElement(ConsumerState, null, function (value) {
     return external_react_default.a.createElement(external_antd_["Table"], extends_default()({
+      className: "react-back-page-table",
       onChange: function onChange(info) {
         return emit("tablePageChange", info);
       },
@@ -1124,10 +1174,10 @@ function DetailModal_DetailModal(_ref2) {
       _ref2$config = _ref2.config,
       _ref2$config$list = _ref2$config.list,
       list = _ref2$config$list === void 0 ? [] : _ref2$config$list,
+      _ref2$config$title = _ref2$config.title,
+      title = _ref2$config$title === void 0 ? "详情" : _ref2$config$title,
       _ref2$config$width = _ref2$config.width,
-      width = _ref2$config$width === void 0 ? 600 : _ref2$config$width,
-      _ref2$title = _ref2.title,
-      title = _ref2$title === void 0 ? "详情" : _ref2$title;
+      width = _ref2$config$width === void 0 ? 600 : _ref2$config$width;
   return external_react_default.a.createElement(external_antd_["Drawer"], {
     title: title,
     visible: visible,
@@ -1143,18 +1193,28 @@ function DetailModal_DetailModal(_ref2) {
       text: detailData[field],
       record: detailData
     });
-  }).map(function (_ref4) {
+  }).map(function (_ref4, i) {
     var label = _ref4.label,
         field = _ref4.field,
         type = _ref4.type,
         render = _ref4.render,
-        other = objectWithoutProperties_default()(_ref4, ["label", "field", "type", "render"]);
+        labelRender = _ref4.labelRender,
+        itemRender = _ref4.itemRender,
+        other = objectWithoutProperties_default()(_ref4, ["label", "field", "type", "render", "labelRender", "itemRender"]);
 
-    return external_react_default.a.createElement("div", {
+    return itemRender ? external_react_default.a.createElement("div", {
+      key: i
+    }, itemRender({
+      text: detailData[field],
+      record: detailData
+    })) : external_react_default.a.createElement("div", {
       key: label + field,
-      className: "detail-item"
-    }, external_react_default.a.createElement("span", {
-      className: "detail-lable"
+      className: "react-back-page-detail-item"
+    }, labelRender ? labelRender({
+      text: detailData[field],
+      record: detailData
+    }) : external_react_default.a.createElement("span", {
+      className: "detail-label"
     }, label), getValueComponent(DetailModal_objectSpread({
       detailData: detailData,
       type: type,
@@ -1166,7 +1226,7 @@ function DetailModal_DetailModal(_ref2) {
 
 /* harmony default export */ var DetailModal_0 = (DetailModal_DetailModal);
 // EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__(7);
+var external_prop_types_ = __webpack_require__(9);
 var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
 
 // CONCATENATED MODULE: ./ConfigComponent.js
@@ -1209,54 +1269,95 @@ function (_React$Component) {
 
     _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(ConfigComponent).call(this, _props));
 
-    _this.renderConfig = function (resultConfig) {
-      var _resultConfig$search = resultConfig.search,
-          search = _resultConfig$search === void 0 ? [] : _resultConfig$search,
-          _resultConfig$action = resultConfig.action,
-          action = _resultConfig$action === void 0 ? [] : _resultConfig$action,
-          table = resultConfig.table,
-          detail = resultConfig.detail;
-      _this.searchConfig = search.map(function (_ref) {
-        var type = _ref.type,
-            props = _ref.props;
-        return ConfigComponent_objectSpread({
-          Component: getComponent(type)
-        }, props);
-      });
-      _this.actionConfig = action.map(function (_ref2) {
-        var type = _ref2.type,
-            props = _ref2.props;
-        return ConfigComponent_objectSpread({
-          Component: getComponent(type)
-        }, props);
-      });
-      _this.tableConfig = table;
-      _this.detail = detail;
-    };
-
-    _this.state = {
-      tableLoading: true,
-      total: 0,
-      currentPage: 1,
-      tableDataList: [],
-      isShowDetailModal: false,
-      detailData: {}
-    };
-
     _this.updateConfig = function () {
-      var _this$props;
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
 
-      _this.renderConfig((_this$props = _this.props).config.apply(_this$props, arguments));
+      return new Promise(function (resolve) {
+        var _this$props;
 
-      _this.forceUpdate();
+        var _this$props$config = (_this$props = _this.props).config.apply(_this$props, args),
+            _this$props$config$se = _this$props$config.search,
+            search = _this$props$config$se === void 0 ? [] : _this$props$config$se,
+            _this$props$config$ac = _this$props$config.action,
+            action = _this$props$config$ac === void 0 ? [] : _this$props$config$ac,
+            table = _this$props$config.table,
+            detail = _this$props$config.detail;
+
+        _this.setState({
+          searchConfig: search.map(function (_ref) {
+            var type = _ref.type,
+                props = _ref.props;
+            return ConfigComponent_objectSpread({
+              Component: getComponent(type)
+            }, props);
+          }),
+          actionConfig: action.map(function (_ref2) {
+            var type = _ref2.type,
+                props = _ref2.props;
+            return ConfigComponent_objectSpread({
+              Component: getComponent(type)
+            }, props);
+          }),
+          tableConfig: table,
+          detailConfig: detail
+        }, function () {
+          return resolve();
+        });
+      });
+    };
+
+    _this.updateSearchConfig = function () {
+      var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return new Promise(function (resolve) {
+        _this.setState({
+          searchConfig: search.map(function (_ref3) {
+            var type = _ref3.type,
+                props = _ref3.props;
+            return ConfigComponent_objectSpread({
+              Component: getComponent(type)
+            }, props);
+          })
+        }, function () {
+          return resolve();
+        });
+      });
+    };
+
+    _this.updateActionConfig = function () {
+      var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return new Promise(function (resolve) {
+        _this.setState({
+          actionConfig: action.map(function (_ref4) {
+            var type = _ref4.type,
+                props = _ref4.props;
+            return ConfigComponent_objectSpread({
+              Component: getComponent(type)
+            }, props);
+          })
+        }, function () {
+          return resolve();
+        });
+      });
+    };
+
+    _this.updateTableConfig = function (table) {
+      return new Promise(function (resolve) {
+        _this.setState({
+          tableConfig: table
+        }, function () {
+          return resolve();
+        });
+      });
     };
 
     _this.getTableData = function () {
-      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var _ref3$page = _ref3.page,
-          page = _ref3$page === void 0 ? 1 : _ref3$page,
-          other = objectWithoutProperties_default()(_ref3, ["page"]);
+      var _ref5$page = _ref5.page,
+          page = _ref5$page === void 0 ? 1 : _ref5$page,
+          other = objectWithoutProperties_default()(_ref5, ["page"]);
 
       var searchValue = _this.getSearchValue();
 
@@ -1273,9 +1374,9 @@ function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread({
         page: page
-      }, searchValue, {}, _this.props.extraFetchProps, {}, other)).then(function (_ref4) {
-        var data = _ref4.data,
-            total = _ref4.total;
+      }, searchValue, {}, _this.props.extraFetchProps, {}, other)).then(function (_ref6) {
+        var data = _ref6.data,
+            total = _ref6.total;
 
         _this.setState({
           tableDataList: data,
@@ -1336,8 +1437,8 @@ function (_React$Component) {
       }
     };
 
-    _this.tablePageChange = function (_ref5) {
-      var page = _ref5.current;
+    _this.tablePageChange = function (_ref7) {
+      var page = _ref7.current;
 
       _this.getTableData({
         page: page
@@ -1403,21 +1504,49 @@ function (_React$Component) {
       }
     };
 
-    var _resultConfig; // config 是函数类型，就调用函数，获取返回值
-
+    var resultConfig; // config 是函数类型，就调用函数，获取返回值
 
     if (Object.prototype.toString.call(_this.props.config) === "[object Function]") {
-      _resultConfig = _this.props.config();
+      resultConfig = _this.props.config();
     } else {
       // 不是函数，直接取值
-      _resultConfig = _this.props.config;
+      resultConfig = _this.props.config;
     }
 
-    _this.renderConfig(_resultConfig);
+    var _resultConfig = resultConfig,
+        _resultConfig$search = _resultConfig.search,
+        _search = _resultConfig$search === void 0 ? [] : _resultConfig$search,
+        _resultConfig$action = _resultConfig.action,
+        _action = _resultConfig$action === void 0 ? [] : _resultConfig$action,
+        _table = _resultConfig.table,
+        _detail = _resultConfig.detail;
 
+    _this.state = {
+      searchConfig: _search.map(function (_ref8) {
+        var type = _ref8.type,
+            props = _ref8.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      }),
+      actionConfig: _action.map(function (_ref9) {
+        var type = _ref9.type,
+            props = _ref9.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      }),
+      tableConfig: _table,
+      detailConfig: _detail,
+      tableLoading: true,
+      total: 0,
+      currentPage: 1,
+      tableDataList: [],
+      isShowDetailModal: false,
+      detailData: {}
+    };
     return _this;
-  } // 从 config提取各模块所需配置数据
-
+  }
 
   createClass_default()(ConfigComponent, [{
     key: "componentDidMount",
@@ -1432,32 +1561,36 @@ function (_React$Component) {
 
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
-          detailData = _this$state.detailData;
+          detailData = _this$state.detailData,
+          searchConfig = _this$state.searchConfig,
+          actionConfig = _this$state.actionConfig,
+          tableConfig = _this$state.tableConfig,
+          detailConfig = _this$state.detailConfig;
       var _this$props3 = this.props,
           optionConfig = _this$props3.optionConfig,
           tableColumnsProps = _this$props3.tableColumnsProps,
           searchFormConfig = _this$props3.searchFormConfig;
-      return external_react_default.a.createElement(external_react_default.a.Fragment, null, this.searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
+      return external_react_default.a.createElement(external_react_default.a.Fragment, null, searchConfig.length > 0 && external_react_default.a.createElement(Search_1, {
         searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
           return _this3.form = form;
         },
         emit: this.handleEmit,
-        config: this.searchConfig
-      }), this.actionConfig.length > 0 && external_react_default.a.createElement(Action_0, {
+        config: searchConfig
+      }), actionConfig.length > 0 && external_react_default.a.createElement(Action_0, {
         emit: this.handleEmit,
-        config: this.actionConfig
-      }), this.tableConfig && external_react_default.a.createElement(ProviderState, {
+        config: actionConfig
+      }), tableConfig && external_react_default.a.createElement(ProviderState, {
         value: this.state
       }, external_react_default.a.createElement(TableComponent_0, {
         emit: this.handleEmit,
-        config: this.tableConfig,
+        config: tableConfig,
         tableColumnsProps: tableColumnsProps
-      })), this.detail && external_react_default.a.createElement(DetailModal_0, {
+      })), detailConfig && external_react_default.a.createElement(DetailModal_0, {
         visible: isShowDetailModal,
         onClose: this.closeDetailModal,
-        config: this.detail,
+        config: detailConfig,
         detailData: detailData
       }));
     }
@@ -1538,7 +1671,19 @@ function (_React$Component) {
       var _this$tableComponent;
 
       // args 数组形式
-      (_this$tableComponent = _this.tableComponent).updateConfig.apply(_this$tableComponent, arguments);
+      return (_this$tableComponent = _this.tableComponent).updateConfig.apply(_this$tableComponent, arguments);
+    };
+
+    _this.updateSearchConfig = function (search) {
+      return _this.tableComponent.updateSearchConfig(search);
+    };
+
+    _this.updateActionConfig = function (action) {
+      return _this.tableComponent.updateActionConfig(action);
+    };
+
+    _this.updateTableConfig = function (table) {
+      return _this.tableComponent.updateTableConfig(table);
     };
 
     _this.actionEmit = function (type, data) {

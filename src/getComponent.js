@@ -3,6 +3,7 @@ import SelectComponent from "./SelectComponent";
 import InputComponent from "./InputComponent";
 import DatePickerComponent from "./DatePickerComponent";
 import RangePickerComponent from "./RangePickerComponent";
+import MonthPickerComponent from "./MonthPickerComponent";
 
 function getComponent (conponentStr) {
   switch (conponentStr) {
@@ -15,7 +16,9 @@ function getComponent (conponentStr) {
     case "datePicker":
       return DatePickerComponent
     case "rangePicker":
-      return RangePickerComponent
+      return RangePickerComponent;
+    case "monthPicker":
+      return MonthPickerComponent;
   }
 }
 

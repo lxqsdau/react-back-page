@@ -43,7 +43,7 @@ class Search extends PureComponent {
       showFormItem = config
     }
     return (
-      <div className="search-box">
+      <div className="react-back-page-search-box">
         <Form className="search-form" layout="inline">
           {
             showFormItem.map(({ Component, label, name, defaultValue, ...orther }, i) => <Form.Item className="search-item" key={i}>

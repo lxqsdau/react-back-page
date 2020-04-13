@@ -14,7 +14,7 @@ function getValueComponent ({ detailData, type, field, render, ...other }) {
   }
 }
 
-function DetailModal ({ visible, onClose, detailData, config: { list = [], width = 600 }, title = "详情" }) {
+function DetailModal ({ visible, onClose, detailData, config: { list = [], title = "详情", width = 600 } }) {
   return (
     <Drawer
       title={title}
@@ -24,10 +24,10 @@ function DetailModal ({ visible, onClose, detailData, config: { list = [], width
     >
       {
         list.filter(({ isShow = () => true, field }) => isShow({ text: detailData[field], record: detailData }))
-        .map(({ label, field, type, render, ...other }) => <div key={label + field} className="detail-item">
-          <span className="detail-lable">{label}</span>
-          {getValueComponent({ detailData, type, field, render, ...other })}
-        </div>)
+          .map(({ label, field, type, render, labelRender, itemRender, ...other }, i) => itemRender ? <div key={i}>{itemRender({ text: detailData[field], record: detailData })}</div> : <div key={label + field} className="react-back-page-detail-item">
+            {labelRender ? labelRender({ text: detailData[field], record: detailData }) : <span className="detail-label">{label}</span>}
+            {getValueComponent({ detailData, type, field, render, ...other })}
+          </div>)
       }
     </Drawer>
   )

@@ -12,6 +12,7 @@ const config = function (data) {
             name: "env",
             label: "环境",
             placeholder: "请选择环境",
+            defaultValue: "3",
             option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
           }
         },
@@ -135,7 +136,7 @@ const config = function (data) {
         }
       },
       {
-        type: "input",
+        type: "monthPicker",
         props: {
           name: "name",
           label: "搜索",
@@ -154,7 +155,6 @@ const config = function (data) {
     ],
     table: {
       rowKey: "id",
-      scroll: { x: 1500 },
       columns: [
         {
           title: "姓名1",
@@ -162,42 +162,6 @@ const config = function (data) {
           dataIndex: "name",
           width: 100,
           fixed: 'left',
-        },
-        {
-          title: "姓名2",
-          key: "name2",
-          dataIndex: "name2",
-          // width: 100,
-        },
-        {
-          title: "姓名3",
-          key: "name3",
-          dataIndex: "name3",
-          // width: 100,
-        },
-        {
-          title: "姓名4",
-          key: "nam4e",
-          dataIndex: "nam4e",
-          // width: 100,
-        },
-        {
-          title: "姓名5",
-          key: "name5",
-          dataIndex: "name5",
-          // width: 100,
-        },
-        {
-          title: "姓名6",
-          key: "nam6e",
-          dataIndex: "na6me",
-          // width: 100,
-        },
-        {
-          title: "姓名7",
-          key: "na7me",
-          dataIndex: "na7me",
-          // width: 100,
         },
         {
           title: "性别",
@@ -256,6 +220,23 @@ const config = function (data) {
         }
       ]
     },
+    detail: {
+      type: "detail",
+      list: [
+        {
+          label: "备注",
+          field: "name",
+          type: "text",
+          labelRender: ({ text }) => <span>{text}</span>
+        },
+        {
+          label: "描述",
+          field: "intro",
+          type: "text",
+          itemRender: () => <a>111</a>
+        },
+      ]
+    }
   }
 }
 
