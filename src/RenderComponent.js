@@ -56,6 +56,10 @@ class RenderComponent extends React.Component {
     }
   }
 
+  getSearchValue = () => {
+    return this.tableComponent.getSearchValue()
+  }
+
   refreshTable = (...args) => {
     this.tableComponent.refreshTable(...args);
   }

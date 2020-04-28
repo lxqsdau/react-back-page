@@ -1762,6 +1762,10 @@ function (_React$Component) {
       }
     };
 
+    _this.getSearchValue = function () {
+      return _this.tableComponent.getSearchValue();
+    };
+
     _this.refreshTable = function () {
       var _this$tableComponent2;
 

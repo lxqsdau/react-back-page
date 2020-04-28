@@ -37,6 +37,7 @@ class App extends RenderComponent {
 
   export = () => {
     console.log("export")
+    console.log(this.getSearchValue())
   }
 
   onReset = () => {

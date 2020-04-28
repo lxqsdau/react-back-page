@@ -109,6 +109,14 @@ const config = function (data) {
         }
       },
       {
+        type: "input",
+        props: {
+          name: "name",
+          label: "搜索",
+          placeholder: "应用名称",
+        }
+      },
+      {
         type: "select",
         props: {
           name: "select",
@@ -138,7 +146,7 @@ const config = function (data) {
       {
         type: "monthPicker",
         props: {
-          name: "name",
+          name: "name333",
           label: "搜索",
           placeholder: "请输入分类名",
         }
