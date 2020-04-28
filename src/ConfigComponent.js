@@ -22,9 +22,10 @@ class ConfigComponent extends React.Component {
       // 不是函数，直接取值
       resultConfig = this.props.config;
     }
-    const { search = [], action = [], table, detail } = resultConfig;
+    const { search = [], searchBtn = [], action = [], table, detail } = resultConfig;
     this.state = {
       searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+      searchBtnConfig: searchBtn.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
       actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
       tableConfig: table,
       detailConfig: detail,
@@ -46,9 +47,10 @@ class ConfigComponent extends React.Component {
   // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
   updateConfig = (...args) => {
     return new Promise((resolve) => {
-      const { search = [], action = [], table, detail } = this.props.config(...args)
+      const { search = [], searchBtn = [], action = [], table, detail } = this.props.config(...args)
       this.setState({
         searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
+        searchBtnConfig: searchBtn.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
         actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
         tableConfig: table,
         detailConfig: detail,
@@ -196,8 +198,8 @@ class ConfigComponent extends React.Component {
   }
 
   render () {
-    const { isShowDetailModal, detailData, 
-      searchConfig, actionConfig,  tableConfig, detailConfig } = this.state;
+    const { isShowDetailModal, detailData,
+      searchConfig, actionConfig, tableConfig, detailConfig, searchBtnConfig } = this.state;
     const { optionConfig, tableColumnsProps, searchFormConfig } = this.props;
     return (
       <>
@@ -208,6 +210,7 @@ class ConfigComponent extends React.Component {
             wrappedComponentRef={form => this.form = form}
             emit={this.handleEmit}
             config={searchConfig}
+            searchBtnConfig={searchBtnConfig}
           />
         }
         {

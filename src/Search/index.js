@@ -6,7 +6,7 @@ class Search extends PureComponent {
   state = {
     fold: true, // 折叠
   }
-  
+
   search = () => {
     const { form, emit } = this.props;
     const searchValue = form.getFieldsValue();
@@ -32,11 +32,12 @@ class Search extends PureComponent {
   }
 
   render () {
-    const { form, optionConfig, searchFormConfig: { foldtThreshold }, config } = this.props;
+    const { form, optionConfig, searchFormConfig: { foldtThreshold }, config, searchBtnConfig, emit } = this.props;
+    console.log(searchBtnConfig, "searchBtnConfig")
     const { getFieldDecorator } = form;
     const { fold } = this.state;
     let showFormItem
-    
+
     if (fold && config.length > foldtThreshold) {
       showFormItem = config.slice(0, foldtThreshold)
     } else {
@@ -56,7 +57,7 @@ class Search extends PureComponent {
             </Form.Item>)
           }
           {
-           config.length > foldtThreshold && <Form.Item className="search-item ase">
+            config.length > foldtThreshold && <Form.Item className="search-item ase">
               <div onClick={this.foldChange} className="fold-box">{fold ? <>
                 <span>展开</span>  <Icon type="down" />
               </> : <>
@@ -74,6 +75,12 @@ class Search extends PureComponent {
             <div className="btn-item">
               <Button onClick={this.reset}>重置</Button>
             </div>
+            {
+              searchBtnConfig.map((searchBtnItem, i) => <div key={i} className="btn-item">
+                <div className="label-btn">&nbsp;</div>
+                <Button onClick={() => emit(searchBtnItem.actionFn)} type="primary">{searchBtnItem.title}</Button>
+              </div>)
+            }
           </Form.Item>
         </Form>
       </div>

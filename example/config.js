@@ -144,6 +144,15 @@ const config = function (data) {
         }
       },
     ],
+    searchBtn: [
+      {
+        type: "button",
+        props: {
+          title: "导出",
+          actionFn: "emit-export"
+        }
+      }
+    ],
     action: [
       {
         type: "button",
@@ -218,7 +227,8 @@ const config = function (data) {
             </div>
           }
         }
-      ]
+      ],
+      pagination: false
     },
     detail: {
       type: "detail",

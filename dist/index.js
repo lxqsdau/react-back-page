@@ -789,7 +789,10 @@ function (_PureComponent) {
           form = _this$props3.form,
           optionConfig = _this$props3.optionConfig,
           foldtThreshold = _this$props3.searchFormConfig.foldtThreshold,
-          config = _this$props3.config;
+          config = _this$props3.config,
+          searchBtnConfig = _this$props3.searchBtnConfig,
+          emit = _this$props3.emit;
+      console.log(searchBtnConfig, "searchBtnConfig");
       var getFieldDecorator = form.getFieldDecorator;
       var fold = this.state.fold;
       var showFormItem;
@@ -844,7 +847,19 @@ function (_PureComponent) {
         className: "btn-item"
       }, external_react_default.a.createElement(external_antd_["Button"], {
         onClick: this.reset
-      }, "\u91CD\u7F6E")))));
+      }, "\u91CD\u7F6E")), searchBtnConfig.map(function (searchBtnItem, i) {
+        return external_react_default.a.createElement("div", {
+          key: i,
+          className: "btn-item"
+        }, external_react_default.a.createElement("div", {
+          className: "label-btn"
+        }, "\xA0"), external_react_default.a.createElement(external_antd_["Button"], {
+          onClick: function onClick() {
+            return emit(searchBtnItem.actionFn);
+          },
+          type: "primary"
+        }, searchBtnItem.title));
+      }))));
     }
   }]);
 
@@ -988,7 +1003,9 @@ function TableComponent_TableComponent(_ref4) {
       columns = _ref4$config.columns,
       _ref4$config$pageSize = _ref4$config.pageSize,
       pageSize = _ref4$config$pageSize === void 0 ? 10 : _ref4$config$pageSize,
-      tableProps = objectWithoutProperties_default()(_ref4$config, ["actionColumns", "actionProps", "columns", "pageSize"]);
+      _ref4$config$paginati = _ref4$config.pagination,
+      pagination = _ref4$config$paginati === void 0 ? true : _ref4$config$paginati,
+      tableProps = objectWithoutProperties_default()(_ref4$config, ["actionColumns", "actionProps", "columns", "pageSize", "pagination"]);
 
   // isShow 函数 过滤掉不显示action
   var actionColumnsFilter = function actionColumnsFilter(record) {
@@ -1101,14 +1118,14 @@ function TableComponent_TableComponent(_ref4) {
       },
       columns: columns
     }, tableProps, {
-      pagination: {
+      pagination: pagination ? {
         total: value.total,
         pageSize: pageSize,
         current: value.currentPage,
         showTotal: function showTotal(total) {
           return "\u5171".concat(total, "\u6761");
         }
-      },
+      } : false,
       dataSource: value.tableDataList,
       loading: value.tableLoading
     }));
@@ -1280,6 +1297,8 @@ function (_React$Component) {
         var _this$props$config = (_this$props = _this.props).config.apply(_this$props, args),
             _this$props$config$se = _this$props$config.search,
             search = _this$props$config$se === void 0 ? [] : _this$props$config$se,
+            _this$props$config$se2 = _this$props$config.searchBtn,
+            searchBtn = _this$props$config$se2 === void 0 ? [] : _this$props$config$se2,
             _this$props$config$ac = _this$props$config.action,
             action = _this$props$config$ac === void 0 ? [] : _this$props$config$ac,
             table = _this$props$config.table,
@@ -1293,9 +1312,16 @@ function (_React$Component) {
               Component: getComponent(type)
             }, props);
           }),
-          actionConfig: action.map(function (_ref2) {
+          searchBtnConfig: searchBtn.map(function (_ref2) {
             var type = _ref2.type,
                 props = _ref2.props;
+            return ConfigComponent_objectSpread({
+              Component: getComponent(type)
+            }, props);
+          }),
+          actionConfig: action.map(function (_ref3) {
+            var type = _ref3.type,
+                props = _ref3.props;
             return ConfigComponent_objectSpread({
               Component: getComponent(type)
             }, props);
@@ -1312,9 +1338,9 @@ function (_React$Component) {
       var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       return new Promise(function (resolve) {
         _this.setState({
-          searchConfig: search.map(function (_ref3) {
-            var type = _ref3.type,
-                props = _ref3.props;
+          searchConfig: search.map(function (_ref4) {
+            var type = _ref4.type,
+                props = _ref4.props;
             return ConfigComponent_objectSpread({
               Component: getComponent(type)
             }, props);
@@ -1329,9 +1355,9 @@ function (_React$Component) {
       var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       return new Promise(function (resolve) {
         _this.setState({
-          actionConfig: action.map(function (_ref4) {
-            var type = _ref4.type,
-                props = _ref4.props;
+          actionConfig: action.map(function (_ref5) {
+            var type = _ref5.type,
+                props = _ref5.props;
             return ConfigComponent_objectSpread({
               Component: getComponent(type)
             }, props);
@@ -1353,11 +1379,11 @@ function (_React$Component) {
     };
 
     _this.getTableData = function () {
-      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var _ref5$page = _ref5.page,
-          page = _ref5$page === void 0 ? 1 : _ref5$page,
-          other = objectWithoutProperties_default()(_ref5, ["page"]);
+      var _ref6$page = _ref6.page,
+          page = _ref6$page === void 0 ? 1 : _ref6$page,
+          other = objectWithoutProperties_default()(_ref6, ["page"]);
 
       var searchValue = _this.getSearchValue();
 
@@ -1374,9 +1400,9 @@ function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread({
         page: page
-      }, searchValue, {}, _this.props.extraFetchProps, {}, other)).then(function (_ref6) {
-        var data = _ref6.data,
-            total = _ref6.total;
+      }, searchValue, {}, _this.props.extraFetchProps, {}, other)).then(function (_ref7) {
+        var data = _ref7.data,
+            total = _ref7.total;
 
         _this.setState({
           tableDataList: data,
@@ -1437,8 +1463,8 @@ function (_React$Component) {
       }
     };
 
-    _this.tablePageChange = function (_ref7) {
-      var page = _ref7.current;
+    _this.tablePageChange = function (_ref8) {
+      var page = _ref8.current;
 
       _this.getTableData({
         page: page
@@ -1516,22 +1542,31 @@ function (_React$Component) {
     var _resultConfig = resultConfig,
         _resultConfig$search = _resultConfig.search,
         _search = _resultConfig$search === void 0 ? [] : _resultConfig$search,
+        _resultConfig$searchB = _resultConfig.searchBtn,
+        _searchBtn = _resultConfig$searchB === void 0 ? [] : _resultConfig$searchB,
         _resultConfig$action = _resultConfig.action,
         _action = _resultConfig$action === void 0 ? [] : _resultConfig$action,
         _table = _resultConfig.table,
         _detail = _resultConfig.detail;
 
     _this.state = {
-      searchConfig: _search.map(function (_ref8) {
-        var type = _ref8.type,
-            props = _ref8.props;
+      searchConfig: _search.map(function (_ref9) {
+        var type = _ref9.type,
+            props = _ref9.props;
         return ConfigComponent_objectSpread({
           Component: getComponent(type)
         }, props);
       }),
-      actionConfig: _action.map(function (_ref9) {
-        var type = _ref9.type,
-            props = _ref9.props;
+      searchBtnConfig: _searchBtn.map(function (_ref10) {
+        var type = _ref10.type,
+            props = _ref10.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      }),
+      actionConfig: _action.map(function (_ref11) {
+        var type = _ref11.type,
+            props = _ref11.props;
         return ConfigComponent_objectSpread({
           Component: getComponent(type)
         }, props);
@@ -1565,7 +1600,8 @@ function (_React$Component) {
           searchConfig = _this$state.searchConfig,
           actionConfig = _this$state.actionConfig,
           tableConfig = _this$state.tableConfig,
-          detailConfig = _this$state.detailConfig;
+          detailConfig = _this$state.detailConfig,
+          searchBtnConfig = _this$state.searchBtnConfig;
       var _this$props3 = this.props,
           optionConfig = _this$props3.optionConfig,
           tableColumnsProps = _this$props3.tableColumnsProps,
@@ -1577,7 +1613,8 @@ function (_React$Component) {
           return _this3.form = form;
         },
         emit: this.handleEmit,
-        config: searchConfig
+        config: searchConfig,
+        searchBtnConfig: searchBtnConfig
       }), actionConfig.length > 0 && external_react_default.a.createElement(Action_0, {
         emit: this.handleEmit,
         config: actionConfig

@@ -35,6 +35,10 @@ class App extends RenderComponent {
   tableReturn = (data) => {
   }
 
+  export = () => {
+    console.log("export")
+  }
+
   onReset = () => {
     console.log("23")
     this.updateConfig(1)

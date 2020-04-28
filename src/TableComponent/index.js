@@ -23,6 +23,7 @@ function TableComponent ({ tableColumnsProps, emit,
     actionProps: { max: actionMax = 4, moreText = "更多", ...tableActionProps } = {},
     columns,
     pageSize = 10,
+    pagination = true,
     ...tableProps
   }
 }) {
@@ -83,12 +84,12 @@ function TableComponent ({ tableColumnsProps, emit,
             onChange={info => emit("tablePageChange", info)}
             columns={columns}
             {...tableProps}
-            pagination={{
+            pagination={pagination ? {
               total: value.total,
               pageSize,
               current: value.currentPage,
               showTotal: total => `共${total}条`
-            }}
+            } : false}
             dataSource={value.tableDataList}
             loading={value.tableLoading}
           >
