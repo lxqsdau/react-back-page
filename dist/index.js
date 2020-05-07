@@ -750,6 +750,12 @@ function (_PureComponent) {
 
     };
 
+    _this.handleEnterKey = function (e) {
+      if (e.keyCode === 13) {
+        _this.search();
+      }
+    };
+
     _this.search = function () {
       var _this$props = _this.props,
           form = _this$props.form,
@@ -783,6 +789,17 @@ function (_PureComponent) {
   }
 
   createClass_default()(Search, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener("keydown", this.handleEnterKey);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      console.log("componentWillUnmount--search");
+      document.removeEventListener("keydown", this.handleEnterKey);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props3 = this.props,

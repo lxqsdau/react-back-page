@@ -6,6 +6,18 @@ class Search extends PureComponent {
   state = {
     fold: true, // 折叠
   }
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleEnterKey);
+  }
+  componentWillUnmount () {
+    console.log("componentWillUnmount--search")
+    document.removeEventListener("keydown", this.handleEnterKey)
+  }
+  handleEnterKey = (e) => {
+    if (e.keyCode === 13) {
+      this.search();
+    }
+  }
 
   search = () => {
     const { form, emit } = this.props;
