@@ -1,4 +1,4 @@
-import { Dropdown, Menu, Icon } from 'antd';
+import { Dropdown, Menu } from 'antd';
 import React from 'react';
 
 

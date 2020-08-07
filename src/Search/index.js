@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Form, Button, Icon } from 'antd';
+import { FormInstance } from 'antd/lib/form';
 import "./index.scss";
 
 class Search extends PureComponent {
+  formRef = React.createRef();
+
   state = {
     fold: true, // 折叠
   }
@@ -18,21 +21,19 @@ class Search extends PureComponent {
     }
   }
 
-  search = (values) => {
-    console.log(values, "values")
-    const { form, emit } = this.props;
-    // emit("search", searchValue)
+  search = () => {
+    const { emit } = this.props;
+    emit("search", this.getSearchValue())
   }
 
   getSearchValue = () => {
-    const { form } = this.props;
-    return form.getFieldsValue();
+    return this.formRef.current.getFieldsValue()
   }
 
   reset = () => {
-    const { form, emit } = this.props;
-    form.resetFields();
-    emit("reset")
+    const { emit } = this.props;
+    this.formRef.current.resetFields();
+    emit("reset");
   }
 
   foldChange = () => {
@@ -43,7 +44,7 @@ class Search extends PureComponent {
   }
 
   render () {
-    const { form, optionConfig, searchFormConfig: { foldtThreshold }, config, searchBtnConfig, emit } = this.props;
+    const { optionConfig, searchFormConfig: { foldtThreshold }, config, searchBtnConfig, emit } = this.props;
     const { fold } = this.state;
     let showFormItem
 
@@ -54,16 +55,17 @@ class Search extends PureComponent {
     }
     return (
       <div className="react-back-page-search-box">
-        <Form className="search-form" layout="inline" name="search-form"  onFinish={this.search}>
+        <Form className="search-form" layout="inline" name="search-form" ref={this.formRef}>
           {
             showFormItem.map(({ Component, label, name, defaultValue, ...orther }, i) => <Form.Item
-              name={name}
               className="search-item"
               key={i}
               initialValue={defaultValue || undefined}
             >
               <p className="label">{label}</p>
-              <Component optionConfig={optionConfig} {...orther} />
+              <Form.Item name={name} >
+                <Component optionConfig={optionConfig} {...orther} />
+              </Form.Item>
             </Form.Item>)
           }
           {
@@ -80,7 +82,7 @@ class Search extends PureComponent {
           <Form.Item className="search-item ase">
             <div className="btn-item">
               <div className="label-btn">&nbsp;</div>
-              <Button htmlType="submit" type="primary">查询</Button>
+              <Button onClick={this.search} type="primary">查询</Button>
             </div>
             <div className="btn-item">
               <Button onClick={this.reset}>重置</Button>

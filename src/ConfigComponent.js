@@ -213,18 +213,18 @@ class ConfigComponent extends React.Component {
             searchBtnConfig={searchBtnConfig}
           />
         }
-        {/* {
+        {
           actionConfig.length > 0 && <Action emit={this.handleEmit} config={actionConfig} />
-        } */}
+        }
 
-        {/* {
+        {
           tableConfig && <ProviderState value={this.state}>
             <TableComponent emit={this.handleEmit} config={tableConfig} tableColumnsProps={tableColumnsProps} />
           </ProviderState>
-        } */}
-        {/* {
+        }
+        {
           detailConfig && <DetailModal visible={isShowDetailModal} onClose={this.closeDetailModal} config={detailConfig} detailData={detailData} />
-        } */}
+        }
       </>
     )
   }
