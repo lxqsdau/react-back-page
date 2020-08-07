@@ -190,7 +190,9 @@ const config = function (data) {
         }
       ],
       actionProps: { // 操作配置
-        fixed: "right"
+        fixed: "right",
+        max: 4,
+        moreText: "更多"
       },
       actionColumns: [
         {
