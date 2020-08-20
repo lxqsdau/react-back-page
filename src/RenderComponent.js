@@ -21,8 +21,8 @@ class RenderComponent extends React.Component {
     return this.tableComponent.updateTableConfig(table)
   }
 
-  actionEmit = (type, data) => {
-    this[type](data);
+  actionEmit = (type, ...data) => {
+    this[type](...data);
   }
 
   add = () => {
@@ -63,6 +63,11 @@ class RenderComponent extends React.Component {
   refreshTable = (...args) => {
     this.tableComponent.refreshTable(...args);
   }
+  
+  refreshCurrentPageTable = () => {
+    this.tableComponent.refreshCurrentPageTable();
+  }
+
 }
 
 export default RenderComponent;

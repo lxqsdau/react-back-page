@@ -45,6 +45,10 @@ class App extends RenderComponent {
     this.updateConfig(1)
   }
 
+  rowSelectionChange = (selectedRowKeys, selectedRows) => {
+    console.log(selectedRowKeys, selectedRows)
+  }
+
   render () {
     return (
       <>

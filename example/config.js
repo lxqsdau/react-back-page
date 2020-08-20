@@ -172,6 +172,10 @@ const config = function (data) {
     ],
     table: {
       rowKey: "id",
+      rowSelection: {
+        type: "checkbox",
+        onChange: "emit-rowSelectionChange"
+      },
       columns: [
         {
           title: "姓名1",

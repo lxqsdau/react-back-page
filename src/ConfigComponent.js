@@ -189,11 +189,11 @@ class ConfigComponent extends React.Component {
   closeDetailModal = () => this.setState({ isShowDetailModal: false })
 
   // 事件类型， 传递的数据
-  handleEmit = (actionFn, data) => {
+  handleEmit = (actionFn, ...data) => {
     if (actionFn.includes("emit")) {
-      this.props.actionEmit(actionFn.split("-")[1], data);
+      this.props.actionEmit(actionFn.split("-")[1], ...data);
     } else {
-      this[actionFn](data);
+      this[actionFn](...data);
     }
   }
 
