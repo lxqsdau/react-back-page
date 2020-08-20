@@ -1,4 +1,4 @@
-import { Dropdown, Menu } from 'antd';
+import { Dropdown, Menu, Input } from 'antd';
 import React from 'react';
 
 
@@ -20,6 +20,7 @@ const config = {
         name: "name",
         label: "搜索",
         placeholder: "应用名称",
+        defaultValue: "123"
       }
     }
   ],
@@ -48,6 +49,10 @@ const config = {
   ],
   table: {
     rowKey: "id",
+    rowSelection: {
+      type: "checkbox",
+      onChange: "emit-rowSelectionChange"
+    },
     columns: [
       {
         title: "测试",
@@ -60,6 +65,7 @@ const config = {
         title: "姓名6",
         key: "nam6e",
         dataIndex: "na6me",
+        render: ({ text, record, emit }) => <><Input onChange={(e) => emit("emit-discountChange", e)} defaultValue={text} style={{ width: 50 }} /> <span>折</span></>
       },
       {
         title: "姓名7",
@@ -90,27 +96,30 @@ const config = {
         actionFn: "delete2",
         isDisabled: ({ text, record, tableColumnsProps }) => false
       }
-    ]
+    ],
   }
 }
 
 
 function getListApi (data) {
-  console.log(data, "data")
   return new Promise((resolve) => {
-    resolve({
-      data: [{
-        name: "小王",
-        sex: "男",
-        id: "1"
-      },
-      {
-        name: "小张",
-        sex: "女",
-        id: "2"
-      }],
-      total: 3
-    })
+    const data = [];
+    for (let i = 0; i < 46; i++) {
+      data.push({
+        id: i,
+        key: i,
+        name: `Edward King ${i}`,
+        age: 32,
+        address: `London, Park Lane no. ${i}`,
+      });
+    }
+    setTimeout(() => {
+      resolve({
+        data,
+        // total: 20
+      })
+    }, 3000)
+    
   })
 }
 const tableConfig = {

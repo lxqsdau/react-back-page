@@ -30,7 +30,7 @@ class ConfigComponent extends React.Component {
       tableConfig: table,
       detailConfig: detail,
 
-      tableLoading: true,
+      tableLoading: false,
       total: 0,
       currentPage: 1,
       tableDataList: [],
@@ -79,6 +79,15 @@ class ConfigComponent extends React.Component {
     return new Promise((resolve) => {
       this.setState({
         tableConfig: table
+      }, () => resolve())
+    });
+  }
+
+  // 更新表格数据
+  updateTableData = (data) => {
+    return new Promise((resolve) => {
+      this.setState({
+        tableDataList: data
       }, () => resolve())
     });
   }
@@ -189,11 +198,11 @@ class ConfigComponent extends React.Component {
   closeDetailModal = () => this.setState({ isShowDetailModal: false })
 
   // 事件类型， 传递的数据
-  handleEmit = (actionFn, data) => {
+  handleEmit = (actionFn, ...data) => {
     if (actionFn.includes("emit")) {
-      this.props.actionEmit(actionFn.split("-")[1], data);
+      this.props.actionEmit(actionFn.split("-")[1], ...data);
     } else {
-      this[actionFn](data);
+      this[actionFn](...data);
     }
   }
 

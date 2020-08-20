@@ -8,28 +8,22 @@ import "antd/dist/antd.css";
 
 class App extends RenderComponent {
   test = () => {
-    this.updateSearchConfig([
-      {
-        type: "select",
-        props: {
-          name: "env",
-          label: "环境",
-          placeholder: "请选择环境",
-          defaultValue: "3",
-          option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
-        }
+    this.updateTableData(
+      [{
+        name: "小王",
+        sex: "男",
+        id: "1",
+        na6me: "9",
+        na7me: "value"
       },
       {
-        type: "input",
-        props: {
-          name: "name",
-          label: "搜索",
-          placeholder: "应用名称",
-        }
-      }
-    ]).then(() => {
-      this.refreshTable()
-    })
+        name: "小张",
+        sex: "女",
+        id: "2",
+        na6me: "8",
+        na7me: 10
+      }]
+    )
   }
 
   tableReturn = (data) => {
@@ -43,6 +37,30 @@ class App extends RenderComponent {
   onReset = () => {
     console.log("23")
     this.updateConfig(1)
+  }
+
+  rowSelectionChange = (selectedRowKeys, selectedRows) => {
+    console.log(selectedRowKeys, selectedRows)
+  }
+
+  discountChange = (e) => {
+    let value = e.target.value;
+    this.updateTableData(
+      [{
+        name: "小王",
+        sex: "男",
+        id: "1",
+        na6me: "9",
+        na7me: value
+      },
+      {
+        name: "小张",
+        sex: "女",
+        id: "2",
+        na6me: "8",
+        na7me: 10
+      }]
+    )
   }
 
   render () {

@@ -60,10 +60,9 @@ class Search extends PureComponent {
             showFormItem.map(({ Component, label, name, defaultValue, ...orther }, i) => <Form.Item
               className="search-item"
               key={i}
-              initialValue={defaultValue || undefined}
             >
               <p className="label">{label}</p>
-              <Form.Item name={name} >
+              <Form.Item initialValue={defaultValue || undefined} name={name} >
                 <Component optionConfig={optionConfig} {...orther} />
               </Form.Item>
             </Form.Item>)

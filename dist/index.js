@@ -775,11 +775,11 @@ var Search_Search = /*#__PURE__*/function (_PureComponent) {
 
         return /*#__PURE__*/external_react_default.a.createElement(external_antd_["Form"].Item, {
           className: "search-item",
-          key: i,
-          initialValue: defaultValue || undefined
+          key: i
         }, /*#__PURE__*/external_react_default.a.createElement("p", {
           className: "label"
         }, label), /*#__PURE__*/external_react_default.a.createElement(external_antd_["Form"].Item, {
+          initialValue: defaultValue || undefined,
           name: name
         }, /*#__PURE__*/external_react_default.a.createElement(Component, extends_default()({
           optionConfig: optionConfig
@@ -962,7 +962,9 @@ function TableComponent_TableComponent(_ref4) {
       pageSize = _ref4$config$pageSize === void 0 ? 10 : _ref4$config$pageSize,
       _ref4$config$paginati = _ref4$config.pagination,
       pagination = _ref4$config$paginati === void 0 ? true : _ref4$config$paginati,
-      tableProps = objectWithoutProperties_default()(_ref4$config, ["actionColumns", "actionProps", "columns", "pageSize", "pagination"]);
+      _ref4$config$rowSelec = _ref4$config.rowSelection,
+      rowSelection = _ref4$config$rowSelec === void 0 ? null : _ref4$config$rowSelec,
+      tableProps = objectWithoutProperties_default()(_ref4$config, ["actionColumns", "actionProps", "columns", "pageSize", "pagination", "rowSelection"]);
 
   // isShow 函数 过滤掉不显示action
   var actionColumnsFilter = function actionColumnsFilter(record) {
@@ -1084,7 +1086,16 @@ function TableComponent_TableComponent(_ref4) {
         }
       } : false,
       dataSource: value.tableDataList,
-      loading: value.tableLoading
+      loading: value.tableLoading,
+      rowSelection: rowSelection ? _objectSpread(_objectSpread({}, rowSelection), {}, {
+        onChange: function onChange() {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          return emit.apply(void 0, [rowSelection.onChange].concat(args));
+        }
+      }) : null
     }));
   });
 }
@@ -1339,6 +1350,16 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       });
     };
 
+    _this.updateTableData = function (data) {
+      return new Promise(function (resolve) {
+        _this.setState({
+          tableDataList: data
+        }, function () {
+          return resolve();
+        });
+      });
+    };
+
     _this.getTableData = function () {
       var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref6$page = _ref6.page,
@@ -1482,11 +1503,19 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       });
     };
 
-    _this.handleEmit = function (actionFn, data) {
+    _this.handleEmit = function (actionFn) {
+      for (var _len2 = arguments.length, data = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        data[_key2 - 1] = arguments[_key2];
+      }
+
       if (actionFn.includes("emit")) {
-        _this.props.actionEmit(actionFn.split("-")[1], data);
+        var _this$props3;
+
+        (_this$props3 = _this.props).actionEmit.apply(_this$props3, [actionFn.split("-")[1]].concat(data));
       } else {
-        _this[actionFn](data);
+        var _this3;
+
+        (_this3 = _this)[actionFn].apply(_this3, data);
       }
     };
 
@@ -1533,7 +1562,7 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       }),
       tableConfig: _table,
       detailConfig: _detail,
-      tableLoading: true,
+      tableLoading: false,
       total: 0,
       currentPage: 1,
       tableDataList: [],
@@ -1552,7 +1581,7 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
@@ -1562,15 +1591,15 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
           tableConfig = _this$state.tableConfig,
           detailConfig = _this$state.detailConfig,
           searchBtnConfig = _this$state.searchBtnConfig;
-      var _this$props3 = this.props,
-          optionConfig = _this$props3.optionConfig,
-          tableColumnsProps = _this$props3.tableColumnsProps,
-          searchFormConfig = _this$props3.searchFormConfig;
+      var _this$props4 = this.props,
+          optionConfig = _this$props4.optionConfig,
+          tableColumnsProps = _this$props4.tableColumnsProps,
+          searchFormConfig = _this$props4.searchFormConfig;
       return /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Fragment, null, searchConfig.length > 0 && /*#__PURE__*/external_react_default.a.createElement(Search_1, {
         searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
         wrappedComponentRef: function wrappedComponentRef(form) {
-          return _this3.form = form;
+          return _this4.form = form;
         },
         emit: this.handleEmit,
         config: searchConfig,
@@ -1686,8 +1715,18 @@ var RenderComponent_RenderComponent = /*#__PURE__*/function (_React$Component) {
       return _this.tableComponent.updateTableConfig(table);
     };
 
-    _this.actionEmit = function (type, data) {
-      _this[type](data);
+    _this.updateTableData = function (data) {
+      return _this.tableComponent.updateTableData(data);
+    };
+
+    _this.actionEmit = function (type) {
+      var _this2;
+
+      for (var _len2 = arguments.length, data = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        data[_key2 - 1] = arguments[_key2];
+      }
+
+      (_this2 = _this)[type].apply(_this2, data);
     };
 
     _this.add = function () {

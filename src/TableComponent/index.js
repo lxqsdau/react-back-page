@@ -24,6 +24,7 @@ function TableComponent ({ tableColumnsProps, emit,
     columns,
     pageSize = 10,
     pagination = true,
+    rowSelection = null,
     ...tableProps
   }
 }) {
@@ -92,6 +93,10 @@ function TableComponent ({ tableColumnsProps, emit,
             } : false}
             dataSource={value.tableDataList}
             loading={value.tableLoading}
+            rowSelection={rowSelection ? {
+              ...rowSelection,
+              onChange: (...args) => emit(rowSelection.onChange, ...args)
+            } : null}
           >
           </Table>
       }
