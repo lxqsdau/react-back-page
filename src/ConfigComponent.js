@@ -33,7 +33,7 @@ class ConfigComponent extends React.Component {
       tableLoading: false,
       total: 0,
       currentPage: 1,
-      tableDataList: [],
+      tableDataList: table.dataSource || [],
 
       isShowDetailModal: false,
       detailData: {}

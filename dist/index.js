@@ -656,7 +656,7 @@ function getComponent(conponentStr) {
 
 
 // EXTERNAL MODULE: ./Search/index.scss
-var Search_0 = __webpack_require__(274);
+var Search_0 = __webpack_require__(426);
 
 // CONCATENATED MODULE: ./Search/index.js
 
@@ -827,7 +827,7 @@ var Search_Search = /*#__PURE__*/function (_PureComponent) {
 
 /* harmony default export */ var Search_1 = (Search_Search);
 // EXTERNAL MODULE: ./Action/index.scss
-var Action = __webpack_require__(276);
+var Action = __webpack_require__(428);
 
 // CONCATENATED MODULE: ./Action/index.js
 
@@ -860,7 +860,7 @@ var toConsumableArray = __webpack_require__(12);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./TableComponent/index.scss
-var TableComponent = __webpack_require__(277);
+var TableComponent = __webpack_require__(429);
 
 // CONCATENATED MODULE: ./TableComponent/index.js
 
@@ -1102,7 +1102,7 @@ function TableComponent_TableComponent(_ref4) {
 
 /* harmony default export */ var TableComponent_0 = (TableComponent_TableComponent);
 // EXTERNAL MODULE: ./DetailModal/index.scss
-var DetailModal = __webpack_require__(278);
+var DetailModal = __webpack_require__(430);
 
 // CONCATENATED MODULE: ./DetailModal/index.js
 
@@ -1565,7 +1565,7 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       tableLoading: false,
       total: 0,
       currentPage: 1,
-      tableDataList: [],
+      tableDataList: _table.dataSource || [],
       isShowDetailModal: false,
       detailData: {}
     };
@@ -1788,34 +1788,6 @@ var RenderComponent_RenderComponent = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ 274:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 276:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 277:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 278:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -1850,6 +1822,34 @@ function _inherits(subClass, superClass) {
 }
 
 module.exports = _inherits;
+
+/***/ }),
+
+/***/ 426:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 428:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 429:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 430:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
