@@ -45,7 +45,6 @@ class Search extends PureComponent {
 
   render () {
     const { form, optionConfig, searchFormConfig: { foldtThreshold }, config, searchBtnConfig, emit } = this.props;
-    console.log(searchBtnConfig, "searchBtnConfig")
     const { getFieldDecorator } = form;
     const { fold } = this.state;
     let showFormItem
