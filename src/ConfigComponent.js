@@ -30,10 +30,10 @@ class ConfigComponent extends React.Component {
       tableConfig: table,
       detailConfig: detail,
 
-      tableLoading: true,
+      tableLoading: false,
       total: 0,
       currentPage: 1,
-      tableDataList: [],
+      tableDataList: table.dataSource || [],
 
       isShowDetailModal: false,
       detailData: {}

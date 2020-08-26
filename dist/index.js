@@ -1673,10 +1673,10 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       }),
       tableConfig: _table,
       detailConfig: _detail,
-      tableLoading: true,
+      tableLoading: false,
       total: 0,
       currentPage: 1,
-      tableDataList: [],
+      tableDataList: _table.dataSource || [],
       isShowDetailModal: false,
       detailData: {}
     };

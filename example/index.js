@@ -7,6 +7,7 @@ import "antd/dist/antd.css";
 
 
 class App extends RenderComponent {
+ 
   test = () => {
     this.updateSearchConfig([
       {
@@ -57,7 +58,7 @@ class App extends RenderComponent {
           config={config}
           ref={r => this.tableComponent = r}
           actionEmit={this.actionEmit}
-          tableConfig={tableConfig}
+          // tableConfig={tableConfig}
           tableColumnsProps={{ id: "2" }}
           searchFormConfig={{
             foldtThreshold: 20
