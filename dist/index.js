@@ -871,7 +871,6 @@ var Search_Search = /*#__PURE__*/function (_PureComponent) {
           config = _this$props3.config,
           searchBtnConfig = _this$props3.searchBtnConfig,
           emit = _this$props3.emit;
-      console.log(searchBtnConfig, "searchBtnConfig");
       var getFieldDecorator = form.getFieldDecorator;
       var fold = this.state.fold;
       var showFormItem;
