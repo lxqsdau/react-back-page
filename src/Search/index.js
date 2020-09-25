@@ -10,7 +10,6 @@ class Search extends PureComponent {
     document.addEventListener("keydown", this.handleEnterKey);
   }
   componentWillUnmount () {
-    console.log("componentWillUnmount--search")
     document.removeEventListener("keydown", this.handleEnterKey)
   }
   handleEnterKey = (e) => {

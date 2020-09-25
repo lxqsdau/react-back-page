@@ -1,4 +1,4 @@
-import { Dropdown, Menu, Icon } from 'antd';
+import { Dropdown, Menu, Icon, Input } from 'antd';
 import React from 'react';
 
 const config = {
@@ -86,16 +86,12 @@ const config = {
         title: "姓名1",
         key: "name",
         dataIndex: "name",
-        width: 100,
-        fixed: 'left',
       },
       {
         title: "性别",
         key: "sex",
         dataIndex: "sex",
-        // render: ({ text, record, tableColumnsProps }) => text + record.id + tableColumnsProps.id,
-        width: 100,
-        fixed: "right"
+        render: ({ text, record, emit }) => <Input onChange={(e) => emit("emit-handleInputChange", e, record)} placeholder="请输入" />
       }
     ],
     actionProps: { // 操作配置

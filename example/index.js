@@ -7,7 +7,7 @@ import "antd/dist/antd.css";
 
 
 class App extends RenderComponent {
- 
+
   test = () => {
     this.updateSearchConfig([
       {
@@ -50,7 +50,12 @@ class App extends RenderComponent {
     console.log(selectedRowKeys, selectedRows)
   }
 
-  render () {
+  handleInputChange = (e, record) => {
+    console.log(e.target.value)
+    console.log(record)
+  }
+
+  render() {
     return (
       <>
         <Button onClick={this.test}>按钮</Button>
