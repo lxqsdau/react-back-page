@@ -439,35 +439,35 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, "ConfigComponent", function() { return /* reexport */ ConfigComponent_0; });
 __webpack_require__.d(__webpack_exports__, "RenderComponent", function() { return /* reexport */ RenderComponent_0; });
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(6);
-var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
-
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/defineProperty.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/defineProperty.js
 var defineProperty = __webpack_require__(10);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/classCallCheck.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(6);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/classCallCheck.js
 var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/createClass.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/createClass.js
 var createClass = __webpack_require__(7);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/assertThisInitialized.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/assertThisInitialized.js
 var assertThisInitialized = __webpack_require__(11);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/inherits.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/inherits.js
 var inherits = __webpack_require__(4);
 var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/possibleConstructorReturn.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
 var possibleConstructorReturn = __webpack_require__(5);
 var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
 
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/getPrototypeOf.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/getPrototypeOf.js
 var getPrototypeOf = __webpack_require__(2);
 var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
@@ -572,7 +572,7 @@ var SelectComponent_SelectComponent = /*#__PURE__*/function (_React$Component) {
 }(external_react_default.a.Component);
 
 /* harmony default export */ var SelectComponent_0 = (SelectComponent_SelectComponent);
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/extends.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/extends.js
 var helpers_extends = __webpack_require__(8);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
@@ -858,7 +858,6 @@ var Search_Search = /*#__PURE__*/function (_PureComponent) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      console.log("componentWillUnmount--search");
       document.removeEventListener("keydown", this.handleEnterKey);
     }
   }, {
@@ -976,7 +975,7 @@ function Action_Action(_ref) {
 }
 
 /* harmony default export */ var Action_0 = (Action_Action);
-// EXTERNAL MODULE: ../node_modules/_@babel_runtime@7.11.2@@babel/runtime/helpers/toConsumableArray.js
+// EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/toConsumableArray.js
 var toConsumableArray = __webpack_require__(12);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
@@ -1372,110 +1371,30 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
 
   var _super = ConfigComponent_createSuper(ConfigComponent);
 
-  function ConfigComponent(_props) {
+  function ConfigComponent() {
     var _this;
 
     classCallCheck_default()(this, ConfigComponent);
 
-    _this = _super.call(this, _props);
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
 
-    _this.updateConfig = function () {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return new Promise(function (resolve) {
-        var _this$props;
-
-        var _this$props$config = (_this$props = _this.props).config.apply(_this$props, args),
-            _this$props$config$se = _this$props$config.search,
-            search = _this$props$config$se === void 0 ? [] : _this$props$config$se,
-            _this$props$config$se2 = _this$props$config.searchBtn,
-            searchBtn = _this$props$config$se2 === void 0 ? [] : _this$props$config$se2,
-            _this$props$config$ac = _this$props$config.action,
-            action = _this$props$config$ac === void 0 ? [] : _this$props$config$ac,
-            table = _this$props$config.table,
-            detail = _this$props$config.detail;
-
-        _this.setState({
-          searchConfig: search.map(function (_ref) {
-            var type = _ref.type,
-                props = _ref.props;
-            return ConfigComponent_objectSpread({
-              Component: getComponent(type)
-            }, props);
-          }),
-          searchBtnConfig: searchBtn.map(function (_ref2) {
-            var type = _ref2.type,
-                props = _ref2.props;
-            return ConfigComponent_objectSpread({
-              Component: getComponent(type)
-            }, props);
-          }),
-          actionConfig: action.map(function (_ref3) {
-            var type = _ref3.type,
-                props = _ref3.props;
-            return ConfigComponent_objectSpread({
-              Component: getComponent(type)
-            }, props);
-          }),
-          tableConfig: table,
-          detailConfig: detail
-        }, function () {
-          return resolve();
-        });
-      });
-    };
-
-    _this.updateSearchConfig = function () {
-      var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      return new Promise(function (resolve) {
-        _this.setState({
-          searchConfig: search.map(function (_ref4) {
-            var type = _ref4.type,
-                props = _ref4.props;
-            return ConfigComponent_objectSpread({
-              Component: getComponent(type)
-            }, props);
-          })
-        }, function () {
-          return resolve();
-        });
-      });
-    };
-
-    _this.updateActionConfig = function () {
-      var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      return new Promise(function (resolve) {
-        _this.setState({
-          actionConfig: action.map(function (_ref5) {
-            var type = _ref5.type,
-                props = _ref5.props;
-            return ConfigComponent_objectSpread({
-              Component: getComponent(type)
-            }, props);
-          })
-        }, function () {
-          return resolve();
-        });
-      });
-    };
-
-    _this.updateTableConfig = function (table) {
-      return new Promise(function (resolve) {
-        _this.setState({
-          tableConfig: table
-        }, function () {
-          return resolve();
-        });
-      });
+    _this = _super.call.apply(_super, [this].concat(_args));
+    _this.state = {
+      tableLoading: false,
+      total: 0,
+      currentPage: 1,
+      tableDataList: [],
+      isShowDetailModal: false,
+      detailData: {}
     };
 
     _this.getTableData = function () {
-      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref6$page = _ref6.page,
-          page = _ref6$page === void 0 ? 1 : _ref6$page,
-          other = objectWithoutProperties_default()(_ref6, ["page"]);
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref$page = _ref.page,
+          page = _ref$page === void 0 ? 1 : _ref$page,
+          other = objectWithoutProperties_default()(_ref, ["page"]);
 
       var searchValue = _this.getSearchValue();
 
@@ -1492,9 +1411,9 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
 
       fetchFn(ConfigComponent_objectSpread(ConfigComponent_objectSpread(ConfigComponent_objectSpread({
         page: page
-      }, searchValue), _this.props.extraFetchProps), other)).then(function (_ref7) {
-        var data = _ref7.data,
-            total = _ref7.total;
+      }, searchValue), _this.props.extraFetchProps), other)).then(function (_ref2) {
+        var data = _ref2.data,
+            total = _ref2.total;
 
         _this.setState({
           tableDataList: data,
@@ -1555,8 +1474,8 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       }
     };
 
-    _this.tablePageChange = function (_ref8) {
-      var page = _ref8.current;
+    _this.tablePageChange = function (_ref3) {
+      var page = _ref3.current;
 
       _this.getTableData({
         page: page
@@ -1564,9 +1483,9 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
     };
 
     _this.delete = function (data) {
-      var _this$props2 = _this.props,
-          deleteRecordFn = _this$props2.tableConfig.deleteRecordFn,
-          extraDeleteProps = _this$props2.extraDeleteProps;
+      var _this$props = _this.props,
+          deleteRecordFn = _this$props.tableConfig.deleteRecordFn,
+          extraDeleteProps = _this$props.extraDeleteProps;
       var confirmTitleField = data.confirmTitleField;
 
       var me = assertThisInitialized_default()(_this);
@@ -1620,9 +1539,9 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       }
 
       if (actionFn.includes("emit")) {
-        var _this$props3;
+        var _this$props2;
 
-        (_this$props3 = _this.props).actionEmit.apply(_this$props3, [actionFn.split("-")[1]].concat(data));
+        (_this$props2 = _this.props).actionEmit.apply(_this$props2, [actionFn.split("-")[1]].concat(data));
       } else {
         var _this3;
 
@@ -1630,56 +1549,6 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
       }
     };
 
-    var resultConfig; // config 是函数类型，就调用函数，获取返回值
-
-    if (Object.prototype.toString.call(_this.props.config) === "[object Function]") {
-      resultConfig = _this.props.config();
-    } else {
-      // 不是函数，直接取值
-      resultConfig = _this.props.config;
-    }
-
-    var _resultConfig = resultConfig,
-        _resultConfig$search = _resultConfig.search,
-        _search = _resultConfig$search === void 0 ? [] : _resultConfig$search,
-        _resultConfig$searchB = _resultConfig.searchBtn,
-        _searchBtn = _resultConfig$searchB === void 0 ? [] : _resultConfig$searchB,
-        _resultConfig$action = _resultConfig.action,
-        _action = _resultConfig$action === void 0 ? [] : _resultConfig$action,
-        _table = _resultConfig.table,
-        _detail = _resultConfig.detail;
-
-    _this.state = {
-      searchConfig: _search.map(function (_ref9) {
-        var type = _ref9.type,
-            props = _ref9.props;
-        return ConfigComponent_objectSpread({
-          Component: getComponent(type)
-        }, props);
-      }),
-      searchBtnConfig: _searchBtn.map(function (_ref10) {
-        var type = _ref10.type,
-            props = _ref10.props;
-        return ConfigComponent_objectSpread({
-          Component: getComponent(type)
-        }, props);
-      }),
-      actionConfig: _action.map(function (_ref11) {
-        var type = _ref11.type,
-            props = _ref11.props;
-        return ConfigComponent_objectSpread({
-          Component: getComponent(type)
-        }, props);
-      }),
-      tableConfig: _table,
-      detailConfig: _detail,
-      tableLoading: false,
-      total: 0,
-      currentPage: 1,
-      tableDataList: _table.dataSource || [],
-      isShowDetailModal: false,
-      detailData: {}
-    };
     return _this;
   }
 
@@ -1687,8 +1556,7 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.refreshTable();
-    } // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1696,16 +1564,43 @@ var ConfigComponent_ConfigComponent = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           isShowDetailModal = _this$state.isShowDetailModal,
-          detailData = _this$state.detailData,
-          searchConfig = _this$state.searchConfig,
-          actionConfig = _this$state.actionConfig,
-          tableConfig = _this$state.tableConfig,
-          detailConfig = _this$state.detailConfig,
-          searchBtnConfig = _this$state.searchBtnConfig;
-      var _this$props4 = this.props,
-          optionConfig = _this$props4.optionConfig,
-          tableColumnsProps = _this$props4.tableColumnsProps,
-          searchFormConfig = _this$props4.searchFormConfig;
+          detailData = _this$state.detailData;
+      var _this$props3 = this.props,
+          optionConfig = _this$props3.optionConfig,
+          tableColumnsProps = _this$props3.tableColumnsProps,
+          searchFormConfig = _this$props3.searchFormConfig;
+      var _this$props$config = this.props.config,
+          _this$props$config$se = _this$props$config.search,
+          search = _this$props$config$se === void 0 ? [] : _this$props$config$se,
+          _this$props$config$se2 = _this$props$config.searchBtn,
+          searchBtn = _this$props$config$se2 === void 0 ? [] : _this$props$config$se2,
+          _this$props$config$ac = _this$props$config.action,
+          action = _this$props$config$ac === void 0 ? [] : _this$props$config$ac,
+          table = _this$props$config.table,
+          detail = _this$props$config.detail;
+      var searchConfig = search.map(function (_ref4) {
+        var type = _ref4.type,
+            props = _ref4.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      });
+      var searchBtnConfig = searchBtn.map(function (_ref5) {
+        var type = _ref5.type,
+            props = _ref5.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      });
+      var actionConfig = action.map(function (_ref6) {
+        var type = _ref6.type,
+            props = _ref6.props;
+        return ConfigComponent_objectSpread({
+          Component: getComponent(type)
+        }, props);
+      });
+      var tableConfig = table;
+      var detailConfig = detail;
       return /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Fragment, null, searchConfig.length > 0 && /*#__PURE__*/external_react_default.a.createElement(Search_1, {
         searchFormConfig: searchFormConfig,
         optionConfig: optionConfig,
@@ -1807,25 +1702,6 @@ var RenderComponent_RenderComponent = /*#__PURE__*/function (_React$Component) {
       editData: {}
     };
 
-    _this.updateConfig = function () {
-      var _this$tableComponent;
-
-      // args 数组形式
-      return (_this$tableComponent = _this.tableComponent).updateConfig.apply(_this$tableComponent, arguments);
-    };
-
-    _this.updateSearchConfig = function (search) {
-      return _this.tableComponent.updateSearchConfig(search);
-    };
-
-    _this.updateActionConfig = function (action) {
-      return _this.tableComponent.updateActionConfig(action);
-    };
-
-    _this.updateTableConfig = function (table) {
-      return _this.tableComponent.updateTableConfig(table);
-    };
-
     _this.actionEmit = function (type) {
       var _this2;
 
@@ -1876,9 +1752,9 @@ var RenderComponent_RenderComponent = /*#__PURE__*/function (_React$Component) {
     };
 
     _this.refreshTable = function () {
-      var _this$tableComponent2;
+      var _this$tableComponent;
 
-      (_this$tableComponent2 = _this.tableComponent).refreshTable.apply(_this$tableComponent2, arguments);
+      (_this$tableComponent = _this.tableComponent).refreshTable.apply(_this$tableComponent, arguments);
     };
 
     _this.refreshCurrentPageTable = function () {

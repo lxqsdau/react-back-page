@@ -8,79 +8,23 @@ import TableComponent from "./TableComponent";
 import DetailModal from "./DetailModal";
 import PropTypes from 'prop-types';
 
-function noop () { }
+function noop() { }
 const { confirm } = Modal;
 
 class ConfigComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    let resultConfig;
-    // config 是函数类型，就调用函数，获取返回值
-    if (Object.prototype.toString.call(this.props.config) === "[object Function]") {
-      resultConfig = this.props.config()
-    } else {
-      // 不是函数，直接取值
-      resultConfig = this.props.config;
-    }
-    const { search = [], searchBtn = [], action = [], table, detail } = resultConfig;
-    this.state = {
-      searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-      searchBtnConfig: searchBtn.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-      actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-      tableConfig: table,
-      detailConfig: detail,
 
-      tableLoading: false,
-      total: 0,
-      currentPage: 1,
-      tableDataList: table.dataSource || [],
+  state = {
+    tableLoading: false,
+    total: 0,
+    currentPage: 1,
+    tableDataList: [],
 
-      isShowDetailModal: false,
-      detailData: {}
-    }
+    isShowDetailModal: false,
+    detailData: {}
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.refreshTable()
-  }
-
-  // 更新config 供用户调用 data 为用户传递的数据，再传到config函数
-  updateConfig = (...args) => {
-    return new Promise((resolve) => {
-      const { search = [], searchBtn = [], action = [], table, detail } = this.props.config(...args)
-      this.setState({
-        searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-        searchBtnConfig: searchBtn.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-        actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-        tableConfig: table,
-        detailConfig: detail,
-      }, () => resolve())
-    })
-  }
-
-  // 更新searchConfig
-  updateSearchConfig = (search = []) => {
-    return new Promise((resolve) => {
-      this.setState({
-        searchConfig: search.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-      }, () => resolve())
-    });
-  }
-  // 更新actionConfig
-  updateActionConfig = (action = []) => {
-    return new Promise((resolve) => {
-      this.setState({
-        actionConfig: action.map(({ type, props }) => ({ Component: getComponent(type), ...props })),
-      }, () => resolve())
-    });
-  }
-  // 更新tableConfig
-  updateTableConfig = (table) => {
-    return new Promise((resolve) => {
-      this.setState({
-        tableConfig: table
-      }, () => resolve())
-    });
   }
 
   getTableData = ({ page = 1, ...other } = {}) => {
@@ -159,7 +103,7 @@ class ConfigComponent extends React.Component {
     confirm({
       title: `确认删除 ${confirmTitleField ? data[confirmTitleField] : ""}`,
       content: "",
-      onOk () {
+      onOk() {
         deleteRecordFn({ record: data, extraDeleteProps }).then(() => {
           message.success("删除成功");
           // 判断 不是第一页，且 这页只有一个了，请求上一页的数据
@@ -172,7 +116,7 @@ class ConfigComponent extends React.Component {
           }
         }).catch(message.error)
       },
-      onCancel () { },
+      onCancel() { },
       okText: "确认",
       cancelText: "取消"
     })
@@ -197,10 +141,17 @@ class ConfigComponent extends React.Component {
     }
   }
 
-  render () {
-    const { isShowDetailModal, detailData,
-      searchConfig, actionConfig, tableConfig, detailConfig, searchBtnConfig } = this.state;
+  render() {
+    const { isShowDetailModal, detailData } = this.state;
     const { optionConfig, tableColumnsProps, searchFormConfig } = this.props;
+
+    const { search = [], searchBtn = [], action = [], table, detail } = this.props.config;
+    const searchConfig = search.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
+    const searchBtnConfig = searchBtn.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
+    const actionConfig = action.map(({ type, props }) => ({ Component: getComponent(type), ...props }))
+    const tableConfig = table
+    const detailConfig = detail
+
     return (
       <>
         {

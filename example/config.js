@@ -9,8 +9,8 @@ const config = {
         name: "env",
         label: "环境",
         placeholder: "请选择环境",
-        defaultValue: "1",
-        option: [{ key: 1, label: "日常" }, { key: 3, label: "线上" }]
+        defaultValue: "2",
+        option: [{ key: 1, label: "日常" }, { key: 2, label: "灰度" }, { key: 3, label: "线上" }]
       }
     },
     {
@@ -19,15 +19,6 @@ const config = {
         name: "name",
         label: "搜索",
         placeholder: "应用名称",
-      }
-    },
-    {
-      type: "select",
-      props: {
-        name: "select",
-        label: "搜索",
-        placeholder: "请输入分类名",
-        option: []
       }
     },
     {
@@ -52,8 +43,8 @@ const config = {
       type: "monthPicker",
       props: {
         name: "name333",
-        label: "搜索",
-        placeholder: "请输入分类名",
+        label: "月份",
+        placeholder: "请选择",
       }
     },
   ],
@@ -78,7 +69,7 @@ const config = {
   table: {
     rowKey: "id",
     rowSelection: {
-      type: "checkbox",
+      type: "radio",
       onChange: "emit-rowSelectionChange"
     },
     columns: [
@@ -116,40 +107,12 @@ const config = {
         actionFn: "delete",
       },
       {
-        title: "删除2",
-        key: "delete2",
-        actionFn: "delete2",
+        title: "数据",
+        key: "action2",
+        actionFn: "emit-action2",
       },
-      {
-        title: "未处理",
-        key: "tableDealAction",
-        // actionFn: "emit-tableDealAction",
-        render: ({ text, record, tableColumnsProps, emit }) => {
-          return <div style={{ display: 'inline-block' }}>
-            <Dropdown overlay=
-              {
-                (
-                  <Menu onClick={(value) => { emit("emit-hh") }} >
-                    <Menu.Item key={"put-"}>未处理</Menu.Item>
-                    <Menu.Item key={"addjust-2"} >处理中</Menu.Item>
-                    <Menu.Item key={"addjust-1"} >已处理</Menu.Item>
-                  </Menu>
-                )
-              }
-            >
-              <a>未处理<Icon type="caret-down" /></a >
-            </Dropdown>
-          </div>
-        }
-      }
     ],
-    dataSource: [
-      {
-        id: 1,
-        name: "哈哈哈"
-      }
-    ],
-    pagination: false
+    // pagination: false
   },
   detail: {
     type: "detail",
@@ -171,8 +134,7 @@ const config = {
 }
 
 
-function getListApi (data) {
-  console.log(data, "data")
+function getListApi(data) {
   return new Promise((resolve) => {
     resolve({
       data: [{
