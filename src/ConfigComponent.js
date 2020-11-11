@@ -216,7 +216,7 @@ class ConfigComponent extends React.Component {
           searchConfig.length > 0 && <Search
             searchFormConfig={searchFormConfig}
             optionConfig={optionConfig}
-            wrappedComponentRef={form => this.form = form}
+            ref={form => this.form = form}
             emit={this.handleEmit}
             config={searchConfig}
             searchBtnConfig={searchBtnConfig}

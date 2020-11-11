@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Form, Button, Icon } from 'antd';
-import { FormInstance } from 'antd/lib/form';
 import "./index.scss";
 
 class Search extends PureComponent {
@@ -23,7 +22,6 @@ class Search extends PureComponent {
 
   search = () => {
     const { emit } = this.props;
-    console.log(this.getSearchValue())
     emit("search", this.getSearchValue())
   }
 
