@@ -23,6 +23,7 @@ class Search extends PureComponent {
 
   search = () => {
     const { emit } = this.props;
+    console.log(this.getSearchValue())
     emit("search", this.getSearchValue())
   }
 
