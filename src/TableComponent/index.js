@@ -3,6 +3,8 @@ import { Table, Divider, Dropdown, Menu, Icon } from "antd";
 import { ConsumerState } from "../createContext";
 import "./index.scss";
 
+function noop() {}
+
 // 渲染操作菜单
 function getActionEle({ emit, record, title, text, render, index, actionFn, tableColumnsProps, extraConfigField, isDisabled }) {
   let disabled = isDisabled && isDisabled({ text, record, tableColumnsProps });
@@ -95,7 +97,9 @@ function TableComponent({ tableColumnsProps, emit,
             loading={value.tableLoading}
             rowSelection={rowSelection ? {
               ...rowSelection,
-              onChange: (...args) => emit(rowSelection.onChange, ...args)
+              onChange: (...args) => rowSelection.onChange ? emit(rowSelection.onChange, ...args) : noop,
+              onSelect: (...args) => rowSelection.onSelect ? emit(rowSelection.onSelect, ...args) : noop,
+              onSelectInvert: (...args) => rowSelection.onSelectInvert ? emit(rowSelection.onSelectInvert, ...args) : noop,
             } : null}
           >
           </Table>

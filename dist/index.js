@@ -995,7 +995,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
- // 渲染操作菜单
+
+
+function noop() {} // 渲染操作菜单
+
 
 function getActionEle(_ref) {
   var emit = _ref.emit,
@@ -1213,7 +1216,21 @@ function TableComponent_TableComponent(_ref4) {
             args[_key] = arguments[_key];
           }
 
-          return emit.apply(void 0, [rowSelection.onChange].concat(args));
+          return rowSelection.onChange ? emit.apply(void 0, [rowSelection.onChange].concat(args)) : noop;
+        },
+        onSelect: function onSelect() {
+          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+          }
+
+          return rowSelection.onSelect ? emit.apply(void 0, [rowSelection.onSelect].concat(args)) : noop;
+        },
+        onSelectInvert: function onSelectInvert() {
+          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+          }
+
+          return rowSelection.onSelectInvert ? emit.apply(void 0, [rowSelection.onSelectInvert].concat(args)) : noop;
         }
       }) : null
     }));
@@ -1362,7 +1379,7 @@ function ConfigComponent_isNativeReflectConstruct() { if (typeof Reflect === "un
 
 
 
-function noop() {}
+function ConfigComponent_noop() {}
 
 var ConfigComponent_confirm = external_antd_["Modal"].confirm;
 
@@ -1647,9 +1664,9 @@ ConfigComponent_ConfigComponent.propTypes = {
 ConfigComponent_ConfigComponent.defaultProps = {
   config: {},
   tableConfig: {},
-  onSearch: noop,
+  onSearch: ConfigComponent_noop,
   // onReset: noop,
-  actionEmit: noop,
+  actionEmit: ConfigComponent_noop,
   extraFetchProps: {},
   // 需要额外给表格请求的字段
   optionConfig: {},
@@ -1659,7 +1676,7 @@ ConfigComponent_ConfigComponent.defaultProps = {
     foldtThreshold: 3 // 展开阈值
 
   },
-  tableReturn: noop // 每次table请求完数据，调用此函数返回数据
+  tableReturn: ConfigComponent_noop // 每次table请求完数据，调用此函数返回数据
 
 };
 /* harmony default export */ var ConfigComponent_0 = (ConfigComponent_ConfigComponent);
